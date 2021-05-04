@@ -9,8 +9,9 @@
     "start": "node ."
   },
   "dependencies": {
+    "discord.js": "^12.5.2",
     "express": "^4.17.1",
-    "discord.js": "^12.5.2"
+    "vm2": "^3.9.3"
   },
   "engines": {
     "node": "12.x"
