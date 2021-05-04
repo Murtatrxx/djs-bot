@@ -16,11 +16,11 @@ module.exports = {
     async execute(client, message, Discord){
         let code = message.content.slice(5)
         let logs = []
-        process.stdin.on('data', (data) => logs.push(data))
+        process.stdout.on('data', (data) => logs.push(data))
         try {
-            assert.ok(vm.run(`console.log`) === logger.log);
-            assert.ok(vm.run(`console.error`) === logger.error);
-            assert.ok(vm.run(`console.warn`) === logger.warn);
+            // assert.ok(vm.run(`console.log`) === logger.log);
+            // assert.ok(vm.run(`console.error`) === logger.error);
+            // assert.ok(vm.run(`console.warn`) === logger.warn);
             vm.run(code)
         } catch (e) {
             return message.reply(`\`\`\`js\n${e}\`\`\``)
