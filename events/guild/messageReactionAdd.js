@@ -10,6 +10,6 @@ module.exports = async (Discord, client, reaction, user) => {
     if (!reaction.message.guild) return;
 
     if (reaction.emoji.name === example) {
-        //do stuff
+        console.log(`${user.username} reacted with ${example}`)
     }
 }
