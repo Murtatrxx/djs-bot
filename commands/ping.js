@@ -1,4 +1,5 @@
 module.exports = {
+	name: 'ping',
     execute(client, message, Discord) {
         message.channel.send("Pong!").then(m => {
             let ping = m.createdTimestamp - message.createdTimestamp

@@ -11,6 +11,10 @@ app.post('/restart/' + process.env.RESTART, (req, res) => {
     process.exit(2)
 })
 
+app.get('/', (req, res) => {
+	res.send('Server is up..!')
+})
+
 app.listen(4000, () => {
     console.log("Server has Started")
 })
