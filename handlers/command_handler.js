@@ -8,11 +8,11 @@ module.exports = (client, Discord) => {
       const command = require(`../commands/${dirs}/${file}`)
       if (command.name) {
         client.commands.set(command.name, command);
-				console.log('test')
+        console.log('test')
       } else continue
     }
   }
-  const commanddirs = ['main', 'example']
-  commanddirs.forEach(e => loaddirs(e))
+
+  ['main', 'example'].forEach(e => loaddirs(e));
 
 }
