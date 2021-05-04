@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const mongoPath = "mongodb+srv://ImRopoxPro:QWERTYUIOPĞÜ@bot.w3m9t.mongodb.net/db01?retryWrites=true&w=majority"
+const mongoPath = ""
 
 module.exports = async () => {
   await mongoose.connect(mongoPath, {

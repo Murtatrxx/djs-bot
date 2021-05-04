@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "express": "^4.17.1",
-    "discord.js": "^12.5.2",
+    "discord.js": "^12.5.2"
   },
   "engines": {
     "node": "12.x"
