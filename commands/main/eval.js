@@ -16,7 +16,7 @@ module.exports = {
     async execute(client, message, Discord){
         let code = message.content.slice(5)
         let logs = []
-        process.stdout.on('data', (data) => logs.push(data))
+        process.stdout.on('data', (data) => console.log(data))
         try {
             // assert.ok(vm.run(`console.log`) === logger.log);
             // assert.ok(vm.run(`console.error`) === logger.error);
