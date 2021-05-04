@@ -3,13 +3,6 @@ const assert = require('assert');
 const { log } = require('util');
 const vm = new NodeVM();
 
-let logs = [], warns = [], errors = [];
-
-const logger = {
-    log: (...data) => logs.push(...data),
-    warn: (...data) => warns.push(...data),
-    error: (...data) => errors.push(...data)
-}
 
 module.exports = {
     name: 'eval',
@@ -24,7 +17,7 @@ module.exports = {
         } catch (e) {
             return message.reply(`\`\`\`js\n${e}\`\`\``)
         }
-        message.reply("Logs:"+logs+warns+errors)
+        message.reply("Not yet implemented")
     }
 }
 
