@@ -1,27 +1,28 @@
 //----------[PACKAGES]----------\\
+
 const express = require('express')
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
-//Do not touch code below
+//----------[CONSTANTS]----------\\
+
 const app = express();
 
 app.post('/restart/' + process.env.RESTART, (req, res) => {
-    res.sendStatus(200)
-    process.exit(2)
-})
+    res.sendStatus(200);
+    process.exit(2);
+});
 
 app.get('/', (req, res) => {
-	res.send('Server is up..!')
-})
+	res.send('Server is up..!');
+});
 
 app.listen(4000, () => {
-    console.log("Server has Started")
-})
-//Do not touch code above
-
+    console.log("Server has Started");
+});
 
 //----------[HANDLERS]----------\\
+
 client.commands = new Discord.Collection();
 client.events = new Discord.Collection();
 

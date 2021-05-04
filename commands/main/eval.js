@@ -1,8 +1,7 @@
-const {NodeVM} = require('vm2');
+const { NodeVM } = require('vm2');
 const assert = require('assert');
 const { log } = require('util');
 const vm = new NodeVM();
-
 
 module.exports = {
     name: 'eval',
@@ -20,5 +19,3 @@ module.exports = {
         message.reply("Not yet implemented")
     }
 }
-
-//put this commands in main folder
