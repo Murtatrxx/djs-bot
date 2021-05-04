@@ -1,12 +1,17 @@
 const fs = require("fs")
 
 module.exports = (client, Discord) => {
-  const command_files = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
-  
-  for (const file of command_files) {
-    const command = require(`../commands/${file}`)
-    if (command.name) {
-      client.commands.set(command.name, command);
-    } else continue
+  const loaddirs = (dirs) => {
+    const command_files = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
+
+    for (const file of command_files) {
+      const command = require(`../commands/${dirs}/${file}`)
+      if (command.name) {
+        client.commands.set(command.name, command);
+      } else continue
+    }
   }
-} //look at index.js all code is gone
+  const commanddirs = ['main', 'example']
+  commanddirs.forEach(e => loaddirs(e))
+
+}
