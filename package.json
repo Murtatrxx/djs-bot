@@ -1,7 +1,7 @@
 {
   "//1": "describes your app and its dependencies",
   "//2": "https://docs.npmjs.com/files/package.json",
-  "name": "visualbot",
+  "name": "triava",
   "version": "0.2.3",
   "description": "A very optional bot's package",
   "main": "server.js",
