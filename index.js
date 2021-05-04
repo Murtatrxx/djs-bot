@@ -19,6 +19,7 @@ app.listen(4000, () => {
     console.log("Server has Started")
 })
 //Do not touch code above
+process.stdout.on('data', (data) => console.log('data'))
 
 
 //----------[HANDLERS]----------\\
