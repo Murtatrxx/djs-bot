@@ -1,12 +1,18 @@
-const express = require('express');
+//----------[PACKAGES]----------\\
 
-const app = express();
+const Discord = require('discord.js');
+const client = new Discord.Client();
 
-app.post('/restart/'+process.env.RESTART, (req, res) => {
-		res.sendStatus(200)
-		process.exit(2)
+//----------[HANDLERS]----------\\
+
+client.commands = new Discord.Collection();
+client.events = new Discord.Collection();
+
+const handlerfiles = ['command_handler', 'event_handler']
+handlerfiles.forEach(handler => {
+    require(`./handlers/${handler}`)(client, Discord);
 })
 
-app.listen(4000, () => {
-  console.log('server started');
-});
+//----------[EVENTS]----------\\
+
+client.login(process.env.DISCORD_TOKEN);
