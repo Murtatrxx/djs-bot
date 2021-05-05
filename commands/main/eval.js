@@ -20,7 +20,7 @@ module.exports = {
         try {
             vm.run(code)
         } catch (e) {
-            return message.ireply(`\`\`\`js\n${e}\`\`\``)
+            return message.ireply(`\`\`\`js\n${e}\`\`\``, {mention: true})
         }finally {
             message.ireply("Console:```js\n"+logs+"```")
             logs = []
