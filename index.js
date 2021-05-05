@@ -8,7 +8,8 @@ const client = new Discord.Client({
       name: 'WOK',
       type: 'COMPETING'
     }
-  }
+  },
+  partials: ["MESSAGE", "CHANNEL", "REACTION"]
 });
 const app = express();
 
