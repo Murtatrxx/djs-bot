@@ -5,6 +5,8 @@ const { MessageEmbed, Collection } = require('discord.js')
 const qts = require('../../utils/quotes.json')
 const status = new Collection()
 
+const reaction = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣']
+
 let embed = new MessageEmbed()
   .setTitle("HTML Quiz")
   .setColor("BLUE")
@@ -22,6 +24,7 @@ module.exports = {
       
       // bool is for checking whether it's done by user or not.
       const skip = (msg) => {
+        msg.reactions.removeAll()
 				if (sts.qn > 9) return;
 				sts.qn++
         embed
@@ -29,6 +32,9 @@ module.exports = {
         .setColor('BLUE')
         .setDescription(`**${arr[sts.qn].question}** \n\n${arr[sts.qn].options.filter(m => m).map((m, i) => `${i + 1}. ${m}`).join('\n')}`)
         msg.edit("",{ embed: embed})
+        arr[sts.qn].options.filter(m => m).forEach((m, index) => {
+          msg.react(reaction[index])
+        });
       }
 
       let msg = await message.channel.send(embed)
