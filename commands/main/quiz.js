@@ -1,5 +1,5 @@
 const fetch = require('node-fetch')
-const key = process.env.QUIZ_TOKEN
+const key = process.env.QUIZ_TOKEN;
 module.exports = {
     name: 'quiz',
     async execute(client, message, args) {
