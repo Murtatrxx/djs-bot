@@ -6,6 +6,7 @@ let logs = ['test']
 
 const logg = (...data) => {
     logs.push(...data)
+    return true;
 }
 
 module.exports = {
