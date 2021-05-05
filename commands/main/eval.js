@@ -2,7 +2,7 @@ const { VM } = require('vm2');
 const assert = require('assert');
 const { log } = require('util');
 const vm = new VM();
-let logs = []
+let logs = ['test']
 
 const logg = (...data) => {
     logs.push(...data)
