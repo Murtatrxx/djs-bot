@@ -28,10 +28,5 @@ handlerfiles.forEach(handler => {
   require(`./handlers/${handler}`)(client, Discord);
 })
 
-//----------[EVENTS]----------\\
-
-client.on('ready' , async() => {
-  client.user.setActivity("WOK" , { type: "COMPETITING" });
-});
 
 client.login(process.env.DISCORD_TOKEN);
