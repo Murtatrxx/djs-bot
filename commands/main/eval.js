@@ -2,7 +2,7 @@ const { NodeVM } = require('vm2');
 const assert = require('assert');
 const { log } = require('util');
 const vm = new NodeVM({
-    console: redirect
+    console: "redirect"
 });
 let logs;
 module.exports = {
