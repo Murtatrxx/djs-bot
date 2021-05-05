@@ -2,7 +2,14 @@
 
 const express = require('express')
 const Discord = require('discord.js');
-const client = new Discord.Client();
+const client = new Discord.Client({
+  presence: {
+    activity: {
+      name: 'Competing',
+      type: 'COMPETING'
+    }
+  }
+});
 const app = express();
 
 //----------[CONSTANTS]----------\\
