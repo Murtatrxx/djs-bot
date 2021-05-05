@@ -3,10 +3,9 @@
 const express = require('express')
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const app = express();
 
 //----------[CONSTANTS]----------\\
-
-const app = express();
 
 app.use(express.static('./site/public'))
 
