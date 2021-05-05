@@ -10,7 +10,7 @@ module.exports = {
         let code = message.content.slice(5)
         let logs = []
         try {
-            assert.ok(vm.run(`console.log`) === log));
+            assert.ok(vm.run(`console.log`) === log);
             vm.run(code)
         } catch (e) {
             return message.reply(`\`\`\`js\n${e}\`\`\``)
