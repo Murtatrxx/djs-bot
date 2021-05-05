@@ -9,7 +9,7 @@ module.exports = (Discord, client, message, validcommand) => {
 
     if (!message.content.startsWith(prefix) || message.author.bot) return
 
-    const args = message.content.split(/[ ]+/);
+    const args = content.split(/[ ]+/);
     const cmd = args.shift().toLowerCase();
 
     const command = client.commands.get(cmd);
