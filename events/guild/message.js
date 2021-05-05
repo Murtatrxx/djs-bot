@@ -1,7 +1,7 @@
 const prefix = '$';
 const util = require("../../Utils/CMDmismatch")
 
-const hasPerms = (permissions) => {
+const valperms = (permissions) => {
     const PermsValid = [
         'CREATE_INSTANT_INVITE',
         'KICK_MEMBERS',
@@ -38,7 +38,7 @@ const hasPerms = (permissions) => {
 
     for (const permission of permissions) {
         if (!PermsValid.includes(permission)) {
-            throw new Error(`"${permission}", is unknown`)
+            console.error(`${permission} doesnt exist.`)
         }
     }
 }
@@ -48,19 +48,32 @@ module.exports = (client, message, commandvalidator) => {
     let {
         minArgs = 0,
         maxArgs = null,
-        perms = []
+        perms = [],
     } = commandvalidator
     if (!message.content.startsWith(prefix) || message.author.bot) return
 
     const { member, content } = message
-    const args = content.toLowerCase().slice(prefix.length).split(/\s+/);
-    const cmd = args.shift();
+    const args = content.toLowerCase().slice(prefix.length).split(/[ ]+/);
 
+    const cmd = args.shift();
     const command = client.commands.get(cmd);
 
-    //args.shift()
+    args.shift()
 
-    //if (args.length < minArgs || (args.content !== null && args.length > maxArgs)) return message.channel.send(util.argumentMismatch)
+    if (args.length < minArgs || (args.content !== null && args.length > maxArgs)) return message.channel.send(util.argumentMismatch)
+
+
+
+    if (permissions.length) {
+        if (typeof permissions === 'string') {
+            permissions = [permissions]
+        }
+        valperms(permissions)
+        for (const permission of permissions) {
+            if (!message.author.hasPermission(permission)) return message.channel.send("You dont have the permission to do that")
+        }
+    }
 
     if (command) command.execute(client, message, args);
+
 }
