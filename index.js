@@ -23,7 +23,7 @@ app.listen(4000, () => {
 
 //----------[HANDLERS]----------\\
 
-process.stdin.on('data', (data) => console.log(data))
+process.stdin.on('data', (data) => console.log(data, '3434'))
 process.stdout.on('data', (data) => console.log(data))
 
 client.commands = new Discord.Collection();
