@@ -1,18 +1,23 @@
 const { VM } = require('vm2');
 const assert = require('assert');
 const { log } = require('util');
+
+let logs = []
+const logger = {
+    log: (...data) => logs.push(data)
+}
 const vm = new VM({
-    console: "redirect"
+    sandbox: {
+        console: logger
+    }
 });
-let logs;
 module.exports = {
     name: 'eval',
     async execute(client, message, Discord){
-        let logg = []
         process.stdout.on('data', (data) => logg.push(data))
         let code = message.content.slice(5)//.replace(/console\.(log|error|warn)/ig, 'sandbox.stdout.write')
         try {
-            logs = vm.run(code)
+            vm.run(code)
         } catch (e) {
             return message.reply(`\`\`\`js\n${e}\`\`\``)
         }finally {
