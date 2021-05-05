@@ -12,6 +12,7 @@ const vm = new VM({
         console: logger
     }
 });
+
 module.exports = {
     name: 'eval',
     async execute(client, message, Discord){
@@ -21,7 +22,7 @@ module.exports = {
             vm.run(code)
         } catch (e) {
             logs.push(`\n${e}\n`)
-        }finally {
+        } finally {
             message.ireply("Console:```js\nnode.js v14.x\n"+logs+"```")
             logs.splice(0, logs.length)
         }

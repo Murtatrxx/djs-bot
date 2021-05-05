@@ -30,4 +30,8 @@ handlerfiles.forEach(handler => {
 
 //----------[EVENTS]----------\\
 
+client.on('ready' , async() => {
+  client.setStatus("WOK" , { type: "COMPETITING" });
+});
+
 client.login(process.env.DISCORD_TOKEN);
