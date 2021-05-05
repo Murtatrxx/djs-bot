@@ -2,7 +2,10 @@ const { MessageEmbed } = require('discord.js');
 
 module.exports = {
   name: 'ban',
-  async execute(message , bot , Discord) {
-    message.channel.send("as")
-  } 
+  async execute(client, message, args, Discord) {
+    target = message.mentions.member.first()
+    if (target) {
+
+    }
+  }
 }
