@@ -14,7 +14,8 @@ module.exports = {
             vm.run(code)
         } catch (e) {
             return message.reply(`\`\`\`js\n${e}\`\`\``)
+        }finally {
+            message.reply("Not yet implemented"+log)
         }
-        message.reply("Not yet implemented"+log)
     }
 }
