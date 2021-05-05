@@ -14,7 +14,7 @@ module.exports = {
         .setColor("BLACK")
         .setDescription(`${arr[0].question}\n${arr[0].options.filter(m => m).map((m, i) => `${i + 1}. ${m}`).join('\n')}`)
         .setFooter("✅ Correct 0/10")
-      message.ireply("",{embed: embed})
+      message.channel.send(embed)
     })
   }
 }
