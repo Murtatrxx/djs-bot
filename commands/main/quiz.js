@@ -22,10 +22,12 @@ module.exports = {
       
       // bool is for checking whether it's done by user or not.
       const skip = (msg) => {
+				if (sts.qn > 9) return;
+				sts.qn++
         embed
         .setFooter(`✅ Correct ${sts.score}/10`)
         .setColor('BLUE')
-        .setDescription(`**${arr[++sts.qn].question}** \n\n${arr[++sts.qn].options.filter(m => m).map((m, i) => `${i + 1}. ${m}`).join('\n')}`)
+        .setDescription(`**${arr[sts.qn].question}** \n\n${arr[sts.qn].options.filter(m => m).map((m, i) => `${i + 1}. ${m}`).join('\n')}`)
         msg.edit("",{ embed: embed})
       }
 
