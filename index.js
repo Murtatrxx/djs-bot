@@ -5,12 +5,13 @@ const Discord = require('discord.js');
 const client = new Discord.Client({
   presence: {
     activity: {
-      name: 'WOK competition',
+      name: 'WOK',
       type: 'COMPETING'
     },
     status: 'dnd'
-  }
-});
+    },
+    partials: ["MESSAGE", "CHANNEL", "REACTION"]
+})
 const app = express();
 
 //----------[CONSTANTS]----------\\

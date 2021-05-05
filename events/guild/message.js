@@ -1,7 +1,7 @@
 const prefix = '$';
 const util = require("../../Utils/CMDmismatch")
 
-module.exports = (Discord, client, message, validcommand) => {
+module.exports = (client, message) => {
     //let { minArgs = 0 } = validcommand
     //let { maxArgs = null } = validcommand
     if (!message.content.startsWith(prefix) || message.author.bot) return
