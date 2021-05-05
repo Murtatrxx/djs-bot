@@ -33,7 +33,7 @@ module.exports = {
       msg.react('✅')
       msg.react('❌')
       let cltr = await msg.awaitReactions(((r, u) => u.id === message.author.id && !u.bot && r.emoji.name === ('✅' || '❌')), { time: 60000, max: 1, errors: ['time'] }).catch(e => msg.edit("", { embed: embed.setDescription('**Quiz cancelled**').setColor('RED')}))
-			if (cltr.emoji.name === '❌') return msg.edit("", { embed: embed.setDescription('**Quiz cancelled**').setColor('RED')})
+			if (cltr.first().emoji.name === '❌') return msg.edit("", { embed: embed.setDescription('**Quiz cancelled**').setColor('RED')})
       else msg.reactions.removeAll()
 
 
