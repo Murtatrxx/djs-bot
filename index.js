@@ -5,7 +5,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client({
   presence: {
     activity: {
-      name: 'Competing',
+      name: 'WOK competition',
       type: 'COMPETING'
     }
   }
