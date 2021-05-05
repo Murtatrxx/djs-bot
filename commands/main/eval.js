@@ -12,7 +12,7 @@ module.exports = {
         } catch (e) {
             return message.reply(`\`\`\`js\n${e}\`\`\``)
         }finally {
-            message.reply("Not yet implemented"+logs)
+            message.reply("Not yet implemented")
         }
     }
 }
