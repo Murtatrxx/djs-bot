@@ -7,14 +7,14 @@ const status = new Collection()
 
 const reaction = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣']
 
-let embed = new MessageEmbed()
-  .setTitle("HTML Quiz")
-  .setColor("BLUE")
-  .setDescription(`**Are you ready to start the quiz?** React to ✅ to continue`)
 
 module.exports = {
   name: 'quiz',
   async execute(client, message, args) {
+    let embed = new MessageEmbed()
+      .setTitle("Random programming quiz")
+      .setColor("BLUE")
+      .setDescription(`**Are you ready to start the quiz?** React to ✅ to continue`)
     let arr = []
     status.set(message.author.id, { score: 0, qn: 0 })
     let sts = status.get(message.author.id)
