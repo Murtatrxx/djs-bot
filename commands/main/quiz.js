@@ -34,7 +34,7 @@ module.exports = {
       let msg = await message.channel.send(embed)
       msg.react('✅')
       msg.react('❌')
-      let cltr = await msg.awaitReactions(((r, u) => u.id === message.author.id && !u.bot && r.emoji.name === ('✅' || '❌')), { time: 60000, max: 1, errors: ['time'] }).catch(e => msg.edit("", { embed: embed.setDescription('**Quiz cancelled**').setColor('RED')}))
+      let cltr = await msg.awaitReactions((r, u) => u.id === message.author.id && !u.bot && r.emoji.name === ('✅' || '❌'), { time: 60000, max: 1, errors: ['time'] }).catch(e => msg.edit("", { embed: embed.setDescription('**Quiz cancelled**').setColor('RED')}))
 			if (cltr.first().emoji.name === '❌') {
         msg.reactions.removeAll()
         return msg.edit("", { embed: embed.setDescription('**Quiz cancelled**').setColor('RED')})
