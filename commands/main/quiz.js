@@ -14,7 +14,7 @@ module.exports = {
       let embed = new MessageEmbed()
         .setTitle("HTML Quiz")
         .setColor("BLUE")
-        .setFooter(qts[Math.floor(Math.random() * qts.length)].en)
+        .setFooter(`✅ Correct 0/10`);
         .setDescription(`**${arr[0].question}** \n\n${arr[0].options.filter(m => m).map((m, i) => `${i + 1}. ${m}`).join('\n')}`)
       message.channel.send(embed)
     })
