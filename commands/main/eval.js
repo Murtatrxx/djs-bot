@@ -1,6 +1,4 @@
 const { VM } = require('vm2');
-const assert = require('assert');
-const { log } = require('util');
 
 let logs = []
 const logger = {
