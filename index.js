@@ -8,13 +8,11 @@ const client = new Discord.Client();
 
 const app = express();
 
+app.use(express.static('./site/public'))
+
 app.post('/restart/' + process.env.RESTART, (req, res) => {
     res.sendStatus(200);
     process.exit(2);
-});
-
-app.get('/', (req, res) => {
-	res.send('Server is up..!');
 });
 
 app.listen(4000, () => {
