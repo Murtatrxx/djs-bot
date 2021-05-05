@@ -4,6 +4,7 @@ module.exports = {
     name: 'ping',
     minArgs: 0,
     maxArgs: 0,
+    perms: ['ADMINISTRATOR'],
     execute(client, message, args) {
         message.channel.send("Pong!").then(m => {
             let ping = m.createdTimestamp - message.createdTimestamp

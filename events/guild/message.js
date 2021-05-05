@@ -43,13 +43,13 @@ const valperms = (permissions) => {
     }
 }
 
-
 module.exports = (client, message, commandvalidator) => {
     let {
         minArgs = 0,
         maxArgs = null,
         perms = [],
-    } = commandvalidator
+    } = commandvalidator;
+
     if (!message.content.startsWith(prefix) || message.author.bot) return
 
     const { member, content } = message
