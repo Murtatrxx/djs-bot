@@ -8,7 +8,7 @@ const client = new Discord.Client({
       name: 'WOK',
       type: 'COMPETING'
     },
-    status: 'dnd'
+    status: 'idle'
     },
     partials: ["MESSAGE", "CHANNEL", "REACTION"]
 })
