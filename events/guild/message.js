@@ -17,5 +17,4 @@ module.exports = (client, message) => {
     //if (args.length < minArgs || (args.content !== null && args.length > maxArgs)) return message.channel.send(util.argumentMismatch)
 
     if (command) command.execute(client, message, args);
-    console.log(command)
 }
