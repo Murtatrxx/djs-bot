@@ -3,7 +3,6 @@ const key = require('../../config.js').quiz
 module.exports = {
     name: 'quiz',
     async execute(client, message, args) {
-        console.log(key)
         fetch(`https://quizapi.io/api/v1/questions?apiKey=${key}&limit=20`)
         .then(res => res.text()).then(r => message.channel.send(JSON.stringify(r),{ split: {char: ''}}))
     }
