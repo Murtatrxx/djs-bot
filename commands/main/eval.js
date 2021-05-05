@@ -1,5 +1,5 @@
 const { VM } = require('vm2');
-
+require('../../utils/inline')
 let logs = []
 const logger = {
     log: (...data) => logs.push(data),
@@ -20,9 +20,9 @@ module.exports = {
         try {
             vm.run(code)
         } catch (e) {
-            return message.reply(`\`\`\`js\n${e}\`\`\``)
+            return message.ireply(`\`\`\`js\n${e}\`\`\``)
         }finally {
-            message.reply("Console:```js\n"+logs+"```")
+            message.ireply("Console:```js\n"+logs+"```")
             logs = []
         }
     }
