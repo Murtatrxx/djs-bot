@@ -1,3 +1,3 @@
 module.exports = {
-    quiz: process.env.QUIZ_TOKEN
+    quiz: process.env.QUIZ_TOKEN 
 }

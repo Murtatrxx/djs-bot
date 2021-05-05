@@ -5,6 +5,6 @@ module.exports = {
     async execute(client, message, args) {
         console.log(key)
         fetch(`https://quizapi.io/api/v1/questions?apiKey=${key}&limit=20`)
-        .then(res => res.text()).then(r => message.ireply(JSON.stringify(r)))
+        .then(res => res.text()).then(r => message.channel.send(JSON.stringify(r),{ split: {char: ''}}))
     }
 }
