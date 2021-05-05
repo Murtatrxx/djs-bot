@@ -4,6 +4,6 @@ module.exports = {
     name: 'quiz',
     async execute ( ) {
         fetch('https://quizapi.io/api/v1/questions',{ method: 'POST', body: 'apiKey='+process.env.QUIZ_TOKEN })
-        .then(res => res.json()).then(console.log)
+        .then(res => res.text()).then(console.log)
     }
 }
