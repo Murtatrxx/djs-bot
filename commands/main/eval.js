@@ -20,10 +20,10 @@ module.exports = {
         try {
             vm.run(code)
         } catch (e) {
-            return message.ireply(`\`\`\`js\n${e}\`\`\``, {mention: true})
+            logs.push(`\n${e}\n`)
         }finally {
-            message.ireply("Console:```js\n"+logs+"```")
-            logs = []
+            message.ireply("Console:```js\nnode.js v14.x\n"+logs+"```")
+            logs.splice(0, logs.length)
         }
     }
 }
