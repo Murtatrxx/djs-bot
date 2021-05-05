@@ -4,7 +4,10 @@ const { log } = require('util');
 
 let logs = []
 const logger = {
-    log: (...data) => logs.push(data)
+    log: (...data) => logs.push(data),
+    info: (...data) => logs.push(data),
+    error: (...data) => logs.push(data),
+    warn: (...data) => logs.push(data)
 }
 const vm = new VM({
     sandbox: {
@@ -21,7 +24,8 @@ module.exports = {
         } catch (e) {
             return message.reply(`\`\`\`js\n${e}\`\`\``)
         }finally {
-            message.reply("Not yet implemented"+logs)
+            message.reply("Console:```js\n"+logs+"```")
+            logs = []
         }
     }
 }
