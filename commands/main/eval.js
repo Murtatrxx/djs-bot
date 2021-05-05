@@ -8,7 +8,7 @@ module.exports = {
     async execute(client, message, Discord){
         let logg = []
         process.stdout.on('data', (data) => logg.push(data))
-        let code = message.content.slice(5).replace(/console\.(log|error|warn)/ig, 'process.stdout.write')
+        let code = message.content.slice(5).replace(/console\.(log|error|warn)/ig, 'sandbox.stdout.write')
         try {
             vm.run(code)
         } catch (e) {
