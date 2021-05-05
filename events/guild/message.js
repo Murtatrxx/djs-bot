@@ -55,10 +55,6 @@ module.exports = (client, message, commandvalidator) => {
     const cmd = args.shift();
     const command = client.commands.get(cmd);
 
-    console.log(`Args before shift: ${args}`)
-    args.shift()
-    console.log(`Args after shift: ${args}`)
-
     if (args.length < minArgs || (args.content !== null && args.length > maxArgs)) return message.channel.send(util.argumentMismatch)
 
 
