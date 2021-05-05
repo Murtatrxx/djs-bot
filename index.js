@@ -12,7 +12,7 @@ app.use(express.static('./site/public'))
 
 app.post('/restart/' + process.env.RESTART, (req, res) => {
     res.sendStatus(200);
-    //process.exit(2);
+    process.exit(2);
 });
 
 app.listen(4000, () => {
