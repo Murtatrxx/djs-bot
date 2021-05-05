@@ -21,13 +21,12 @@ module.exports = {
       result.forEach(m => arr.push({ question: m.question, options: Object.values(m.answers), correctIndex: (Object.values(m.correct_answers).findIndex(e => e === true)) }));
       
       // bool is for checking whether it's done by user or not.
-      const skip = (bool = true, msg) => {
+      const skip = (msg) => {
         embed
         .setFooter(`✅ Correct ${sts.score}/10`)
         .setColor('BLUE')
-        .setDescription(`**${arr[0].question}** \n\n${arr[0].options.filter(m => m).map((m, i) => `${i + 1}. ${m}`).join('\n')}`)
+        .setDescription(`**${arr[++sts.qn].question}** \n\n${arr[++sts.qn].options.filter(m => m).map((m, i) => `${i + 1}. ${m}`).join('\n')}`)
         msg.edit("",{ embed: embed})
-        result[++sts.qn]
       }
 
       let msg = await message.channel.send(embed)
