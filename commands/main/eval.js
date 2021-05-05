@@ -1,7 +1,7 @@
-const { NodeVM } = require('vm2');
+const { VM } = require('vm2');
 const assert = require('assert');
 const { log } = require('util');
-const vm = new NodeVM({
+const vm = new VM({
     console: "redirect"
 });
 let logs;
