@@ -7,7 +7,8 @@ const client = new Discord.Client({
     activity: {
       name: 'WOK competition',
       type: 'COMPETING'
-    }
+    },
+    status: 'dnd'
   }
 });
 const app = express();
