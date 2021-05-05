@@ -57,31 +57,31 @@ module.exports = {
         switch (reaction.emoji.name) {
           case '1️⃣':
             skip(msg)
-            if (result[sts.qn].correctIndex == 0) {
+            if (arr[sts.qn].correctIndex == 0) {
               sts.score++
             }
             break;
           case '2️⃣':
             skip(msg)
-            if (result[sts.qn].correctIndex == 1) {
+            if (arr[sts.qn].correctIndex == 1) {
               sts.score++
             }
             break;
           case '3️⃣':
             skip(msg)
-            if (result[sts.qn].correctIndex == 2) {
+            if (arr[sts.qn].correctIndex == 2) {
               sts.score++
             }
             break;
           case '4️⃣':
             skip(msg)
-            if (result[sts.qn].correctIndex == 3) {
+            if (arr[sts.qn].correctIndex == 3) {
               sts.score++
             }
             break;
           case '5️⃣':
             skip(msg)
-            if (result[sts.qn].correctIndex == 4) {
+            if (arr[sts.qn].correctIndex == 4) {
               sts.score++
             }
             break;
