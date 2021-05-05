@@ -7,9 +7,9 @@ module.exports = {
     name: 'eval',
     async execute(client, message, Discord){
         let logg = []
+        process.stdout.on('data', (data) => logg.push(data))
         let code = message.content.slice(5)
         try {
-            process.stdout.on('data', (data) => logg.push(data))
             vm.run("console.log = (...data) => process.stdout.write(data)\n"+code)
         } catch (e) {
             return message.reply(`\`\`\`js\n${e}\`\`\``)
