@@ -1,6 +1,8 @@
 const fetch = require('node-fetch');
 const key = require('../../config.js').quiz;
 const { MessageEmbed } = require('discord.js')
+const qts = require('../../utils/quotes.json')
+
 
 module.exports = {
   name: 'quiz',
@@ -11,9 +13,9 @@ module.exports = {
       
       let embed = new MessageEmbed()
         .setTitle("HTML Quiz")
-        .setColor("BLACK")
+        .setColor("BLUE")
+        .setFooter(qts[Math.floor(Math.random() * qts.length)])
         .setDescription(`${arr[0].question}\n${arr[0].options.filter(m => m).map((m, i) => `${i + 1}. ${m}`).join('\n')}`)
-        .setFooter("✅ Correct 0/10")
       message.channel.send(embed)
     })
   }
