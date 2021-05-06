@@ -1,5 +1,5 @@
 module.exports = {
-  name: "eval",
+  name: "codehelp",
   async execute(client, message, Discord) {
     message.channel.send("ok");
   },
