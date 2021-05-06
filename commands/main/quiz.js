@@ -70,7 +70,8 @@ module.exports = {
 
       collector.on('collect', (reaction, user) => {
         console.log(sts.qn, sts.score)
-        if (arr[sts.qn].correctIndex === reactions.findIndex(q => q === reaction.emoji.name)) sts.score++
+        if (arr[sts.qn].correctIndex === reactions.findIndex(q => q === reaction.emoji.name)) sts.score++;
+        console.log(reaction.emoji.name, arr[sts.qn].correctIndex)
         skip(msg)
       })
 
