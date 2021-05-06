@@ -55,7 +55,7 @@ module.exports = {
           embed
             .setFooter(`Question ${qn + 1}/10 • Score: ${score}`)
             .setColor("BLUE")
-            .setDescription(`__${arr[qn].question}__`)
+            .setDescription(`**${arr[qn].question}**`)
             .addFields({
               name: "Options",
               value: arr[qn].options
@@ -94,7 +94,7 @@ module.exports = {
         embed
           .setFooter(`Question ${qn + 1}/10 • Score: ${score}`)
           .setColor("BLUE")
-          .setDescription(`__${arr[0].question}__`)
+          .setDescription(`**${arr[0].question}**`)
           .addFields({
             name: "Options",
             value: arr[0].options.filter((m) => m).map((m, i) => `${i + 1}. ${m}`).join("\n"),
