@@ -20,7 +20,10 @@ module.exports = {
     let sts = status.get(message.author.id)
     // @ts-ignore
     fetch(`https://quizapi.io/api/v1/questions?category=code&limit=10&apiKey=${key}`).then(res => res.json()).then(async result => {
-      result.forEach(m => arr.push({ question: m.question, options: Object.values(m.answers), correctIndex: (Object.values(m.correct_answers).findIndex(e => e === true)) }));
+      result.forEach(m => {
+        arr.push({ question: m.question, options: Object.values(m.answers), correctIndex: (Object.values(m.correct_answers).findIndex(e => e)) })
+        console.log(Object.values(m.correct_answers))
+      });
       
       //Quit quiz
     const quit = () => {
