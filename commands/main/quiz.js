@@ -87,6 +87,7 @@ module.exports = {
           });
         } else msg.reactions.removeAll()
 
+        embed.fields.splice(0, embed.fields.length)
         embed
           .setFooter(`Question ${qn + 1}/10 ● Score: ${score}`)
           .setColor("BLUE")
@@ -94,7 +95,7 @@ module.exports = {
           .addFields({
             name: "Options",
             value: arr[0].options.filter((m) => m).map((m, i) => `${i + 1}. ${m}`).join("\n"),
-          }).fields.splice(0, embed.fields.length);
+          });
 
         arr[qn].options.filter((m) => m).forEach((m, index) => msg.react(reactions[index]));
 
