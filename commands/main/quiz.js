@@ -32,6 +32,7 @@ module.exports = {
       }
       embed.fields[0].value = arr.options.filter((m) => m).map((m, i) => `${(i == arr.correctIndex ? ":white_check_mark: " : ":x:")} ${i+1}. ${m}`).join("\n")
       ( arr.explanation ? embed.addFields({ name: 'Explanation', value: arr.explanation}) : "" )
+      msg.edit("", { embed: embed })
       let cltr = await msg.awaitReactions((r, u) => !u.bot && r.emoji.name === '⏭️' && u.id === message.author.id,  { max: 1 })
       return msg;
     }
