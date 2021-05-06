@@ -14,7 +14,7 @@ const vm = new VM({
     console: logger,
   },
 });
-
+let mention = false;
 module.exports = {
   name: "eval",
   async execute(client, message, Discord) {
@@ -23,6 +23,7 @@ module.exports = {
       vm.run(code);
     } catch (e) {
       logs.push(`\n${e}\n`);
+      mention = true;
     } finally {
       let em = new MessageEmbed()
         .setTitle('I\'ve executed your syntax')
@@ -30,7 +31,7 @@ module.exports = {
         .setTimestamp()
         .setAuthor(message.member.displayName, message.author.displayAvatarURL(), message.author.displayAvatarURL())
         .addFields({name: 'Source', value: `\`\`\`js\n ${code}\`\`\``}, {name:'Result', value:"```js\n"+ process.version.substr(0, 5) +"\n"+ logs.join('\n') + "```"})
-      message.ireply("", { embed:em });
+      message.ireply("", { embed:em, mention: mention });
       logs.splice(0, logs.length);
     }
   },
