@@ -6,7 +6,13 @@ const { MessageEmbed, Collection } = require("discord.js");
 const reactions = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣"];
 
 const showans = async (msg, arr, extras = {}) => {
-  let { exp, tip, diff, cat } = arr.meta;
+  let { exp, tip, diff, cat } = arr.meta, {rxn, user, score} = extras;
+  if(arr.correctIndex == reactions.findIndex(f => f === rxn.emoji.name)) {
+    score++
+  }else{
+
+  }
+
   return msg;
 }
 
@@ -101,7 +107,7 @@ module.exports = {
         msg.react('⏭️')
         const collector = msg.createReactionCollector((r, u) => u.id === message.author.id && !u.bot && reactions.includes(r.emoji.name));
 
-        collector.on("collect", (reaction, user) => showans(msg, arr[qn], { rxn: reaction, user }).then(m => skip(m, { collector })));
+        collector.on("collect", (reaction, user) => showans(msg, arr[qn], { rxn: reaction, user, score }).then(m => skip(m, { collector })));
       });
   },
 };
