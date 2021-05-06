@@ -21,8 +21,7 @@ module.exports = {
     // @ts-ignore
     fetch(`https://quizapi.io/api/v1/questions?category=code&limit=10&apiKey=${key}`).then(res => res.json()).then(async result => {
       result.forEach(m => {
-        arr.push({ question: m.question, options: Object.values(m.answers), correctIndex: (Object.values(m.correct_answers).findIndex(e => e)) })
-        console.log(Object.values(m.correct_answers))
+        arr.push({ question: m.question, options: Object.values(m.answers), correctIndex: (Object.values(m.correct_answers).findIndex(e => e === 'true')) })
       });
       
       //Quit quiz
@@ -74,7 +73,6 @@ module.exports = {
       collector.on('collect', (reaction, user) => {
         console.log(sts.qn, sts.score)
         if (arr[sts.qn].correctIndex === reactions.findIndex(q => q === reaction.emoji.name)) sts.score++;
-        console.log(reaction.emoji.name, arr[sts.qn].correctIndex)
         skip(msg)
       })
 
