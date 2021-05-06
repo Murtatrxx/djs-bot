@@ -30,7 +30,7 @@ module.exports = {
         .setTimestamp()
         .setAuthor(message.member.displayName, message.author.displayAvatarURL(), message.author.displayAvatarURL())
         .addFields({name: 'Source', value: `\`\`\`js\n ${code}`}, {name:'Result', value:"```js\nnode "+ process.version +"\n"+ logs.join('\n') + "```"})
-      message.ireply(em);
+      message.ireply("", { embed:em });
       logs.splice(0, logs.length);
     }
   },
