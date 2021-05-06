@@ -16,7 +16,7 @@ module.exports = {
         `**Are you ready to start the quiz?** React to ✅ to continue`
       ).addFields({
         name: 'Instructions',
-        value: '● Read the questions.\n● There are 2 - 5 options for a question.\n● React to the message according to the Options\n● React with ❌ anytime to quit.'
+        value: '● Read the questions.\n● There are 2 - 5 options for a question.\n● React to the message according to the Options\n● React with ❌ anytime to quit.\n**Note: If you don\'t react to anything for 5mins the quiz will stop automatically.**'
       });
     let arr = [];
     let score = 0,
