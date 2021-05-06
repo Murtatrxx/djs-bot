@@ -28,7 +28,7 @@ module.exports = {
 				if (sts.qn > 9) return;
 				sts.qn++
         embed
-        .setFooter(`Question ${sts.qn}/10`)
+        .setFooter(`Question ${sts.qn+1}/10`)
         .setColor('BLUE')
         .setDescription(`**${arr[sts.qn].question}**`)
         .addFields({name: 'Options', value: arr[0].options.filter(m => m).map((m, i) => `${i + 1}. ${m}`).join('\n')})
@@ -51,7 +51,7 @@ module.exports = {
 
 
       embed
-        .setFooter(`Question ${sts.qn}/10`)
+        .setFooter(`Question ${sts.qn+1}/10`)
         .setColor('BLUE')
         .setDescription(`**${arr[0].question}**`)
         .addFields({name: 'Options', value: arr[0].options.filter(m => m).map((m, i) => `${i + 1}. ${m}`).join('\n')})
