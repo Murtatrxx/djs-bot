@@ -64,7 +64,6 @@ module.exports = {
       const collector = msg.createReactionCollector((r, u) => u.id === message.author.id && !u.bot)
 
       collector.on('collect', (reaction, user) => {
-        reaction.users.remove(user.id)
         console.log(sts.qn, sts.score)
         if (arr[sts.qn].correctIndex === reactions.findIndex(q => q === reaction.emoji.name)) sts.score++
         skip(msg)
