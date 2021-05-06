@@ -27,7 +27,7 @@ module.exports = {
     } finally {
       let em = new MessageEmbed()
         .setTitle('I\'ve executed your syntax')
-        .setColor('GREEN')
+        .setColor(( mention ? "RED" : 'GREEN'))
         .setTimestamp()
         .setAuthor(message.member.displayName, message.author.displayAvatarURL(), message.author.displayAvatarURL())
         .addFields({name: 'Source', value: `\`\`\`js\n ${code}\`\`\``}, {name:'Result', value:"```js\n"+ process.version.substr(0, 5) +"\n"+ logs.join('\n') + "```"})
