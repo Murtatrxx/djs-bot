@@ -53,6 +53,9 @@ module.exports = {
         .setFooter(`Question ${sts.qn}/10`)
         .setColor('BLUE')
         .setDescription(`**${arr[0].question}**${arr[0].options.filter(m => m).map((m, i) => `${i + 1}. ${m}`).join('\n')}`)
+      arr[sts.qn].options.filter(m => m).forEach((m, index) => {
+          msg.react(reactions[index])
+        });
 
       msg.edit("", {embed: embed})
       const collector = msg.createReactionCollector((r, u) => u.id === message.author.id && !u.bot)
