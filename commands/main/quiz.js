@@ -10,7 +10,7 @@ const showans = async (msg, arr, extras = {}) => {
   if(arr.correctIndex == reactions.findIndex(f => f === rxn.emoji.name)) {
     score++
   }
-  console.log(rxn.emoji.name, "\n", reactions.findIndex(f => f === rxn.emoji.name))
+  console.log(arr.correctIndex)
 
   return msg;
 }
