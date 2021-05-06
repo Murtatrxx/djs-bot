@@ -30,6 +30,7 @@ module.exports = {
       }else {
         color = "RED"
       }
+      console.log(arr.options.filter((m) => m).map((m, i) => `${(i == arr.correctIndex ? ":white_check_mark: " : ":x:")} ${i+1}. ${m}`))
       embed.fields[0].value = arr.options.filter((m) => m).map((m, i) => `${(i == arr.correctIndex ? ":white_check_mark: " : ":x:")} ${i+1}. ${m}`).join("\n")
       ( arr.explanation ? embed.addFields({ name: 'Explanation', value: arr.explanation}) : "" )
       msg.edit("", { embed: embed })
