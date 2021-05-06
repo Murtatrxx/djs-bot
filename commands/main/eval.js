@@ -14,10 +14,10 @@ const vm = new VM({
     console: logger,
   },
 });
-let mention = false;
 module.exports = {
   name: "eval",
   async execute(client, message, Discord) {
+    let mention = false;
     let code = message.content.slice(5).trim();
     try {
       vm.run(code);
