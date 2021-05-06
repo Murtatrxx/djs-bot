@@ -23,7 +23,7 @@ class Message extends Structures.get("Message") {
     )
       apiMessage.data.allowed_mentions = {
         parse: ["users", "roles", "everyone"],
-		replied_user: ( options.mention ? true : false)
+        replied_user: options.mention ? true : false,
       };
     if (typeof apiMessage.data.allowed_mentions.replied_user === "undefined")
       Object.assign(apiMessage.data.allowed_mentions, {

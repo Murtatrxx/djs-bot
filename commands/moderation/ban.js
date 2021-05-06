@@ -1,11 +1,10 @@
-const { MessageEmbed } = require('discord.js');
+const { MessageEmbed } = require("discord.js");
 
 module.exports = {
-  name: 'ban',
+  name: "ban",
   async execute(client, message, args, Discord) {
-    target = message.mentions.member.first()
+    target = message.mentions.member.first();
     if (target) {
-
     }
-  }
-}
+  },
+};
