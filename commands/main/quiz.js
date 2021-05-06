@@ -5,7 +5,7 @@ const { MessageEmbed, Collection } = require('discord.js')
 const qts = require('../../utils/quotes.json')
 const status = new Collection()
 
-const reaction = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣']
+const reactions = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣']
 
 
 module.exports = {
@@ -28,12 +28,12 @@ module.exports = {
 				if (sts.qn > 9) return;
 				sts.qn++
         embed
-        .setFooter(`✅ Correct ${sts.score}/10`)
+        .setFooter(`Question ${sts.qn}/10`)
         .setColor('BLUE')
         .setDescription(`**${arr[sts.qn].question}** \n\n${arr[sts.qn].options.filter(m => m).map((m, i) => `${i + 1}. ${m}`).join('\n')}`)
         msg.edit("",{ embed: embed})
         arr[sts.qn].options.filter(m => m).forEach((m, index) => {
-          msg.react(reaction[index])
+          msg.react(reactions[index])
         });
       }
 
@@ -50,9 +50,9 @@ module.exports = {
 
 
       embed
-        .setFooter(`✅ Correct ${sts.score}/10`)
+        .setFooter(`Question ${sts.qn}/10`)
         .setColor('BLUE')
-        .setDescription(`**${arr[0].question}** \n\n${arr[0].options.filter(m => m).map((m, i) => `${i + 1}. ${m}`).join('\n')}`)
+        .setDescription(`**${arr[0].question}**${arr[0].options.filter(m => m).map((m, i) => `${i + 1}. ${m}`).join('\n')}`)
 
       msg.edit("", {embed: embed})
       const collector = msg.createReactionCollector((r, u) => u.id === message.author.id && !u.bot)
@@ -60,38 +60,8 @@ module.exports = {
       collector.on('collect', (reaction, user) => {
         reaction.users.remove(user.id)
         console.log(sts.qn, sts.score)
-        switch (reaction.emoji.name) {
-          case '1️⃣':
-            skip(msg)
-            if (arr[sts.qn].correctIndex == 0) {
-              sts.score++
-            }
-            break;
-          case '2️⃣':
-            skip(msg)
-            if (arr[sts.qn].correctIndex == 1) {
-              sts.score++
-            }
-            break;
-          case '3️⃣':
-            skip(msg)
-            if (arr[sts.qn].correctIndex == 2) {
-              sts.score++
-            }
-            break;
-          case '4️⃣':
-            skip(msg)
-            if (arr[sts.qn].correctIndex == 3) {
-              sts.score++
-            }
-            break;
-          case '5️⃣':
-            skip(msg)
-            if (arr[sts.qn].correctIndex == 4) {
-              sts.score++
-            }
-            break;
-        }
+        if (arr[sts.qn].correctIndex === reactions.findIndex(q => q === reaction.emoji.name)) sts.score++
+        skip(msg)
       })
 
     })
