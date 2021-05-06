@@ -22,16 +22,16 @@ module.exports = {
       .setTimestamp();
     let arr = [];
     let score = 0, qn = 0;
-const showans = async (msg, arr, extras = {}) => {
-  let { exp, tip, diff, cat } = arr.meta, {rxn, user } = extras;
-  if(arr.correctIndex == reactions.findIndex(f => f === rxn.emoji.name)) {
-    score++
-  }
-  console.log(arr.correctIndex)
-
-  return msg;
-}
-    // @ts-ignore
+    const showans = async (msg, arr, extras = {}) => {
+      let { exp, tip, diff, cat } = arr.meta, {rxn, user } = extras;
+      if(arr.correctIndex == reactions.findIndex(f => f === rxn.emoji.name)) {
+        score++
+      }
+      console.log(arr.correctIndex)
+      
+      return msg;
+    }
+  // @ts-ignore
     fetch(
       `https://quizapi.io/api/v1/questions?category=code&limit=10&apiKey=${key}`
     )
