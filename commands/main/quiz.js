@@ -5,6 +5,11 @@ const { MessageEmbed, Collection } = require("discord.js");
 
 const reactions = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣"];
 
+const showans = async (msg, arr, extras = {}) => {
+  let { exp, tip, diff, cat } = arr.meta;
+  return msg;
+}
+
 module.exports = {
   name: "quiz",
   async execute(client, message, args) {
@@ -31,21 +36,19 @@ module.exports = {
           arr.push({
             question: m.question,
             options: Object.values(m.answers),
-            correctIndex: Object.values(m.correct_answers).findIndex(
-              (e) => e === "true"
-            ),
+            correctIndex: Object.values(m.correct_answers).findIndex((e) => e === "true"),
+            meta: { exp: m.explanation, tip: m.tip, diff: m.difficulty, cat: m.category }
           });
         });
 
         // bool is for checking whether it's done by user or not.
-        const skip = (msg, bool) => {
-          if (bool) score++
+        const skip = (msg, extra = {}) => {
           msg.reactions.removeAll();
-          if (qn > 9) return collector.stop();
+          if (qn > 9) return extra.collector?.stop();
           qn++;
           embed.fields.splice(0, embed.fields.length);
           embed
-            .setFooter(`Question ${qn + 1}/10 ● Score: ${score}`)
+            .setFooter(`Question ${qn + 1}/10 • Score: ${score}`)
             .setColor("BLUE")
             .setDescription(`__${arr[qn].question}__`)
             .addFields({
@@ -84,7 +87,7 @@ module.exports = {
 
         embed.fields.splice(0, embed.fields.length)
         embed
-          .setFooter(`Question ${qn + 1}/10 ● Score: ${score}`)
+          .setFooter(`Question ${qn + 1}/10 • Score: ${score}`)
           .setColor("BLUE")
           .setDescription(`__${arr[0].question}__`)
           .addFields({
@@ -98,11 +101,7 @@ module.exports = {
         msg.react('⏭️')
         const collector = msg.createReactionCollector((r, u) => u.id === message.author.id && !u.bot && reactions.includes(r.emoji.name));
 
-        collector.on("collect", (reaction, user) => {
-          console.log(qn, score);
-          // reaction.message.awaitReactions((r, u) => r.emoji.name === '⏭️' && !u.bot && user.id === u.id, { max: 1 }).then(coll => {})
-          skip(msg, (arr[qn].correctIndex === reactions.findIndex((q) => q === reaction.emoji.name)));
-        });
+        collector.on("collect", (reaction, user) => showans(msg, arr[qn], { rxn: reaction, user }).then(m => skip(m, { collector })));
       });
   },
 };
