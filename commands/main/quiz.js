@@ -56,11 +56,10 @@ module.exports = {
                 .join("\n"),
             });
           msg.edit("", { embed: embed });
-          arr[qn].options
-            .filter((m) => m)
-            .forEach((m, index) => {
+          arr[qn].options.filter((m) => m).forEach((m, index) => {
               msg.react(reactions[index]);
             });
+          msg.react('⏭️')
         };
 
 
@@ -96,10 +95,12 @@ module.exports = {
         arr[qn].options.filter((m) => m).forEach((m, index) => msg.react(reactions[index]));
 
         msg.edit("", { embed: embed });
-        const collector = msg.createReactionCollector((r, u) => u.id === message.author.id && !u.bot && (reactions.includes(r.emoji.name) || u));
+        msg.react('⏭️')
+        const collector = msg.createReactionCollector((r, u) => u.id === message.author.id && !u.bot && reactions.includes(r.emoji.name));
 
         collector.on("collect", (reaction, user) => {
           console.log(qn, score);
+          // reaction.message.awaitReactions((r, u) => r.emoji.name === '⏭️' && !u.bot && user.id === u.id, { max: 1 }).then(coll => {})
           skip(msg, (arr[qn].correctIndex === reactions.findIndex((q) => q === reaction.emoji.name)));
         });
       });
