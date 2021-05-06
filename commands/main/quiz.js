@@ -22,10 +22,15 @@ module.exports = {
     fetch(`https://quizapi.io/api/v1/questions?category=code&limit=10&apiKey=${key}`).then(res => res.json()).then(async result => {
       result.forEach(m => arr.push({ question: m.question, options: Object.values(m.answers), correctIndex: (Object.values(m.correct_answers).findIndex(e => e === true)) }));
       
+      //Quit quiz
+    const quit = () => {
+      
+    }
+
       // bool is for checking whether it's done by user or not.
       const skip = (msg) => {
         msg.reactions.removeAll()
-				if (sts.qn > 9) return;
+				if (sts.qn > 9) return quit();
 				sts.qn++
         embed.fields.splice(0, embed.fields.length)
         embed
