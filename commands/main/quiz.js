@@ -70,10 +70,12 @@ module.exports = {
           ["✅", "❌"].includes(r.emoji.name);
         let cltr = await msg
           .awaitReactions(filter, { time: 60000, max: 1, errors: ["time"] })
-          .catch((e) =>
+          .catch((e) =>{
             msg.edit("", {
               embed: embed.setDescription("**Quiz cancelled**").setColor("RED"),
-            }), msg.reactions.removeAll()
+            });
+            msg.reactions.removeAll()
+          }
           );
         if (cltr.first().emoji.name === "❌") {
           msg.reactions.removeAll();
