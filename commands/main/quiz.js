@@ -23,12 +23,16 @@ module.exports = {
     let arr = [];
     let score = 0, qn = 0;
     const showans = async (msg, arr, extras = {}) => {
-      let { exp, tip, diff, cat } = arr.meta, {rxn, user } = extras;
+      let { exp, tip, diff, cat } = arr.meta, {rxn, user } = extras, color, des;
       if(arr.correctIndex == reactions.findIndex(f => f === rxn.emoji.name)) {
         score++
+        color = "GREEN"
+      }else {
+        color = "RED"
       }
-      console.log(arr.correctIndex)
-      
+      embed.fields[0].value = arr.options.filter((m) => m).map((m, i) => `${(i == arr.correctIndex ? ":white_check_mark: " : ":x:")} ${i+1}. ${m}`).join("\n")
+      ( arr.explanation ? embed.addFields({ name: 'Explanation', value: arr.explanation}) : "" )
+      let cltr = await msg.awaitReactions((r, u) => !u.bot && r.emoji.name === '⏭️' && u.id === message.author.id,  { max: 1 })
       return msg;
     }
   // @ts-ignore
@@ -53,6 +57,7 @@ module.exports = {
           qn++;
           embed.fields.splice(0, embed.fields.length);
           embed
+            .setTitle("💻Programming quiz💻")
             .setFooter(`Question ${qn + 1}/10 • Score: ${score}`)
             .setColor("BLUE")
             .setDescription(`**${arr[qn].question}**`)
