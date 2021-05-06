@@ -11,7 +11,7 @@ module.exports = {
   name: "quiz",
   async execute(client, message, args) {
     let embed = new MessageEmbed()
-      .setTitle("Random programming quiz")
+      .setTitle(":computer:Programming quiz")
       .setColor("BLUE")
       .setDescription(
         `**Are you ready to start the quiz?** React to ✅ to continue`
