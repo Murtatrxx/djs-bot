@@ -5,15 +5,6 @@ const { MessageEmbed, Collection } = require("discord.js");
 
 const reactions = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣"];
 
-const showans = async (msg, arr, extras = {}) => {
-  let { exp, tip, diff, cat } = arr.meta, {rxn, user, score} = extras;
-  if(arr.correctIndex == reactions.findIndex(f => f === rxn.emoji.name)) {
-    score++
-  }
-  console.log(arr.correctIndex)
-
-  return msg;
-}
 
 module.exports = {
   name: "quiz",
@@ -31,6 +22,15 @@ module.exports = {
       .setTimestamp();
     let arr = [];
     let score = 0, qn = 0;
+const showans = async (msg, arr, extras = {}) => {
+  let { exp, tip, diff, cat } = arr.meta, {rxn, user } = extras;
+  if(arr.correctIndex == reactions.findIndex(f => f === rxn.emoji.name)) {
+    score++
+  }
+  console.log(arr.correctIndex)
+
+  return msg;
+}
     // @ts-ignore
     fetch(
       `https://quizapi.io/api/v1/questions?category=code&limit=10&apiKey=${key}`
@@ -106,7 +106,7 @@ module.exports = {
         msg.react('⏭️')
         const collector = msg.createReactionCollector((r, u) => u.id === message.author.id && !u.bot && reactions.includes(r.emoji.name));
 
-        collector.on("collect", (reaction, user) => showans(msg, arr[qn], { rxn: reaction, user, score }).then(m => skip(m, { collector })));
+        collector.on("collect", (reaction, user) => showans(msg, arr[qn], { rxn: reaction, user }).then(m => skip(m, { collector })));
       });
   },
 };
