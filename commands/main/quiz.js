@@ -67,7 +67,7 @@ module.exports = {
           arr[qn].options.filter((m) => m).forEach((m, index) => {
               msg.react(reactions[index]);
             });
-          msg.react('⏭️')
+          msg.react('⏭️').catch(e => msg.react('⏭️').catch(console.error))
         };
 
 
