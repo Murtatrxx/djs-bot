@@ -34,7 +34,7 @@ module.exports = {
 				sts.qn++
         embed.fields.splice(0, embed.fields.length)
         embed
-        .setFooter(`Question ${sts.qn+1}/10`)
+        .setFooter(`Question ${sts.qn+1}/10 ● Score: ${sts.score}`)
         .setColor('BLUE')
         .setDescription(`**${arr[sts.qn].question}**`)
         .addFields({name: 'Options', value: arr[sts.qn].options.filter(m => m).map((m, i) => `${i + 1}. ${m}`).join('\n')})
@@ -57,7 +57,7 @@ module.exports = {
 
 
       embed
-        .setFooter(`Question ${sts.qn+1}/10`)
+        .setFooter(`Question ${sts.qn+1}/10 ● Score: ${sts.score}`)
         .setColor('BLUE')
         .setDescription(`**${arr[0].question}**`)
         .addFields({name: 'Options', value: arr[0].options.filter(m => m).map((m, i) => `${i + 1}. ${m}`).join('\n')})
