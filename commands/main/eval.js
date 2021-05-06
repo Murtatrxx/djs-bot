@@ -18,18 +18,18 @@ const vm = new VM({
 module.exports = {
   name: "eval",
   async execute(client, message, Discord) {
-    let code = message.content.slice(5);
+    let code = message.content.slice(5).trim();
     try {
       vm.run(code);
     } catch (e) {
       logs.push(`\n${e}\n`);
     } finally {
       let em = new MessageEmbed()
-        .setTitle('I\'ve executes your syntax')
+        .setTitle('I\'ve executed your syntax')
         .setColor('GREEN')
         .setTimestamp()
         .setAuthor(message.member.displayName, message.author.displayAvatarURL(), message.author.displayAvatarURL())
-        .addFields({name: 'Source', value: `\`\`\`js\n ${code}\`\`\``}, {name:'Result', value:"```js\nnode "+ process.version +"\n"+ logs.join('\n') + "```"})
+        .addFields({name: 'Source', value: `\`\`\`js\n ${code}\`\`\``}, {name:'Result', value:"```js\nnode"+ process.version.substr(0, 6) +"\n\n"+ logs.join('\n') + "```"})
       message.ireply("", { embed:em });
       logs.splice(0, logs.length);
     }
