@@ -2,7 +2,6 @@
 const fetch = require("node-fetch");
 const key = require("../../config.js").quiz;
 const { MessageEmbed, Collection } = require("discord.js");
-const status = new Collection();
 
 const reactions = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣"];
 
@@ -17,11 +16,11 @@ module.exports = {
       ).addFields({
         name: 'Instructions',
         value: '● Read the questions.\n● There are 2 - 5 options for a question.\n● React to the message according to the Options\n● React with ❌ anytime to quit.\n**Note: If you don\'t react to anything for 5mins the quiz will stop automatically.**'
-      });
+      })
+      .setFooter('You have 60s to react.')
+      .setTimestamp();
     let arr = [];
-    let score = 0,
-      qn = 0;
-    let sts = status.get(message.author.id);
+    let score = 0, qn = 0;
     // @ts-ignore
     fetch(
       `https://quizapi.io/api/v1/questions?category=code&limit=10&apiKey=${key}`
@@ -64,22 +63,19 @@ module.exports = {
             });
         };
 
+
         let msg = await message.channel.send(embed);
         msg.react("✅");
         msg.react("❌");
-        const filter = (r, u) =>
-          u.id === message.author.id &&
-          !u.bot &&
-          ["✅", "❌"].includes(r.emoji.name);
-        let cltr = await msg
-          .awaitReactions(filter, { time: 60000, max: 1, errors: ["time"] })
-          .catch((e) =>{
+
+        const filter = (r, u) => u.id === message.author.id && !u.bot && ["✅", "❌"].includes(r.emoji.name);
+        let cltr = await msg.awaitReactions(filter, { time: 60000, max: 1, errors: ["time"] }).catch((e) =>{
             msg.edit("", {
               embed: embed.setDescription("**Quiz cancelled**").setColor("RED"),
             });
             msg.reactions.removeAll()
-          }
-          );
+          });
+
         if (cltr.first().emoji.name === "❌") {
           msg.reactions.removeAll()
           return msg.edit("", {
