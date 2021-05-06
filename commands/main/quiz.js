@@ -27,11 +27,12 @@ module.exports = {
         msg.reactions.removeAll()
 				if (sts.qn > 9) return;
 				sts.qn++
+        embed.fields.splice(0, embed.fields.length)
         embed
         .setFooter(`Question ${sts.qn+1}/10`)
         .setColor('BLUE')
         .setDescription(`**${arr[sts.qn].question}**`)
-        .addFields({name: 'Options', value: arr[0].options.filter(m => m).map((m, i) => `${i + 1}. ${m}`).join('\n')})
+        .addFields({name: 'Options', value: arr[sts.qn].options.filter(m => m).map((m, i) => `${i + 1}. ${m}`).join('\n')})
         msg.edit("",{ embed: embed})
         arr[sts.qn].options.filter(m => m).forEach((m, index) => {
           msg.react(reactions[index])
