@@ -40,8 +40,8 @@ module.exports = {
       }
 
       let msg = await message.channel.send(embed)
-      msg.react('✅❌')
-      //msg.react('')
+      msg.react('✅')
+      msg.react('❌')
       const filter = (r, u) => u.id === message.author.id && !u.bot && ['✅', '❌'].includes(r.emoji.name)
       let cltr = await msg.awaitReactions(filter, { time: 60000, max: 1, errors: ['time'] }).catch(e => msg.edit("", { embed: embed.setDescription('**Quiz cancelled**').setColor('RED')}))
 			if (cltr.first().emoji.name === '❌') {
