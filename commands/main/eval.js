@@ -22,7 +22,7 @@ module.exports = {
     try {
       vm.run(code);
     } catch (e) {
-      logs.push(`\n${e}\n`);
+      logs.push(`\n${e.stack}\n`);
       mention = true;
     } finally {
       let em = new MessageEmbed()
