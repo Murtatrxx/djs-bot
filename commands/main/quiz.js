@@ -5,17 +5,19 @@ const { MessageEmbed, Collection } = require("discord.js");
 const status = new Collection();
 
 const reactions = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣"];
-const utilrxns = ["💻"];
 
 module.exports = {
   name: "quiz",
   async execute(client, message, args) {
     let embed = new MessageEmbed()
-      .setTitle(":computer:Programming quiz")
+      .setTitle("💻Programming quiz💻")
       .setColor("BLUE")
       .setDescription(
         `**Are you ready to start the quiz?** React to ✅ to continue`
-      );
+      ).addFields({
+        name: 'Instructions',
+        value: '● Read the questions.\n● There are 2 - 5 options for a question.\n● React to the message according to the Options\n● React with ❌ anytime to quit.'
+      });
     let arr = [];
     let score = 0,
       qn = 0;
@@ -37,7 +39,8 @@ module.exports = {
         });
 
         // bool is for checking whether it's done by user or not.
-        const skip = (msg) => {
+        const skip = (msg, bool) => {
+          if (bool) score++
           msg.reactions.removeAll();
           if (qn > 9) return collector.stop();
           qn++;
@@ -45,7 +48,7 @@ module.exports = {
           embed
             .setFooter(`Question ${qn + 1}/10 ● Score: ${score}`)
             .setColor("BLUE")
-            .setDescription(`**${arr[qn].question}**`)
+            .setDescription(`__${arr[qn].question}__`)
             .addFields({
               name: "Options",
               value: arr[qn].options
@@ -78,45 +81,29 @@ module.exports = {
           }
           );
         if (cltr.first().emoji.name === "❌") {
-          msg.reactions.removeAll();
+          msg.reactions.removeAll()
           return msg.edit("", {
             embed: embed.setDescription("**Quiz cancelled**").setColor("RED"),
           });
-        } else msg.reactions.removeAll();
+        } else msg.reactions.removeAll()
 
         embed
           .setFooter(`Question ${qn + 1}/10 ● Score: ${score}`)
           .setColor("BLUE")
-          .setDescription(`**${arr[0].question}**`)
+          .setDescription(`__${arr[0].question}__`)
           .addFields({
             name: "Options",
-            value: arr[0].options
-              .filter((m) => m)
-              .map((m, i) => `${i + 1}. ${m}`)
-              .join("\n"),
-          });
-        arr[qn].options
-          .filter((m) => m)
-          .forEach((m, index) => {
-            msg.react(reactions[index]);
-          });
+            value: arr[0].options.filter((m) => m).map((m, i) => `${i + 1}. ${m}`).join("\n"),
+          }).fields.splice(0, embed.fields.length);
+
+        arr[qn].options.filter((m) => m).forEach((m, index) => msg.react(reactions[index]));
 
         msg.edit("", { embed: embed });
-        const collector = msg.createReactionCollector(
-          (r, u) =>
-            u.id === message.author.id &&
-            !u.bot &&
-            (reactions.includes(r.emoji.name) || u)
-        );
+        const collector = msg.createReactionCollector((r, u) => u.id === message.author.id && !u.bot && (reactions.includes(r.emoji.name) || u));
 
         collector.on("collect", (reaction, user) => {
           console.log(qn, score);
-          if (
-            arr[qn].correctIndex ===
-            reactions.findIndex((q) => q === reaction.emoji.name)
-          )
-            score++;
-          skip(msg);
+          skip(msg, (arr[qn].correctIndex === reactions.findIndex((q) => q === reaction.emoji.name)));
         });
       });
   },
