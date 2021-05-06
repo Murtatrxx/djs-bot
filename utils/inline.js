@@ -2,6 +2,7 @@ const { APIMessage, Structures } = require("discord.js");
 
 class Message extends Structures.get("Message") {
   async ireply(content, options = {}) {
+    let { embed, embeds = [] } = options
     const mentionRepliedUser =
       typeof ((options || content || {}).allowedMentions || {}).repliedUser ===
       "undefined"
@@ -43,6 +44,8 @@ class Message extends Structures.get("Message") {
     }
 
     const { data, files } = await apiMessage.resolveFiles();
+    (embed ? this.embeds.push(embed) : "")
+    data.embeds = embeds
     return this.client.api.channels[this.channel.id].messages
       .post({ data, files })
       .then((d) => this.client.actions.MessageCreate.handle(d).message);
