@@ -1,5 +1,5 @@
 while [ true ]; do
-sleep 10
+sleep 5
 clear
 git fetch --all
 git reset --hard origin/main

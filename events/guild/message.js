@@ -1,5 +1,5 @@
 const prefix = "?";
-const util = require("../../Utils/CMDmismatch");
+const util = require("../../utils/CMDmismatch");
 
 module.exports = (client, message) => {
   if (!message.content.startsWith(prefix) || message.author.bot) return;
