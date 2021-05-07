@@ -68,7 +68,7 @@ module.exports = {
             .setTitle("Programming quiz")
             .setFooter(`Question ${qn + 1}/10 • Score: ${score}`)
             .setColor("BLUE")
-            .setDescription(`**${arr[qn].question}**`)
+            .setDescription(`${arr[qn].question}`)
             .addFields({
               name: "Options",
               value: arr[qn].options
@@ -106,7 +106,7 @@ module.exports = {
         embed
           .setFooter(`Question ${qn + 1}/10 • Score: ${score}`)
           .setColor("BLUE")
-          .setDescription(`**${arr[0].question}**`)
+          .setDescription(`${arr[0].question}`)
           .addFields({
             name: "Options",
             value: arr[0].options.filter((m) => m).map((m, i) => `${i + 1}. ${m}`).join("\n"),
