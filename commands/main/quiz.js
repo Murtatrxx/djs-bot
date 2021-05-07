@@ -83,7 +83,7 @@ module.exports = {
         };
 
 
-        let msg = await message.channel.send(embed);
+        let msg = await message.ireply("", { embed: embed });
         msg.react("✅");
         msg.react("❌");
 
