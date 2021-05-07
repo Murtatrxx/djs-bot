@@ -115,7 +115,6 @@ module.exports = {
         arr[qn].options.filter((m) => m).forEach((m, index) => msg.react(reactions[index]));
 
         msg.edit("", { embed: embed });
-        msg.react('⏭️')
         const collector = msg.createReactionCollector((r, u) => u.id === message.author.id && !u.bot && reactions.includes(r.emoji.name));
 
         collector.on("collect", (reaction, user) => showans(msg, arr[qn], { rxn: reaction, user }).then(m => skip(m, { collector })));
