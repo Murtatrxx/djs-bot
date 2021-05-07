@@ -1,4 +1,4 @@
-const prefix = "$";
+const prefix = "?";
 const util = require("../../Utils/CMDmismatch");
 
 module.exports = (client, message) => {
