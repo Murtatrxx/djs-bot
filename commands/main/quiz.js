@@ -125,7 +125,7 @@ module.exports = {
         const collector = msg.createReactionCollector((r, u) => u.id === message.author.id && !u.bot && (reactions.includes(r.emoji.name) || r.emoji.name === '❌'));
 
         collector.on("collect", (reaction, user) => {
-          if (reaction.emoji.name === '❌') return quit()
+          if (reaction.emoji.name === '❌') return quit(msg, { cltr: collector })
           showans(msg, arr[qn], { rxn: reaction, user }).then(m => skip(m, { collector }))
         });
       });
