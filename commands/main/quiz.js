@@ -3,7 +3,7 @@ const fetch = require("node-fetch");
 const key = require("../../config.js").quiz;
 const { MessageEmbed, Collection } = require("discord.js");
 
-const reactions = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣"];
+const reactions = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣", "🔟"];
 
 
 module.exports = {
@@ -24,13 +24,15 @@ module.exports = {
     let score = 0, qn = 0;
     const showans = async (msg, arr, extras = {}) => {
       let { exp, tip, diff, cat } = arr.meta, {rxn, user } = extras, color, des;
-      if(arr.correctIndex == reactions.findIndex(f => f === rxn.emoji.name)) {
+      msg.reaction.removeAll()
+      msg.react('⏭️').catch(e => msg.react('⏭️').catch(console.error))
+      if(arr.correctIndex.includes(reactions.findIndex(f => f === rxn.emoji.name))) {
         score++
         color = "GREEN"
       }else {
         color = "RED"
       }
-      embed.fields[0].value = arr.options.filter((m) => m).map((m, i) => `${(i == arr.correctIndex ? ":white_check_mark: " : ":x:")} ${i+1}. ${m}`).join("\n");
+      embed.fields[0].value = arr.options.filter((m) => m).map((m, i) => `${( arr.correctIndex.includes(i) ? ":white_check_mark: " : ":x:")} ${i+1}. ${m}`).join("\n");
       if (arr.meta.exp) embed.addFields({ name: 'Explanation', value: arr.meta.exp})
       embed.setFooter(`Question ${qn + 1}/10 • Score: ${score}`)
       msg.edit("", { embed: embed})
@@ -44,10 +46,14 @@ module.exports = {
       .then((res) => res.json())
       .then(async (result) => {
         result.forEach((m) => {
+          let mmm = []
+          Object.values(m.correct_answers).forEach((mm, ii) => {
+            if ( mm === 'true' ) mmm.push(ii)
+          })
           arr.push({
             question: m.question,
             options: Object.values(m.answers),
-            correctIndex: Object.values(m.correct_answers).findIndex((e) => e === "true"),
+            correctIndex: mmm,
             meta: { exp: m.explanation, tip: m.tip, diff: m.difficulty, cat: m.category }
           });
         });
@@ -74,7 +80,6 @@ module.exports = {
           arr[qn].options.filter((m) => m).forEach((m, index) => {
               msg.react(reactions[index]);
             });
-          msg.react('⏭️').catch(e => msg.react('⏭️').catch(console.error))
         };
 
 
