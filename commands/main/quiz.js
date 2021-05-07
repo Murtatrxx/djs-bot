@@ -122,7 +122,7 @@ module.exports = {
         embed.fields.splice(0, embed.fields.length)
         skip(msg)
 
-        // msg.edit("", { embed: embed });
+        msg.edit("", { embed: embed });
         const collector = msg.createReactionCollector((r, u) => u.id === message.author.id && !u.bot && (reactions.includes(r.emoji.name) || r.emoji.name === '❌'));
 
         collector.on("collect", (reaction, user) => showans(msg, arr[qn], { rxn: reaction, user }).then(m => skip(m, { collector })));
