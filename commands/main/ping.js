@@ -1,4 +1,5 @@
 const { MessageEmbed } = require("discord.js");
+const error = require('../../utils/error')
 
 module.exports = {
   name: "ping",
@@ -12,9 +13,8 @@ module.exports = {
         name: `**:hourglass: | Ping: ${ping}ms **`,
         value: `**:heartbeat: | API: ${client.ws.ping}ms **`,
       });
-      m.delete();
-      if (ping >= 1000) return message.channel.send(errembed);
-      message.channel.send(ememem);
-    });
+      if (ping >= 1000) return m.edit("", {embed: errembed});
+      m.edit("", {embed: ememem}).catch(e => error.send("Error:"+e.stack));
+    }).catch(e => error.send("Error:"+e.stack));
   },
 };

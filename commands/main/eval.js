@@ -1,6 +1,7 @@
 // @ts-check
 const { MessageEmbed } = require('discord.js')
 const { VM } = require("vm2");
+const error = require("../../utils/error")
 require("../../utils/inline");
 let logs = [];
 const logger = {
@@ -31,7 +32,7 @@ module.exports = {
         .setTimestamp()
         .setAuthor(message.member.displayName, message.author.displayAvatarURL(), message.author.displayAvatarURL())
         .addFields({name: 'Source', value: `\`\`\`js\n ${code}\`\`\``}, {name:'Result', value:"```js\n"+ process.version.substr(0, 5) +"\n"+ logs.join('\n') + "```"})
-      message.ireply("", { embed:em, mention: mention });
+      message.ireply("", { embed:em, mention: mention }).catch(e => error.send("Error:"+e.stack));
       logs.splice(0, logs.length);
     }
   },

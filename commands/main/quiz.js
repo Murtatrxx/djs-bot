@@ -3,6 +3,7 @@ const fetch = require("node-fetch");
 const key = require("../../config.js").quiz;
 const { MessageEmbed } = require("discord.js");
 const qoute = require("../../utils/quotes.json");
+const error = require("../../utils/error.js")
 
 const reactions = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣", "🔟"];
 
@@ -28,9 +29,9 @@ module.exports = {
     // For showing the answer
     const showans = async (msg, arr, extras = {}) => {
       let { exp, tip, diff, cat } = arr.meta, {rxn, user } = extras, color, des;
-      msg.reactions.removeAll()
-      msg.react('⏭️').catch(e => msg.react('⏭️').catch(console.error))
-      msg.react('❌')
+      msg.reactions.removeAll().catch(e => error.send("Error:"+e.stack))
+      msg.react('⏭️').catch(e => msg.react('⏭️').catch(e => error.send("Error:"+e.stack)))
+      msg.react('❌').catch(e => error.send("Error:"+e.stack))
       if(arr.correctIndex.includes(reactions.findIndex(f => f === rxn.emoji.name))) {
         score++
         color = "GREEN"
@@ -40,7 +41,7 @@ module.exports = {
       embed.fields[0].value = arr.options.filter((m) => m).map((m, i) => `${( arr.correctIndex.includes(i) ? ":white_check_mark: " : ":x:")} ${i+1}. ${m}`).join("\n");
       if (arr.meta.exp) embed.addFields({ name: 'Explanation', value: arr.meta.exp})
       embed.setFooter(`Question ${qn + 1}/10 • Score: ${score}`).setColor(color)
-      msg.edit("", { embed: embed})
+      msg.edit("", { embed: embed}).catch(e => error.send("Error:"+e.stack))
       let cltr = await msg.awaitReactions((r, u) => !u.bot && r.emoji.name === '⏭️' && u.id === message.author.id,  { max: 1 })
       return msg;
     };
@@ -64,8 +65,8 @@ module.exports = {
 
         //Quit function 
         const quit = (msg, { cltr }) => {
-          cltr.stop()
-          msg.reactions.removeAll()
+          cltr.stop().catch(e => error.send("Error:"+e.stack))
+          msg.reactions.removeAll().catch(e => error.send("Error:"+e.stack))
           embed.fields.splice(0, embed.fields.length)
           embed.setColor("GREEN")
             .setAuthor(message.member.displayName, message.author.displayAvatarURL())
@@ -73,12 +74,12 @@ module.exports = {
             .setTimestamp()
             .setTitle("Great attempt")
             .setDescription()
-          msg.edit("", { embed: embed })
+          msg.edit("", { embed: embed }).catch(e => error.send("Error:"+e.stack))
         };
 
         //For skiping the question
         const skip = (msg, extra = {}) => {
-          msg.reactions.removeAll();
+          msg.reactions.removeAll().catch(e => error.send("Error:"+e.stack));
           if (qn > 9) return quit(msg, { cltr: extra.collector });
           qn++;
           embed.fields.splice(0, embed.fields.length);
@@ -91,31 +92,31 @@ module.exports = {
               name: "Options",
               value: arr[qn].options.filter((m) => m).map((m, i) => `${i + 1}. ${m}`).join("\n"),
             });
-          msg.edit("", { embed: embed });
+          msg.edit("", { embed: embed }).catch(e => error.send("Error:"+e.stack));
           arr[qn].options.filter((m) => m).forEach((m, index) => {
-            msg.react(reactions[index]);
+            msg.react(reactions[index]).catch(e => error.send("Error:"+e.stack));
           });
-          msg.react('❌')
+          msg.react('❌').catch(e => error.send("Error:"+e.stack))
         };
 
         // First message
-        let msg = await message.ireply("", { embed: embed });
-        msg.react("✅");
-        msg.react("❌");
+        let msg = await message.ireply("", { embed: embed }).catch(e => error.send("Error:"+e.stack));
+        msg.react("✅").catch(e => error.send("Error:"+e.stack));
+        msg.react("❌").catch(e => error.send("Error:"+e.stack));
 
         const filter = (r, u) => u.id === message.author.id && !u.bot && ["✅", "❌"].includes(r.emoji.name);
         let cltr = await msg.awaitReactions(filter, { time: 60000, max: 1, errors: ["time"] }).catch((e) =>{
-          msg.reactions.removeAll()
+          msg.reactions.removeAll().catch(e => error.send("Error:"+e.stack))
           msg.edit("", {
             embed: embed.setDescription("**Quiz cancelled**").setColor("RED"),
-          });
+          }).catch(e => error.send("Error:"+e.stack));
         });
 
         if (cltr.first().emoji.name === "❌") {
           msg.reactions.removeAll()
           return msg.edit("", {
             embed: embed.setDescription("**Quiz cancelled**").setColor("RED"),
-          });
+          }).catch(e => error.send("Error:"+e.stack));
         } else msg.reactions.removeAll()
 
         // For removing the instructions field
@@ -128,6 +129,6 @@ module.exports = {
           if (reaction.emoji.name === '❌') return quit(msg, { cltr: collector })
           showans(msg, arr[qn], { rxn: reaction, user }).then(m => skip(m, { collector }))
         });
-      });
+      }).catch(e => error.send("Error:"+e.stack))
   },
 };
