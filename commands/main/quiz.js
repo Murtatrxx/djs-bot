@@ -77,9 +77,9 @@ module.exports = {
         };
 
         //For skiping the question
-        const skip = (msg, { collector }) => {
+        const skip = (msg, extra = {}) => {
           msg.reactions.removeAll();
-          if (qn > 9) return quit(msg, { cltr: collector });
+          if (qn > 9) return quit(msg, { cltr: extra.collector });
           qn++;
           embed.fields.splice(0, embed.fields.length);
           embed
