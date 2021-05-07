@@ -92,10 +92,10 @@ module.exports = {
               value: arr[qn].options.filter((m) => m).map((m, i) => `${i + 1}. ${m}`).join("\n"),
             });
           msg.edit("", { embed: embed });
-          msg.react('❌')
           arr[qn].options.filter((m) => m).forEach((m, index) => {
-              msg.react(reactions[index]);
-            });
+            msg.react(reactions[index]);
+          });
+          msg.react('❌')
         };
 
         // First message
