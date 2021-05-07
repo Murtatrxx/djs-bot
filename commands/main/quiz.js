@@ -2,7 +2,7 @@
 const fetch = require("node-fetch");
 const key = require("../../config.js").quiz;
 const { MessageEmbed } = require("discord.js");
-const qoute = require("../../utils/quotes.json");
+const quote = require("../../utils/quotes.json");
 const error = require("../../utils/error.js")
 
 const reactions = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣", "🔟"];
@@ -70,10 +70,11 @@ module.exports = {
           embed.fields.splice(0, embed.fields.length)
           embed.setColor("GREEN")
             .setAuthor(message.member.displayName, message.author.displayAvatarURL())
-            .setFooter()
+            .setFooter("")
             .setTimestamp()
-            .setTitle("Great attempt")
-            .setDescription()
+            .setTitle("🎉🎉Great attempt "+message.member.displayName+"🎉🎉")
+            .setDescription(``)
+            .addFields({name: 'Quote', value: quote[Math.floor(Math.random() * quote.length)] })
           msg.edit("", { embed: embed }).catch(e => error.send("Error:"+e.stack))
         };
 
