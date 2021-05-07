@@ -24,7 +24,7 @@ module.exports = {
     let score = 0, qn = 0;
     const showans = async (msg, arr, extras = {}) => {
       let { exp, tip, diff, cat } = arr.meta, {rxn, user } = extras, color, des;
-      msg.reaction.removeAll()
+      msg.reactions.removeAll()
       msg.react('⏭️').catch(e => msg.react('⏭️').catch(console.error))
       if(arr.correctIndex.includes(reactions.findIndex(f => f === rxn.emoji.name))) {
         score++
