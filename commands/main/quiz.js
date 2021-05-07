@@ -67,6 +67,7 @@ module.exports = {
         const quit = (msg, { cltr }) => {
           cltr.stop()
           msg.reactions.removeAll().catch(e => error.send("Error:"+e.stack))
+          let qte = quote[Math.floor(Math.random() * quote.length)]
           embed.fields.splice(0, embed.fields.length)
           embed.setColor("GREEN")
             .setAuthor(message.member.displayName, message.author.displayAvatarURL())
@@ -74,7 +75,7 @@ module.exports = {
             .setTimestamp()
             .setTitle("🎉🎉Great attempt "+message.member.displayName+"🎉🎉")
             .setDescription(``)
-            .addFields({name: 'Quote', value: quote[Math.floor(Math.random() * quote.length)] })
+            .addFields({name: 'Quote', value: qte.en + "  -  "+ qte.author})
           msg.edit("", { embed: embed }).catch(e => error.send("Error:"+e.stack))
         };
 
