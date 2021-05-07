@@ -1,3 +1,3 @@
 module.exports = (client, Discord) => {
-  console.log("✅ | Bot is Running");
+  console.log(client.user.tag+" is ready");
 };
