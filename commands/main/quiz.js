@@ -103,16 +103,17 @@ module.exports = {
         } else msg.reactions.removeAll()
 
         embed.fields.splice(0, embed.fields.length)
-        embed
-          .setFooter(`Question ${qn + 1}/10 • Score: ${score}`)
-          .setColor("BLUE")
-          .setDescription(`${arr[0].question}`)
-          .addFields({
-            name: "Options",
-            value: arr[0].options.filter((m) => m).map((m, i) => `${i + 1}. ${m}`).join("\n"),
-          });
+        // embed
+        //   .setFooter(`Question ${qn + 1}/10 • Score: ${score}`)
+        //   .setColor("BLUE")
+        //   .setDescription(`${arr[0].question}`)
+        //   .addFields({
+        //     name: "Options",
+        //     value: arr[0].options.filter((m) => m).map((m, i) => `${i + 1}. ${m}`).join("\n"),
+        //   });
 
-        arr[qn].options.filter((m) => m).forEach((m, index) => msg.react(reactions[index]));
+        // arr[qn].options.filter((m) => m).forEach((m, index) => msg.react(reactions[index]));
+        skip(msg)
 
         msg.edit("", { embed: embed });
         const collector = msg.createReactionCollector((r, u) => u.id === message.author.id && !u.bot && reactions.includes(r.emoji.name));
