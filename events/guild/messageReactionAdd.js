@@ -8,6 +8,6 @@ module.exports = async (client, reaction, user) => {
   if (!reaction.message.guild) return;
 
   if (reaction.emoji.name === example) {
-    console.log(`${user.username} reacted with ${example}`);
+    //console.log(`${user.username} reacted with ${example}`);
   }
 };
