@@ -1,5 +1,5 @@
 const error = require("../../utils/error.js");
-const { MessageEmbed } = require('discor.js');
+const { MessageEmbed } = require('discord.js');
 
 module.exports = {
   name: "codehelp",
