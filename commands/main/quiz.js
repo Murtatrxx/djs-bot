@@ -65,7 +65,7 @@ module.exports = {
 
         //Quit function 
         const quit = (msg, { cltr }) => {
-          cltr.stop().catch(e => error.send("Error:"+e.stack))
+          cltr.stop()
           msg.reactions.removeAll().catch(e => error.send("Error:"+e.stack))
           embed.fields.splice(0, embed.fields.length)
           embed.setColor("GREEN")
