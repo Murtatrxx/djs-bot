@@ -39,7 +39,10 @@ module.exports = {
         color = "RED"
       }
       embed.fields[0].value = arr.options.filter((m) => m).map((m, i) => `${( arr.correctIndex.includes(i) ? ":white_check_mark: " : ":x:")} ${i+1}. ${m}`).join("\n");
-      if (arr.meta.exp) embed.addFields({ name: 'Explanation', value: arr.meta.exp})
+      if (arr.meta.exp) embed.addFields({
+        name: 'Info',
+        value: `**Explanation:** ${arr.meta.exp}\n**Difficulty:** ${arr.meta.diff}\n**Tags:** ${arr.meta.tags.slice(0, 5).join(',')}`
+      })
       console.log(arr.meta)
       embed.setFooter(`Question ${qn + 1}/10 • Score: ${score}`).setColor(color)
       msg.edit("", { embed: embed}).catch(e => error.send("Error:"+e.stack))
@@ -60,7 +63,7 @@ module.exports = {
             question: m.question,
             options: Object.values(m.answers),
             correctIndex: mmm,
-            meta: { exp: m.explanation, tip: m.tip, diff: m.difficulty, cat: m.category }
+            meta: { exp: m.explanation, tip: m.tip, diff: m.difficulty, cat: m.category, tags: [...m.tags] }
           });
         });
 
