@@ -41,7 +41,7 @@ module.exports = {
       embed.fields[0].value = arr.options.filter((m) => m).map((m, i) => `${( arr.correctIndex.includes(i) ? ":white_check_mark: " : ":x:")} ${i+1}. ${m}`).join("\n");
       embed.addFields({
         name: 'Info',
-        value: `${(arr.meta.exp ? "**Explanation:** " + arr.meta.exp + "\n" : "")}${arr.meta.diff ? "**Difficulty:** " + arr.meta.diff + "\n" : ""}${arr.meta.tags.length ? "**Tags:** " + arr.meta.tags.slice(0, 5).join(',') : ""}`
+        value: `${(arr.meta.exp ? "**Explanation:** " + arr.meta.exp + "\n" : "")}${arr.meta.diff ? "**Difficulty:** " + arr.meta.diff + "\n" : ""}${arr.meta.tags.length ? "**Tags:** " + arr.meta.tags.slice(0, 5).join(',') : ""}` ?? "N/A"
       })
       .setFooter(`Question ${qn + 1}/10 • Score: ${score}`).setColor(color)
       msg.edit("", { embed: embed}).catch(e => error.send("Error:"+e.stack))
