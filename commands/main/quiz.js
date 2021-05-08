@@ -44,6 +44,7 @@ module.exports = {
         value: (`${(arr.meta.exp ? "**Explanation:** " + arr.meta.exp + "\n" : "")}${arr.meta.diff ? "**Difficulty:** " + arr.meta.diff + "\n" : ""}${arr.meta.tags.length ? "**Tags:** " + arr.meta.tags.slice(0, 5).join(',') : ""}` ?? "N/A").substr(0, 1024)
       })
       .setFooter(`Question ${qn + 1}/10 • Score: ${score}`).setColor(color)
+      console.log(arr.meta.tags)
       msg.edit("", { embed: embed}).catch(e => error.send("Error:"+e.stack))
       await msg.awaitReactions((r, u) => !u.bot && r.emoji.name === '⏭️' && u.id === message.author.id,  { max: 1 })
       return msg;
