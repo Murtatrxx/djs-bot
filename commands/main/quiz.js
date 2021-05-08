@@ -42,7 +42,7 @@ module.exports = {
       if (arr.meta.exp) embed.addFields({ name: 'Explanation', value: arr.meta.exp})
       embed.setFooter(`Question ${qn + 1}/10 • Score: ${score}`).setColor(color)
       msg.edit("", { embed: embed}).catch(e => error.send("Error:"+e.stack))
-      let cltr = await msg.awaitReactions((r, u) => !u.bot && r.emoji.name === '⏭️' && u.id === message.author.id,  { max: 1 })
+      await msg.awaitReactions((r, u) => !u.bot && r.emoji.name === '⏭️' && u.id === message.author.id,  { max: 1 })
       return msg;
     };
 
