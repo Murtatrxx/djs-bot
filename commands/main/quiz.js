@@ -51,9 +51,10 @@ module.exports = {
     };
 
   // @ts-ignore
-    fetch(`https://quizapi.io/api/v1/questions?category=code&limit=10&apiKey=${key}&tags=JavaScript`)
+    fetch(`https://quizapi.io/api/v1/questions?category=code&limit=10&apiKey=${key}`)
       .then((res) => res.json())
       .then(async (result) => {
+
         result.forEach((m) => {
           let mmm = []
           Object.values(m.correct_answers).forEach((mm, ii) => {
