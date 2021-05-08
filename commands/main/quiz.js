@@ -82,8 +82,8 @@ module.exports = {
         //For skiping the question
         const skip = (msg, extra = {}) => {
           msg.reactions.removeAll().catch(e => error.send("Error:"+e.stack));
-          if (qn > 9) return quit(msg, { cltr: extra.collector });
           qn++;
+          if (qn > 9) return quit(msg, { cltr: extra.collector });
           embed.fields.splice(0, embed.fields.length);
           embed
             .setTitle("Programming quiz")
