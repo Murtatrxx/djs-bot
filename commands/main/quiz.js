@@ -40,6 +40,7 @@ module.exports = {
       }
       embed.fields[0].value = arr.options.filter((m) => m).map((m, i) => `${( arr.correctIndex.includes(i) ? ":white_check_mark: " : ":x:")} ${i+1}. ${m}`).join("\n");
       if (arr.meta.exp) embed.addFields({ name: 'Explanation', value: arr.meta.exp})
+      console.log(arr.meta)
       embed.setFooter(`Question ${qn + 1}/10 • Score: ${score}`).setColor(color)
       msg.edit("", { embed: embed}).catch(e => error.send("Error:"+e.stack))
       await msg.awaitReactions((r, u) => !u.bot && r.emoji.name === '⏭️' && u.id === message.author.id,  { max: 1 })
