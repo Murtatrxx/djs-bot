@@ -51,7 +51,7 @@ module.exports = {
     };
 
   // @ts-ignore
-    fetch(`https://quizapi.io/api/v1/questions?category=code&limit=10&apiKey=${key}`)
+    fetch(`https://quizapi.io/api/v1/questions?category=code&limit=10&apiKey=${key}&tags=JavaScript`)
       .then((res) => res.json())
       .then(async (result) => {
         result.forEach((m) => {
@@ -63,7 +63,7 @@ module.exports = {
             question: m.question,
             options: Object.values(m.answers),
             correctIndex: mmm,
-            meta: { exp: m.explanation, tip: m.tip, diff: m.difficulty, cat: m.category, tags: [...m.tags] }
+            meta: { exp: m.explanation, tip: m.tip, diff: m.difficulty, cat: m.category, tags: m.tags.map(t => t.name) }
           });
         });
 
