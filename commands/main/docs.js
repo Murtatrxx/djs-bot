@@ -13,7 +13,7 @@ module.exports = {
         fetch(`https://djsdocs.sorta.moe/v2/embed?src=${source}&q=${args[0]}`)
             .then(res => res.json()).catch(e => e.send("Errors: "+e))
             .then(m => {
-
+                message.ireply("", { embed: m })
             }).catch(e => e.send("Errors: "+e))
     }catch (e) {
       error.send("Errors:"+e.stack)
