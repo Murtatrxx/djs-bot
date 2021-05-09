@@ -22,8 +22,7 @@ module.exports = {
             let data = cache.get(uri)
             if (!data) {
                 // @ts-ignore
-                let res = await fetch(uri).then(res => res.json())
-                error.send(uri)
+                let res = await fetch(uri).then(res => res.json()).catch(e => error.send("Error: "+e.stack))
                 data = res.documents?.[0];
                 cache.set(uri, data)
             }
@@ -39,7 +38,7 @@ module.exports = {
                 .setURL(base+data.mdn_url)
                 .setDescription(pre.substr(0, 2000))
 
-            message.ireply("", { embed: em })
+            message.ireply("", { embed: em }).catch(e => error.send("Error: "+e.stack))
         }
         findDoc(args.join(" ").trim(), message)
     } catch (e) {
