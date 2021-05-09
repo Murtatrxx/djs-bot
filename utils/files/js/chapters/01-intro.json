@@ -1,0 +1,18 @@
+[
+    {
+        "name": "Enter the wild and wondrous land of javascripting",
+        "description": "To control a computer with code can feel like wielding a weird and mighty magic. It can seem intangible and unfamiliar, but it’s important to know that code is real and learnable."
+    },
+    {
+        "name": "Keep coding",
+        "description": "You're at a computer and your hands are sweaty.\nYou have a text editor open and you're reading dense, arcane instructions.\nYou're about to write javascript for the first time.\nIt’s difficult, and it doesn’t make sense at first. This is normal.\nYou will forget commas, or type semi-colons instead of colons, or type something with a capital letter that’s supposed to be all lowercase.\nYou will run a program and spend agonizing minutes wondering why it spits errors, then realize you haven’t downloaded the needed dependencies.\n**You’re going to fuck up.**\nBut that’s OK, because you’re OK with fucking up.\nThis course is meant to help guide you past common fuck-ups, but it won’t solve all your problems for you.\nYour mastery of programming relies on how motivated you are to learn, and how diligent you are in solving frustrating errors.Keep coding."
+    },
+    {
+        "name": "Setting up a development environment",
+        "description": "There’s a lot of wind-up to getting started with programming. You should understand things like git, github, the terminal, and more.\nUsing our bot's `eval` command you can run javascript even from here."
+    },
+    {
+        "name": "Node style",
+        "description": "We will write in the style of node.js.\n"
+    }
+]
