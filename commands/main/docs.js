@@ -10,10 +10,10 @@ module.exports = {
     try {
       if (!args[0]){
         message.ireply("Send something to search, type `cancel` to cancel. You have 60s.")
-        message.channel.awaitMessages((msg) => msg.author.id === message.author.id, { max: 1, time: 60000 }).then(m => {
+        let m = await message.channel.awaitMessages((msg) => msg.author.id === message.author.id, { max: 1, time: 60000 })
           if (!m || m.first().content.toLowerCase() === "cancel") return;
           args = m.first().content.toLowerCase().split(/\s+/)
-        })
+        
       }
       let source = args.find(m => /^(--src|-s)\w*$/ig.test(m.trim().toLowerCase()))?.replace(/^(--src|-s)=(\w*)$/, "$2") ?? "stable";
       let poss = ["master", "stable", "collection", "commando", "rpc", "akairo", "akairo-master"]
