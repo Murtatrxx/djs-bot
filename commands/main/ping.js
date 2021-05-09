@@ -14,11 +14,11 @@ module.exports = {
           name: `**:hourglass: | Ping: ${ping}ms **`,
           value: `**:heartbeat: | API: ${client.ws.ping}ms **`,
         });
-        if (ping >= 1000) return m.edit("", {embed: errembed});
-        m.edit("", {embed: ememem}).catch(e => error.send("Error:"+e.stack));
-      }).catch(e => error.send("Error:"+e.stack));
-    }catch (e) {
-      error.send("Errors:"+e.stack)
+        if (ping >= 1000) return m.edit("", { embed: errembed });
+        m.edit("", { embed: ememem }).catch(e => error.send("Error:" + e.stack));
+      }).catch(e => error.send("Error:" + e.stack));
+    } catch (e) {
+      error.send("Errors:" + e.stack)
     }
   },
 };
