@@ -17,6 +17,12 @@ module.exports = {
   perms: [""],
   async execute(client, message, args) {
     try {
+        if (!args[0]) {
+            message.ireply("Send something to search, type `cancel` to cancel. You have 60s.")
+            let m = await message.channel.awaitMessages((msg) => msg.author.id === message.author.id, { max: 1, time: 60000 })
+            if (!m || m.first().content.toLowerCase() === "cancel") return;
+            args = m.first().content.toLowerCase().split(/\s+/)
+        }
         const findDoc = async (query, message) => {
             let uri = base +"api/v1/search?"+ encode({ q: query })
             let data = cache.get(uri)
