@@ -1,3 +1,3 @@
 module.exports = (client, Discord) => {
-  console.log(client.user.tag+" is ready");
+  console.log(`${client.user.tag} is ready`);
 };
