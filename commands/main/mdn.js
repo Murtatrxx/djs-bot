@@ -39,7 +39,7 @@ module.exports = {
 
             message.ireply("", { embed: em })
         }
-        findDoc(args.join(" "), message)
+        findDoc(args.join(" ").trim(), message)
     } catch (e) {
         error.send("Errors:" + e.stack)
     }
