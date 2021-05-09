@@ -20,7 +20,7 @@ module.exports = {
         .setDescription(`**Are you ready to start the quiz?** React to ✅ to continue`)
         .addFields({
           name: 'Instructions',
-          value: '● Read the questions.\n● There are 2 - 5 options for a question.\n● React to the message according to the Options\n● React with ❌ anytime to quit.'
+          value: '● Read the questions.\n● There are 2 - 6 options for a question.\n● React to the message according to the Options\n● React with ❌ anytime to quit.'
         })
         .setFooter('You have 60s to react.')
         .setTimestamp();
@@ -79,7 +79,7 @@ module.exports = {
               .setAuthor(message.member.displayName, message.author.displayAvatarURL())
               .setFooter("")
               .setTimestamp()
-              .setTitle("🎉🎉Great attempt " + message.member.displayName + "🎉🎉")
+              .setTitle("🎉🎉 Great attempt " + message.member.displayName + " 🎉🎉")
               .setDescription(``)
               .addFields({ name: 'Quote', value: qte.en + "  -  " + qte.author })
             msg.edit("", { embed: embed }).catch(e => error.send("Error:" + e.stack))
