@@ -118,7 +118,7 @@ module.exports = {
           }).catch(e => error.send("Error:"+e.stack));
         });
 
-        if (cltr.first()?.emoji.name === "❌") {
+        if (cltr?.first().emoji.name === "❌") {
           msg.reactions.removeAll()
           return msg.edit("", {
             embed: embed.setDescription("**Quiz cancelled**").setColor("RED"),
