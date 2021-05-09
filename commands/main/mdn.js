@@ -17,7 +17,7 @@ module.exports = {
   async execute(client, message, args) {
     try {
         const findDoc = async (query, message) => {
-            let uri = base +"api/v1/search?q="+ encode(query)
+            let uri = base +"api/v1/search?"+ encode({ q: query })
             let data = cache.get(uri)
             if (!data) {
                 // @ts-ignore
