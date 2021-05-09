@@ -35,7 +35,7 @@ module.exports = {
                 .replace(/`\*\*(.*)\*\*`/g, "**`$!`**")
             
             em.setTitle(data.title)
-                .setURL(data.mdn_url)
+                .setURL(base+data.mdn_url)
                 .setDescription(pre.substr(0, 2000))
 
             message.ireply("", { embed: em })
