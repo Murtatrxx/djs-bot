@@ -1,5 +1,5 @@
 //----------[PACKAGES]----------\\
-
+const error = require("./utils/error")
 const express = require("express");
 const Discord = require("discord.js");
 const client = new Discord.Client({
@@ -26,6 +26,10 @@ app.post("/restart/" + process.env.RESTART, (req, res) => {
 app.listen(4000, () => {
   console.log("Server has Started");
 });
+
+//errors
+process.on("unhandledRejection", (e) => error.send("UnhandledRejection: "+e.stack ?? e))
+process.on("uncaughtException", (e, o) => error.send("UnhandledRejection: "+(e.stack ?? e )+"\n"+o))
 
 //----------[HANDLERS]----------\\
 
