@@ -22,6 +22,7 @@ module.exports = {
             if (!data) {
                 // @ts-ignore
                 let res = await fetch(uri).then(res => res.json())
+                error.send(JSON.stringify(res))
                 data = res.documents?.[0];
                 cache.set(uri, data)
             }
