@@ -2,7 +2,7 @@ const error = require('../../utils/error')
 const fetch = require('node-fetch')
 
 module.exports = {
-  name: "ping",
+  name: "docs",
   minArgs: 1,
   maxArgs: 2,
   perms: [""],
