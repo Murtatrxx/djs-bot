@@ -9,6 +9,7 @@ const base = "https://developer.mozilla.org/"
 const em = new MessageEmbed()
     .setColor("GREEN")
     .setTimestamp()
+    .setAuthor("mdn docs", "https://developer.mozilla.org/favicon-48x48.97046865.png", "https://developer.mozilla.org/")
 module.exports = {
   name: "mdn",
   minArgs: 1,
