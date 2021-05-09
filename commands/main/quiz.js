@@ -11,8 +11,10 @@ const reactions = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️�
 module.exports = {
   name: "quiz",
   async execute(client, message, args) {
-    //embed
-    let embed = new MessageEmbed()
+    try {
+
+      //embed
+      let embed = new MessageEmbed()
       .setTitle("Programming quiz")
       .setColor("BLUE")
       .setDescription(`**Are you ready to start the quiz?** React to ✅ to continue`)
@@ -25,7 +27,7 @@ module.exports = {
 
     //Meta
     let arr = [], score = 0, qn = 0;
-
+    
     // For showing the answer
     const showans = async (msg, arr, extras = {}) => {
       let { exp, tip, diff, cat } = arr.meta, {rxn, user } = extras, color, des;
@@ -51,9 +53,9 @@ module.exports = {
 
   // @ts-ignore
     fetch(`https://quizapi.io/api/v1/questions?category=code&limit=10&apiKey=${key}`)
-      .then((res) => res.json())
+    .then((res) => res.json())
       .then(async (result) => {
-
+        
         result.forEach((m) => {
           let mmm = []
           Object.values(m.correct_answers).forEach((mm, ii) => {
@@ -80,18 +82,18 @@ module.exports = {
             .setTitle("🎉🎉Great attempt "+message.member.displayName+"🎉🎉")
             .setDescription(``)
             .addFields({name: 'Quote', value: qte.en + "  -  "+ qte.author})
-          msg.edit("", { embed: embed }).catch(e => error.send("Error:"+e.stack))
-        };
-
-        //For skiping the question
-        const skip = (msg, extra = {}) => {
+            msg.edit("", { embed: embed }).catch(e => error.send("Error:"+e.stack))
+          };
+          
+          //For skiping the question
+          const skip = (msg, extra = {}) => {
           msg.reactions.removeAll().catch(e => error.send("Error:"+e.stack));
           qn++;
           if (qn > 9) return quit(msg, { cltr: extra.collector });
           embed.fields.splice(0, embed.fields.length);
           embed
-            .setTitle("Programming quiz")
-            .setFooter(`Question ${qn + 1}/10 • Score: ${score}`)
+          .setTitle("Programming quiz")
+          .setFooter(`Question ${qn + 1}/10 • Score: ${score}`)
             .setColor("BLUE")
             .setDescription(`${arr[qn].question}`)
             .addFields({
@@ -109,7 +111,7 @@ module.exports = {
         let msg = await message.ireply("", { embed: embed }).catch(e => error.send("Error:"+e.stack));
         msg.react("✅").catch(e => error.send("Error:"+e.stack));
         msg.react("❌").catch(e => error.send("Error:"+e.stack));
-
+        
         const filter = (r, u) => u.id === message.author.id && !u.bot && ["✅", "❌"].includes(r.emoji.name);
         let cltr = await msg.awaitReactions(filter, { time: 60000, max: 1, errors: ["time"] }).catch((e) =>{
           msg.reactions.removeAll().catch(e => error.send("Error:"+e.stack))
@@ -128,13 +130,16 @@ module.exports = {
         // For removing the instructions field
         embed.fields.splice(0, embed.fields.length)
         skip(msg)
-
+        
         const collector = msg.createReactionCollector((r, u) => u.id === message.author.id && !u.bot && (reactions.includes(r.emoji.name) || r.emoji.name === '❌'));
-
+        
         collector.on("collect", (reaction, user) => {
           if (reaction.emoji.name === '❌') return quit(msg, { cltr: collector })
           showans(msg, arr[qn], { rxn: reaction, user }).then(m => skip(m, { collector }))
         });
       }).catch(e => error.send("Error:"+e.stack))
+    }catch (e) {
+      error.send("Errors:"+e.stack)
+    }
   },
 };
