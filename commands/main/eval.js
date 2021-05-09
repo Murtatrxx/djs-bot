@@ -18,22 +18,26 @@ const vm = new VM({
 module.exports = {
   name: "eval",
   async execute(client, message, Discord) {
-    let mention = false;
-    let code = message.content.slice(5).trim();
-    try {
-      vm.run(code);
-    } catch (e) {
-      logs.push(`\n${e + "\n at vm.js:" + (e.lineNumber ?? '1')+":"+ (e.columnNumber ?? '1')}\n`);
-      mention = true;
-    } finally {
-      let em = new MessageEmbed()
+    try{
+      let mention = false;
+      let code = message.content.slice(5).trim();
+      try {
+        vm.run(code);
+      } catch (e) {
+        logs.push(`\n${e + "\n at vm.js:" + (e.lineNumber ?? '1')+":"+ (e.columnNumber ?? '1')}\n`);
+        mention = true;
+      } finally {
+        let em = new MessageEmbed()
         .setTitle('I\'ve executed your syntax')
         .setColor(( mention ? "RED" : 'GREEN'))
         .setTimestamp()
         .setAuthor(message.member.displayName, message.author.displayAvatarURL(), message.author.displayAvatarURL())
         .addFields({name: 'Source', value: `\`\`\`js\n ${code}\`\`\``}, {name:'Result', value:"```js\n"+ process.version.substr(0, 5) +"\n"+ logs.join('\n') + "```"})
-      message.ireply("", { embed:em, mention: mention }).catch(e => error.send("Error:"+e.stack));
-      logs.splice(0, logs.length);
+        message.ireply("", { embed:em, mention: mention }).catch(e => error.send("Error:"+e.stack));
+        logs.splice(0, logs.length);
+      }
+    }catch (e) {
+      error.send("Errors:"+e.stack)
     }
   },
 };
