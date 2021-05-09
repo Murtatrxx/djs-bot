@@ -12,6 +12,7 @@
     "discord.js": "^12.5.2",
     "express": "^4.17.1",
     "markdown-to-json": "^0.5.4",
+    "mongoose": "^5.12.7",
     "vm2": "^3.9.3"
   },
   "engines": {
