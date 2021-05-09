@@ -36,7 +36,7 @@ module.exports = {
             
             em.setTitle(data.title)
                 .setURL(data.mdn_url)
-                .setDescription(pre)
+                .setDescription(pre.substr(0, 2000))
 
             message.ireply("", { embed: em })
         }
