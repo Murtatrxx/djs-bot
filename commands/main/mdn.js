@@ -43,7 +43,7 @@ module.exports = {
             em.setTitle(data[0].title)
                 .setURL(base+data[0].mdn_url)
                 .setDescription(pre.substr(0, 2000))
-                if (data.length > 1) em.addFields({ name:'Did you mean?', value: data.slice(1, 5).map(m => `[${m.title}](${base+m.mdn_url})`).join('\n')})
+                if (data.length > 1) em.addFields({ name:'Did you mean?', value: data.slice(1, 6).map(m => `[${m.title}](${base+m.mdn_url})`).join('\n')})
 
             message.ireply("", { embed: em }).catch(e => error.send("Error: "+e.stack))
         }
