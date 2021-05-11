@@ -5,7 +5,7 @@ module.exports = async (client, Discord) => {
 
   await mongo().then(mongoose => {
     try {
-      console.log(info(`Connected to MongoDB`))
+      console.log(`Connected to MongoDB`)
     } finally {
       mongoose.connection.close()
     }
