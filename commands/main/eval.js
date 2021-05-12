@@ -24,7 +24,7 @@ module.exports = {
       try {
         vm.run(code);
       } catch (e) {
-        logs.push(`\n${e + "\n at vm.js:" + (e.lineNumber ?? '1') + ":" + (e.columnNumber ?? '1')}\n`);
+        logs.push(`\n${e.stack + "\n at vm.js:" + (e.lineNumber ?? '1') + ":" + (e.columnNumber ?? '1')}\n`);
         mention = true;
       } finally {
         let em = new MessageEmbed()
