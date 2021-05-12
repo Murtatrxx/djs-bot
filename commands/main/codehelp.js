@@ -4,6 +4,8 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
   name: "codehelp",
   description: "Helps you with code",
+  help: "Get help with coding",
+  expArgs: "<language> <level>",
   async execute(client, message, Discord) {
     try {
 

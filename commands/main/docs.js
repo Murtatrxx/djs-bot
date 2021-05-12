@@ -4,6 +4,8 @@ const fetch = require('node-fetch')
 module.exports = {
   name: "docs",
   description: "Search the Discord docs",
+  help: "Search the Discord.js Documents for the object you have filled in as Argument",
+  expArgs: "<object to be searched>",
   minArgs: 1,
   maxArgs: 2,
   perms: [""],

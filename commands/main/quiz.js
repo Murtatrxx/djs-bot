@@ -11,6 +11,8 @@ const reactions = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️�
 module.exports = {
   name: "quiz",
   description: "Start a coding quiz",
+  help: "This command will start a coding quiz",
+  expArgs: "There will be no arguments needed",
   async execute(client, message, args) {
     try {
 
