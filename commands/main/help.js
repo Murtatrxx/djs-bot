@@ -10,8 +10,9 @@ module.exports = {
           .setTitle(`Help command`)
           .setDescription(`Use the reactions below for more indepth help`)
           .addField(client.commands[i], 'test', true)
+
+        message.channel.send(embed).catch(e => error.send("Error:" + e.stack));
       }
-      message.channel.send(embed).catch(e => error.send("Error:" + e.stack));
     } catch (e) {
       error.send("Errors:" + e.stack)
     }
