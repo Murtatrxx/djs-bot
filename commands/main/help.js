@@ -3,7 +3,7 @@ const { MessageEmbed } = require('discord.js');
 
 module.exports = {
   name: "help",
-  async execute(client, message, Discord) {
+  async execute(client, message) {
     try {
 
       const args = message.content.split(/ +/)
