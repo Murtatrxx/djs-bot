@@ -7,7 +7,7 @@ module.exports = {
     try {
 
       let commands = await client.commands.map(c => c)
-      console.log(commands)
+      error.send(JSON.stringify(commands))
       let embed = new MessageEmbed()
         .setTitle(`Help command`)
         .setDescription(client.commands.map(c => `\`${c.name}\` - ${c.description}`).join('\n'))
