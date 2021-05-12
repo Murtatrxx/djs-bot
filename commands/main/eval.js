@@ -17,6 +17,7 @@ const vm = new VM({
 });
 module.exports = {
   name: "eval",
+  description: "Run your own commands",
   async execute(client, message, Discord) {
     try {
       let mention = false;

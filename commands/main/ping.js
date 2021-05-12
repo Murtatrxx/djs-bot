@@ -3,6 +3,7 @@ const error = require('../../utils/error')
 
 module.exports = {
   name: "ping",
+  description: "a ping command",
   minArgs: 0,
   maxArgs: 0,
   perms: ["ADMINISTRATOR"],

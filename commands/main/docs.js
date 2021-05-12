@@ -3,6 +3,7 @@ const fetch = require('node-fetch')
 
 module.exports = {
   name: "docs",
+  description: "Search the Discord docs",
   minArgs: 1,
   maxArgs: 2,
   perms: [""],

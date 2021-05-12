@@ -10,6 +10,7 @@ const reactions = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️�
 
 module.exports = {
   name: "quiz",
+  description: "Start a coding quiz",
   async execute(client, message, args) {
     try {
 
