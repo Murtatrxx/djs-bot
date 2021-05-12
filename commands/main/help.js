@@ -3,10 +3,9 @@ const { MessageEmbed } = require('discord.js');
 
 module.exports = {
   name: "codehelp",
-  async execute(client, message, Discord) {
+  async execute(client, message, args, Discord) {
     try {
 
-      const args = message.content.split(/ +/)
 
       let embed = new MessageEmbed()
         .setTitle("Code Tutor for " + args[1])
