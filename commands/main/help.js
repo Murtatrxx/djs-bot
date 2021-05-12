@@ -11,8 +11,8 @@ module.exports = {
       let embed = new MessageEmbed()
         .setTitle(`Help command`)
         .setDescription(client.commands.map(c => `\`${c.name}\` - ${c.description}`).join('\n'))
-      for (command of commands) {
-        embed.addField(command, command.help, true)
+      for (let cmd of commands) {
+        embed.addField(cmd, cmd.help, true)
       }
       message.channel.send(embed).catch(e => error.send("Error:" + e.stack));
 
