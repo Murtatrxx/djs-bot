@@ -7,8 +7,8 @@ module.exports = {
     try {
 
       let embed = new MessageEmbed()
-        .setTitle("Code Tutor for " + args[1])
-        .setDescription("Level " + args[2])
+        .setTitle("Code Tutor for " + args[0])
+        .setDescription("Level " + args[1])
 
       message.channel.send(embed).catch(e => error.send("Error:" + e.stack));
     } catch (e) {
