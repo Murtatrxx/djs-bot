@@ -6,9 +6,6 @@ module.exports = {
   description: "a ping command",
   help: "Run a ping command to get the latency",
   expArgs: "There will be no arguments needed",
-  minArgs: 0,
-  maxArgs: 0,
-  perms: ["ADMINISTRATOR"],
   execute(client, message, args) {
     try {
       message.channel.send("Pong!").then((m) => {

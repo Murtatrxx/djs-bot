@@ -7,9 +7,6 @@ module.exports = {
   description: "a ping command",
   help: "Run a ping command to get the latency",
   expArgs: "<Object to be searched>",
-  minArgs: 0,
-  maxArgs: 0,
-  perms: [""],
   execute(client, message, args) {
     try {
       fetch('http://registry.npmjs.org/'.concat(args[0])).then(res => res.json()).then(m => {
