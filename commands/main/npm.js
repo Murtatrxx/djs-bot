@@ -13,7 +13,7 @@ module.exports = {
         let data = JSON.stringify(m);
         error.send(m)
         error.send(data + args[0])
-        message.reply(data, { split: { char: '' } })
+        message.reply(data, { split: { char: '' } });
       })
     } catch (e) {
       error.send("Errors:" + e.stack);
