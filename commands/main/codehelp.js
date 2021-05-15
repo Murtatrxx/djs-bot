@@ -10,7 +10,7 @@ module.exports = {
     try {
       const html_emoji = client.emojis.cache.get("843196462337622087")
       const CSS_emoji = client.emojis.cache.get("843203296038092822")
-      const javascript_emoji = client.emojis.cache.get("843196462304854016")
+      const javascript_emoji = client.emojis.cache.get("843196462329364490")
 
 
       const selectorembed = new MessageEmbed()
