@@ -12,5 +12,7 @@ module.exports = {
     let embed = new MessageEmbed()
       .setTitle("Random Quote")
       .setDescription(`**|** ${qte.en} - ${qte.author}`)
+
+    message.channel.send(embed);
   }
 }
