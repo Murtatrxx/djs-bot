@@ -41,4 +41,4 @@ handlerfiles.forEach((handler) => {
   require(`./handlers/${handler}`)(client, Discord);
 });
 
-client.login(process.env.DISCORD_TOKEN);
+client.login("ODM4ODY0MjQ5OTU4MzAxNzA2.YJBTNg.zUfGbfpQzRM4ZSe8XC3TU9wP-1w");
