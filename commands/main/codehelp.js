@@ -8,9 +8,9 @@ module.exports = {
   expArgs: "<language> <level>",
   async execute(client, message, Discord) {
     try {
-      const html_emoji = client.emoji.cache.get("843196462337622087")
-      const CSS_emoji = client.emoji.cache.get("843196462329364490")
-      const javascript_emoji = client.emoji.cache.get("843196462304854016")
+      const html_emoji = client.emojis.cache.get("843196462337622087")
+      const CSS_emoji = client.emojis.cache.get("843196462329364490")
+      const javascript_emoji = client.emojis.cache.get("843196462304854016")
 
 
       const selectorembed = new MessageEmbed()
