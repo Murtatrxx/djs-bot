@@ -13,10 +13,10 @@ module.exports = {
   execute(client, message, args) {
     try {
       fetch('https://registry.npmjs.org/' + args[0]).then(m => {
-        let data = JSON.parse(m);
+        let data = JSON.stringify(m);
         error.send(m)
         error.send(data)
-        message.reply(data.collection.name, { split: { char: '' } })
+        message.reply(data, { split: { char: '' } })
       })
     } catch (e) {
       error.send("Errors:" + e.stack)
