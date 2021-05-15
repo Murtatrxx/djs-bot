@@ -10,8 +10,8 @@ module.exports = {
     let qte = quote[Math.floor(Math.random() * quote.length)]
 
     let embed = new MessageEmbed()
-      .setTitle("Random Quote")
-      .setDescription(`**|** ${qte.en} - ${qte.author}`)
+      .setTitle("Quote")
+      .setDescription(`${qte.en} - **${qte.author}**`)
 
     message.channel.send(embed);
   }
