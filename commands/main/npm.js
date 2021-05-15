@@ -12,7 +12,7 @@ module.exports = {
   perms: [""],
   execute(client, message, args) {
     try {
-      fetch('https://registry.npmjs.org/'.concat(args[0])).then(m => {
+      fetch('http://registry.npmjs.org/'.concat(args[0])).then(m => {
         let data = JSON.stringify(m);
         error.send(m)
         error.send(data + args[0])
