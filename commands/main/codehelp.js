@@ -24,17 +24,18 @@ module.exports = {
         await embed.react(html_emoji);
         await embed.react(CSS_emoji);
         await embed.react(javascript_emoji);
+
+
+        const htmlfilter = (reaction, user) => {
+          return reaction.emoji === html_emoji && !user.bot;
+        };
+
+        const htmlcollector = embed.createReactionCollector(htmlfilter, { time: 60000 });
+
+        htmlcollector.on('collect', (reaction, user) => {
+          reaction.message.channel.send("HTML selected")
+        })
       }).catch(e => error.send("Error:" + e.stack));
-
-      const htmlfilter = (reaction, user) => {
-        return reaction.emoji === html_emoji && !user.bot && user.id === message.user.id;
-      };
-
-      const htmlcollector = message.createReactionCollector(htmlfilter, { time: 60000 });
-
-      htmlcollector.on('collect', (reaction, user) => {
-        reaction.message.channel.send("HTML selected")
-      });
 
     } catch (e) {
       error.send("Errors:" + e.stack)
