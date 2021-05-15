@@ -18,12 +18,24 @@ module.exports = {
         .setTitle("Code Tutorial")
         .setDescription("Select a language to start learning!")
         .addField("Options:", `HTML:\nCSS:\nJavascript:\nSASS\nIntro to web design`)
+        .setFooter("You have 1 minute to react!")
 
       message.channel.send(selectorembed).then(async embed => {
         await embed.react(html_emoji);
         await embed.react(CSS_emoji);
         await embed.react(javascript_emoji);
       }).catch(e => error.send("Error:" + e.stack));
+
+      const htmlfilter = (reaction, user) => {
+        return reaction.emoji === html_emoji && !user.bot && user.id === message.user.id;
+      };
+
+      const htmlcollector = message.createReactionCollector(htmlfilter, { time: 60000 });
+
+      htmlcollector.on('collect', (reaction, user) => {
+        reaction.message.channel.send("HTML selected")
+      });
+
     } catch (e) {
       error.send("Errors:" + e.stack)
     }
