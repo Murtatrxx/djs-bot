@@ -9,7 +9,6 @@ module.exports = {
   expArgs: "There will be no arguments needed",
   async execute(client, message, args) {
     try {
-
       let commands = await client.commands.map(c => c)
       let embed = new MessageEmbed()
         .setTitle(`Help command`)

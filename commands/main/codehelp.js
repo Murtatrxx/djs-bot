@@ -8,14 +8,22 @@ module.exports = {
   expArgs: "<language> <level>",
   async execute(client, message, Discord) {
     try {
+      const html_emoji = client.emoji.cache.get("843196462337622087")
+      const CSS_emoji = client.emoji.cache.get("843196462329364490")
+      const javascript_emoji = client.emoji.cache.get("843196462304854016")
 
-      const args = message.content.split(/ +/)
 
-      let embed = new MessageEmbed()
-        .setTitle("Code Tutor for " + args[1])
-        .setDescription("Level " + args[2])
+      const selectorembed = new MessageEmbed()
 
-      message.channel.send(embed).catch(e => error.send("Error:" + e.stack));
+        .setTitle("Code Tutorial")
+        .setDescription("Select a language to start learning!")
+        .addField("Options:", `HTML:\nCSS:\nJavascript:\nSASS\nIntro to web design`)
+
+      message.channel.send(selectorembed).then(async embed => {
+        await embed.react(html_emoji);
+        await embed.react(CSS_emoji);
+        await embed.react(javascript_emoji);
+      }).catch(e => error.send("Error:" + e.stack));
     } catch (e) {
       error.send("Errors:" + e.stack)
     }
