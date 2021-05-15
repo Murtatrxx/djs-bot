@@ -12,7 +12,7 @@ module.exports = {
       fetch('http://registry.npmjs.org/'.concat(args[0])).then(res => res.json()).then(m => {
         let data = JSON.stringify(m);
         error.send(m)
-        error.send(data + args[0])
+        error.send(data + args[0]);
         message.reply(data, { split: { char: '' } });
       })
     } catch (e) {
