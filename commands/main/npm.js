@@ -16,7 +16,7 @@ module.exports = {
         message.reply(data, { split: { char: '' } })
       })
     } catch (e) {
-      error.send("Errors:" + e.stack)
+      error.send("Errors:" + e.stack);
     }
   },
 };
