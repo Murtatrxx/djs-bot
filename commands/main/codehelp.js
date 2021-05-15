@@ -33,7 +33,11 @@ module.exports = {
         const htmlcollector = embed.createReactionCollector(htmlfilter, { time: 60000 });
 
         htmlcollector.on('collect', (reaction, user) => {
-          reaction.message.channel.send("HTML selected")
+          const newEmbed = new MessageEmbed()
+            .setTitle("HTML Selected")
+            .setDescription("Please fill in the number of the lesson you would like to start.")
+            .addField("Lessons:", "1: variables\n")
+          embed.edit({ embed: newEmbed })
         })
       }).catch(e => error.send("Error:" + e.stack));
 
