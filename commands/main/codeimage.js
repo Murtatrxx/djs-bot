@@ -14,7 +14,7 @@ module.exports = {
 
     let embed = new MessageEmbed()
       .setTitle("Coding Image")  
-      .setImage(r)  
+      .setImage(images[r])  
       .setColor("PURPLE")
 
     message.channel.send(embed)
