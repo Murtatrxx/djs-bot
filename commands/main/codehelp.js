@@ -55,13 +55,13 @@ module.exports = {
         })
 
         //JAVASCRIPT
-        const jsfilter = (reaction, user) => {
+        const javascriptfilter = (reaction, user) => {
           return reaction.emoji === javascript_emoji && !user.bot;
         };
 
-        const jscollector = embed.createReactionCollector(jsfilter, { time: 60000 });
+        const javascriptcollector = embed.createReactionCollector(javascriptfilter, { time: 60000 });
 
-        kscollector.on('collect', (reaction, user) => {
+        javascriptcollector.on('collect', (reaction, user) => {
           const newEmbed = new MessageEmbed()
             .setTitle("JavaScript Selected")
             .setDescription("Please fill in the number of the lesson you would like to start.")
