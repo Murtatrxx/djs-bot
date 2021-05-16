@@ -38,6 +38,36 @@ module.exports = {
             .addField("Lessons", "**1:** variables\n")
           embed.edit({ embed: newEmbed })
         })
+
+        //CSS
+        const CSSfilter = (reaction, user) => {
+          return reaction.emoji === CSS_emoji && !user.bot;
+        };
+
+        const CSScollector = embed.createReactionCollector(CSSfilter, { time: 60000 });
+
+        CSScollector.on('collect', (reaction, user) => {
+          const newEmbed = new MessageEmbed()
+            .setTitle("CSS Selected")
+            .setDescription("Please fill in the number of the lesson you would like to start.")
+            .addField("Lessons", "\*\*1:\*\* Font styles\n")
+          embed.edit({ embed: newEmbed })
+        })
+
+        //JAVASCRIPT
+        const jsfilter = (reaction, user) => {
+          return reaction.emoji === javascript_emoji && !user.bot;
+        };
+
+        const jscollector = embed.createReactionCollector(jsfilter, { time: 60000 });
+
+        kscollector.on('collect', (reaction, user) => {
+          const newEmbed = new MessageEmbed()
+            .setTitle("JavaScript Selected")
+            .setDescription("Please fill in the number of the lesson you would like to start.")
+            .addField("Lessons", "**1:** variables\n")
+          embed.edit({ embed: newEmbed })
+        })
       }).catch(e => error.send("Error:" + e.stack));
 
     } catch (e) {
