@@ -56,7 +56,7 @@ module.exports = {
             .setTitle("CSS Selected")
             .setDescription("Please fill in the number of the lesson you would like to start.")
           for (csslesson of cssLessons) {
-            newEmbed.addField("Lessons", `\*\*${cssLessons.indexOf(csslesson) + 1}:\*\*\n`)
+            newEmbed.addField(`${cssLessons.indexOf(csslesson) + 1}:`, `${csslesson}`)
           }
           embed.edit({ embed: newEmbed })
         })
