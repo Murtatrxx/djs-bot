@@ -33,7 +33,7 @@ handlerfiles.forEach((handler) => {
 });
 
 client.once("ready" , async() => {
-  bot.user.setActivity(`WOK`, { type: "COMPETING" });
+  client.user.setActivity(`WOK`, { type: "COMPETING" });
 });
 
 client.login(process.env.DISCORD_TOKEN)
