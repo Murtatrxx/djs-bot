@@ -9,7 +9,9 @@ module.exports = {
     let images = [
       `https://cdn.discordapp.com/attachments/768767631804071946/843494184048132096/9k.png`,
       "https://cdn.discordapp.com/attachments/768767631804071946/843494884458496050/9k.png",
-      "https://cdn.discordapp.com/attachments/768767631804071946/843495028462190633/2Q.png"
+      "https://cdn.discordapp.com/attachments/768767631804071946/843495028462190633/2Q.png",
+      "https://cdn.discordapp.com/attachments/768767631804071946/843495838894129152/9k.png",
+      "https://cdn.discordapp.com/attachments/768767631804071946/843495951590883358/cod.jpg"
     ]
 
     let r = Math.floor(Math.random() * images.length)
