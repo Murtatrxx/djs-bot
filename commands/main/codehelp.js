@@ -11,7 +11,6 @@ module.exports = {
       const html_emoji = client.emojis.cache.get("843196462337622087");
       const CSS_emoji = client.emojis.cache.get("843203296038092822");
       const javascript_emoji = client.emojis.cache.get("843196462329364490");
-      const sass_emoji = client.emojis.cache.get("843472543423135744");
 
       const selectorembed = new MessageEmbed()
 
@@ -24,7 +23,7 @@ module.exports = {
         await embed.react(html_emoji);
         await embed.react(CSS_emoji);
         await embed.react(javascript_emoji);
-        await embed.react(sass_emoji);
+        await embed.react("<:sass:843472543423135744>");
 
         const htmlfilter = (reaction, user) => {
           return reaction.emoji === html_emoji && !user.bot;
