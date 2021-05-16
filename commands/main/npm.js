@@ -32,10 +32,11 @@ module.exports = {
 
         em.setTitle(name)
         .setColor("RED")
+        .setDescription("")
         .setURL("https://npmjs.com/"+_id)
         .setTimestamp()
         .setAuthor(author.name ?? "Unknown person")
-        .addFields({ name: 'Home page'})
+        .addFields({ name: 'Home page', })
         message.ireply("", { embed: em })
       })
     } catch (e) {
