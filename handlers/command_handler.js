@@ -14,5 +14,5 @@ module.exports = (client, Discord) => {
     }
   };
 
-  ["main"].forEach((e) => loaddirs(e));
+  ["main" , "programming"].forEach((e) => loaddirs(e));
 };
