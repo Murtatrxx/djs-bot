@@ -12,6 +12,14 @@ module.exports = {
   help: "Get help with coding",
   expArgs: "<language> <level>",
   async execute(client, message, Discord) {
+
+    function checkInp(input) {
+      var regex = /^[0-9]+$/;
+      if (input.match(regex)) {
+        return false;
+      }
+    }
+
     try {
       const html_emoji = client.emojis.cache.get("843196462337622087");
       const CSS_emoji = client.emojis.cache.get("843203296038092822");
@@ -58,7 +66,14 @@ module.exports = {
           for (csslesson of cssLessons) {
             newEmbed.addField(`${cssLessons.indexOf(csslesson) + 1}:`, `${csslesson}`)
           }
-          embed.edit({ embed: newEmbed })
+          embed.edit({ embed: newEmbed }).then(embed => {
+            const filter = m => m.author.id === user.id;
+            const collector = embed.channel.createMessageCollector(filter, { time: 15000 });
+
+            collector.on('end', collected => {
+              if (checkInp(collected)) return embed.channel.send("Please fill in a number")
+            });
+          })
         })
 
         //JAVASCRIPT
