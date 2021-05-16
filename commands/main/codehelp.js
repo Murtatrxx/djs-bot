@@ -14,8 +14,9 @@ module.exports = {
   async execute(client, message, Discord) {
 
     function checkInp(input) {
-      var regex = /^[0-9]+$/;
-      if (input.match(regex)) {
+      let regex = /^[0-9]+$/;
+      let dirtystring = input.string()
+      if (dirtystring.match(regex)) {
         return false;
       }
     }
