@@ -1,3 +1,4 @@
+"$DISCORD_TOKEN"
 //----------[PACKAGES]----------\\
 const error = require("./utils/error")
 const express = require("express");
