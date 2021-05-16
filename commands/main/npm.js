@@ -31,12 +31,13 @@ module.exports = {
         } = m
 
         em.setTitle(name)
-        .setColor("RED")
-        .setDescription("")
-        .setURL("https://npmjs.com/"+_id)
-        .setTimestamp()
-        .setAuthor(author.name ?? "Unknown person")
-        .addFields({ name: 'Home page', })
+          .setColor("RED")
+          .setDescription("")
+          .setURL("https://npmjs.com/"+_id)
+          .setTimestamp()
+          .setAuthor(author.name ?? "Unknown person")
+        if (homepage) em.addFields({ name: 'Home page', value: homepage })
+        if (license) em.addFields({ name: 'License', value: license })
         message.ireply("", { embed: em })
       })
     } catch (e) {
