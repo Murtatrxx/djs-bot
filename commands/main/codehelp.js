@@ -1,6 +1,11 @@
 const error = require("../../utils/error.js");
 const { MessageEmbed } = require('discord.js');
 
+const javascriptLessons = ["Introduction", "Basics", "Chrome Developer tools", "Intro to HTML and CSS", "Variables", "Operators", "Control flow", "Functions", "Callbacks", "Intro Node", "Intro NPM", "Object Orientated"]
+const cssLessons = ["Basics", "Why CSS exists", "syntax", "Selectorss", "inheritance", "priority", "color units", "size units", "reset", "text", "font family", "font style", "line height", "font shorthand", "text properties", "box model", "background", "display", "overflow", "border", "padding", "margin", "size shorthand", "positioning", "float clear", "advanced", "pseudoclasses", "gradients", "transistions", "animations", "transform", "responsiveness"]
+const HTMLLessons = []
+const sassLessons = []
+
 module.exports = {
   name: "codehelp",
   description: "Helps you with code",
@@ -35,7 +40,7 @@ module.exports = {
           const newEmbed = new MessageEmbed()
             .setTitle("HTML Selected")
             .setDescription("Please fill in the number of the lesson you would like to start.")
-            .addField("Lessons", "**1:** variables\n")
+          newEmbed.addField("Lessons", "**1:** variables\n")
           embed.edit({ embed: newEmbed })
         })
 
@@ -50,7 +55,9 @@ module.exports = {
           const newEmbed = new MessageEmbed()
             .setTitle("CSS Selected")
             .setDescription("Please fill in the number of the lesson you would like to start.")
-            .addField("Lessons", "\*\*1:\*\* Font styles\n")
+          for (csslesson of cssLessons) {
+            newEmbed.addField("Lessons", `\*\*${embed.indexOf(csslesson) + 1}:\*\*\n`)
+          }
           embed.edit({ embed: newEmbed })
         })
 
@@ -65,7 +72,7 @@ module.exports = {
           const newEmbed = new MessageEmbed()
             .setTitle("JavaScript Selected")
             .setDescription("Please fill in the number of the lesson you would like to start.")
-            .addField("Lessons", "**1:** variables\n")
+            .addField("Lessons", "\*\*1:\*\* variables\n")
           embed.edit({ embed: newEmbed })
         })
       }).catch(e => error.send("Error:" + e.stack));
