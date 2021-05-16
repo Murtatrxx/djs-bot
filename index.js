@@ -1,13 +1,8 @@
 //----------[PACKAGES]----------\\
-const error = require("./utils/error")
+const error = require("./utils/error");
 const express = require("express");
 const Discord = require("discord.js");
 const client = new Discord.Client({
-  presence: {
-    activity: {
-      name: "WOK",
-      type: "COMPETING",
-    },
     status: "idle",
   },
   partials: ["MESSAGE", "CHANNEL", "REACTION"],
@@ -39,6 +34,10 @@ client.events = new Discord.Collection();
 const handlerfiles = ["command_handler", "event_handler"];
 handlerfiles.forEach((handler) => {
   require(`./handlers/${handler}`)(client, Discord);
+});
+
+client.once("ready" , async() => {
+  bot.user.setActivity(`WOK`, { type: "COMPETING" });
 });
 
 client.login(process.env.DISCORD_TOKEN)
