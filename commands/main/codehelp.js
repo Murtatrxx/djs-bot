@@ -12,15 +12,6 @@ module.exports = {
   help: "Get help with coding",
   expArgs: "<language> <level>",
   async execute(client, message, Discord) {
-
-    function checkInp(input) {
-      let regex = /^[0-9]+$/;
-      let dirtystring = input.string()
-      if (dirtystring.match(regex)) {
-        return false;
-      }
-    }
-
     try {
       const html_emoji = client.emojis.cache.get("843196462337622087");
       const CSS_emoji = client.emojis.cache.get("843203296038092822");
@@ -72,7 +63,12 @@ module.exports = {
           const inputfilter = m => m.author.id === user.id;
           const inputcollector = reaction.message.channel.createMessageCollector(inputfilter, { time: 15000 });
           inputcollector.on('end', collected => {
-            if (checkInp(collected)) return reaction.message.channel.send("Please fill in a number")
+            const checkfornumber = (input) => {
+              const numberregex = /^[0-9]+$/;
+              if (input.match(numberregex)) return false
+            }
+
+            if (checkfornumber(collected)) return reaction.message.channel.send("Please fill in a number")
             inputcollector.stop()
             return reaction.message.channel.send(`lesson ${collected.content} selected`)
           });
