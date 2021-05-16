@@ -17,7 +17,7 @@ module.exports = {
 
         .setTitle("Code Tutorial")
         .setDescription("Select a language to start learning!")
-        .addField("Options:", `HTML:\nCSS:\nJavascript:\nSASS\nIntro to web design`)
+        .addField("Options:", `<:html5:843196462337622087> HTML \n <:css:843203296038092822> CSS \n <:js:843196462329364490>  Javascript \n <:sass:843472543423135744> SASS`)
         .setFooter("You have 1 minute to react!")
 
       message.channel.send(selectorembed).then(async embed => {
