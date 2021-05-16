@@ -15,7 +15,7 @@ module.exports = {
 
     function checkInp(input) {
       let regex = /^[0-9]+$/;
-      let dirtystring = input.string()
+      let dirtystring = input.toString()
       if (dirtystring.match(regex)) {
         return false;
       }
