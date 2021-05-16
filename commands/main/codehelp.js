@@ -67,11 +67,12 @@ module.exports = {
             newEmbed.addField(`${cssLessons.indexOf(csslesson) + 1}:`, `${csslesson}`)
           }
           embed.edit({ embed: newEmbed }).then(embed => {
-            const filter = m => m.author.id === user.id;
-            const collector = embed.channel.createMessageCollector(filter, { time: 15000 });
+            const inputfilter = m => m.author.id === user.id;
+            const inputcollector = embed.channel.createMessageCollector(inputfilter, { time: 15000 });
 
-            collector.on('end', collected => {
+            inputcollector.on('end', collected => {
               if (checkInp(collected)) return embed.channel.send("Please fill in a number")
+              inputcollector.stop()
             });
           })
         })
