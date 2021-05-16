@@ -63,12 +63,12 @@ module.exports = {
           const inputfilter = m => m.author.id === user.id;
           const inputcollector = reaction.message.channel.createMessageCollector(inputfilter, { time: 15000 });
           inputcollector.on('collect', collected => {
-            const checkfornumber = (input) => {
-              const numberregex = /^[0-9]+$/;
-              if (input.toString().test(numberregex)) return true
+            function useRegex(input) {
+              let regex = /^[0-9]+$/i;
+              return regex.test(input);
             }
 
-            if (!checkfornumber(collected.content)) return reaction.message.channel.send("Please fill in a number")
+            if (useRegex(collected.content)) return reaction.message.channel.send("Please fill in a number")
             inputcollector.stop()
             return reaction.message.channel.send(`lesson ${collected.content} selected`)
           });
