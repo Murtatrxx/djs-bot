@@ -2,10 +2,7 @@
 const error = require("./utils/error");
 const express = require("express");
 const Discord = require("discord.js");
-const client = new Discord.Client({
-  status: "idle",
-  partials: ["MESSAGE", "CHANNEL", "REACTION"],
-});
+const client = new Discord.Client({ partials: ["MESSAGE", "CHANNEL", "REACTION"]} );
 const app = express();
 
 //----------[CONSTANTS]----------\\
