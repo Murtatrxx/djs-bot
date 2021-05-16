@@ -65,7 +65,7 @@ module.exports = {
             .setTitle("CSS Selected")
             .setDescription("Please fill in the number of the lesson you would like to start.")
           for (csslesson of cssLessons) {
-            newEmbed.addField(`${cssLessons.indexOf(csslesson) + 1}:`, `${csslesson}`)
+            newEmbed.addField("Lessons" , `${cssLessons.indexOf(csslesson) + 1}: ${csslesson}`)
           }
           embed.edit({ embed: newEmbed }).then(embed => {
             const inputfilter = m => m.author.id === user.id;
