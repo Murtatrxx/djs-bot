@@ -12,9 +12,11 @@ module.exports = {
 
     let r = Math.floor(Math.random * images.length)
 
-    let embed = new MessageEmbed()
-      .setTitle("Coding Image")
-
     let i = new MessageAttachment(images[r] , "image.png")
+
+    let embed = new MessageEmbed()
+      .setTitle("Coding Image")  
+
+    message.channel.send(embed)
   }
 }
