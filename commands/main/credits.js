@@ -8,7 +8,7 @@ module.exports = {
   async execute(client, message, args) {
       let embed = new MessageEmbed()
         .setTitle("Developers of This Bot")
-        .setDescription("▫ <@756393473430519849> : Project Idea & Programmer")
+        .setDescription("▫ <@756393473430519849> : Project Idea & Programmer \n ▫ <@432217612345278476> : Senior Programmer")
         .setColor("BLACK")
 
       message.channel.send(embed);
