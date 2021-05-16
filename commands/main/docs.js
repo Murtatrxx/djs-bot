@@ -6,9 +6,7 @@ module.exports = {
   description: "Search the Discord docs",
   help: "Search the Discord.js Documents for the object you have filled in as Argument",
   expArgs: "<object to be searched>",
-  minArgs: 1,
-  maxArgs: 2,
-  perms: [""],
+
   async execute(client, message, args) {
     try {
       if (!args[0]) {
