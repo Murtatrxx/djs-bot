@@ -1,4 +1,4 @@
-const { MessageEmbed , MessageAttachment } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 
 module.exports = {
   name: "codeimage",
@@ -11,8 +11,6 @@ module.exports = {
     ]
 
     let r = Math.floor(Math.random() * images.length)
-
-    let i = new MessageAttachment(images[r] , "image.png")
 
     let embed = new MessageEmbed()
       .setTitle("Coding Image")  
