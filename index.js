@@ -1,4 +1,3 @@
-"$DISCORD_TOKEN"
 //----------[PACKAGES]----------\\
 const error = require("./utils/error")
 const express = require("express");
@@ -42,4 +41,4 @@ handlerfiles.forEach((handler) => {
   require(`./handlers/${handler}`)(client, Discord);
 });
 
-client.login("ODM4ODY0MjQ5OTU4MzAxNzA2.YJBTNg.zUfGbfpQzRM4ZSe8XC3TU9wP-1w");
+client.login(process.env.DISCORD_TOKEN);
