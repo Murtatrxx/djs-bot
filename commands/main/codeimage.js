@@ -7,7 +7,9 @@ module.exports = {
   expArgs: "There will be no arguments needed",
   async execute(client, message, Discord) {
     let images = [
-      `https://cdn.discordapp.com/attachments/768767631804071946/843494184048132096/9k.png`
+      `https://cdn.discordapp.com/attachments/768767631804071946/843494184048132096/9k.png`,
+      "https://cdn.discordapp.com/attachments/768767631804071946/843494884458496050/9k.png",
+      "https://cdn.discordapp.com/attachments/768767631804071946/843495028462190633/2Q.png"
     ]
 
     let r = Math.floor(Math.random() * images.length)
