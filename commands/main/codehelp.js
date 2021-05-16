@@ -2,7 +2,7 @@ const error = require("../../utils/error.js");
 const { MessageEmbed } = require('discord.js');
 
 const javascriptLessons = ["Introduction", "Basics", "Chrome Developer tools", "Intro to HTML and CSS", "Variables", "Operators", "Control flow", "Functions", "Callbacks", "Intro Node", "Intro NPM", "Object Orientated"]
-const cssLessons =  ["Basics", "Why CSS exists", "syntax", "Selectors", "Inheritance", "Priority", "Color Units", "Size Units", "Reset", "Text", "Font Family", "Font Style", "Line Height", "Font shorthand", "Text Properties", "Box Model", "Background", "Display", "Overflow", "Border", "Padding", "Margin", "Size Shorthand", "Positioning", "Float Clear", "Advanced", "Pseudoclasses", "Gradients", "transitions", "Animations", "Transform", "Responsiveness"]
+const cssLessons =  ["Basics", "Why CSS exists", "Syntax", "Selectors", "Inheritance", "Priority", "Color Units", "Size Units", "Reset", "Text", "Font Family", "Font Style", "Line Height", "Font shorthand", "Text Properties", "Box Model", "Background", "Display", "Overflow", "Border", "Padding", "Margin", "Size Shorthand", "Positioning", "Float Clear", "Advanced", "Pseudoclasses", "Gradients", "transitions", "Animations", "Transform", "Responsiveness"]
 const HTMLLessons = []
 const sassLessons = []
 
