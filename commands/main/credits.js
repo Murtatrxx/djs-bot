@@ -7,7 +7,9 @@ module.exports = {
   expArgs: "There will be no arguments needed",
   async execute(client, message, args) {
       let embed = new MessageEmbed()
-        .setTitle("Developer")
+        .setTitle("Developers of This Bot")
+        .setDescription("▫ <@756393473430519849> : Project Idea & Programmer")
+        .setColor("BLACK")
 
       message.channel.send(embed);
     }
