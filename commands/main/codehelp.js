@@ -65,16 +65,16 @@ module.exports = {
             .setTitle("CSS Selected")
             .setDescription("Please fill in the number of the lesson you would like to start.")
           for (csslesson of cssLessons) {
-            newEmbed.addField(`${cssLessons.indexOf(csslesson) + 1}:`, `${csslesson}`)
+            newEmbed.addField(`${cssLessons.indexOf(csslesson) + 1}:`, `${csslesson}`, true)
           }
           embed.edit({ embed: newEmbed }).then(embed => {
             const inputfilter = m => m.author.id === user.id;
-            const inputcollector = embed.channel.createMessageCollector(inputfilter, { time: 15000 });
+            const inputcollector = reaction.message.channel.createMessageCollector(inputfilter, { time: 15000 });
 
             inputcollector.on('end', collected => {
-              if (checkInp(collected)) return embed.channel.send("Please fill in a number")
+              if (checkInp(collected)) return reaction.message.channel.send("Please fill in a number")
               inputcollector.stop()
-              return embed.channel.send(`lesson ${collected.content} selected`)
+              return reaction.message.channel.send(`lesson ${collected.content} selected`)
             });
           })
         })
