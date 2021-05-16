@@ -73,6 +73,7 @@ module.exports = {
             inputcollector.on('end', collected => {
               if (checkInp(collected)) return embed.channel.send("Please fill in a number")
               inputcollector.stop()
+              return embed.channel.send(`lesson ${collected.content} selected`)
             });
           })
         })
