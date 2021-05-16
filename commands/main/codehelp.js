@@ -68,7 +68,7 @@ module.exports = {
               if (input.match(numberregex)) return false
             }
 
-            if (!checkfornumber(collected)) return reaction.message.channel.send("Please fill in a number")
+            if (!checkfornumber(collected.content)) return reaction.message.channel.send("Please fill in a number")
             inputcollector.stop()
             return reaction.message.channel.send(`lesson ${collected.content} selected`)
           });
