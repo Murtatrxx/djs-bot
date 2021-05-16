@@ -27,17 +27,19 @@ module.exports = {
           license,
           description,
           "dist-tags" : dtags = {},
-          _id
+          _id,
+          time
         } = m
+        time = Object.values(time)
 
-        em.setTitle(name)
+        em.setTitle(name+"@"+dtags.latest)
           .setColor("RED")
-          .setDescription("")
+          .setDescription(description)
           .setURL("https://npmjs.com/"+_id)
           .setTimestamp()
-          .setAuthor(author.name ?? "Unknown person")
         if (homepage) em.addFields({ name: 'Home page', value: homepage })
         if (license) em.addFields({ name: 'License', value: license })
+        if (time.length) em.addFields({ name: 'Last Publish', value: time[time.length - 1] })
         message.ireply("", { embed: em })
       })
     } catch (e) {
