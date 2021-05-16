@@ -65,7 +65,7 @@ module.exports = {
           inputcollector.on('collect', collected => {
             const checkfornumber = (input) => {
               const numberregex = /^[0-9]+$/;
-              if (input.toString().match(numberregex)) return true
+              if (input.toString().test(numberregex)) return true
             }
 
             if (!checkfornumber(collected.content)) return reaction.message.channel.send("Please fill in a number")
