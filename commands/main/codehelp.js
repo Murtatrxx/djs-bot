@@ -62,7 +62,7 @@ module.exports = {
 
           const inputfilter = m => m.author.id === user.id;
           const inputcollector = reaction.message.channel.createMessageCollector(inputfilter, { time: 15000 });
-          inputcollector.on('end', collected => {
+          inputcollector.on('collect', collected => {
             const checkfornumber = (input) => {
               const numberregex = /^[0-9]+$/;
               if (input.match(numberregex)) return false
