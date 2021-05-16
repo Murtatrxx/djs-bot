@@ -67,16 +67,15 @@ module.exports = {
           for (csslesson of cssLessons) {
             newEmbed.addField(`${cssLessons.indexOf(csslesson) + 1}:`, `${csslesson}`, true)
           }
-          embed.edit({ embed: newEmbed }).then(embed => {
-            const inputfilter = m => m.author.id === user.id;
-            const inputcollector = reaction.message.channel.createMessageCollector(inputfilter, { time: 15000 });
+          embed.edit({ embed: newEmbed })
 
-            inputcollector.on('end', collected => {
-              if (checkInp(collected)) return reaction.message.channel.send("Please fill in a number")
-              inputcollector.stop()
-              return reaction.message.channel.send(`lesson ${collected.content} selected`)
-            });
-          })
+          const inputfilter = m => m.author.id === user.id;
+          const inputcollector = reaction.message.channel.createMessageCollector(inputfilter, { time: 15000 });
+          inputcollector.on('end', collected => {
+            if (checkInp(collected)) return reaction.message.channel.send("Please fill in a number")
+            inputcollector.stop()
+            return reaction.message.channel.send(`lesson ${collected.content} selected`)
+          });
         })
 
         //JAVASCRIPT
