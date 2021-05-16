@@ -3,7 +3,7 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
   name: "codeimage",
   description: "Send you a code themed image",
-  help: "See image of coding",
+  help: "See random image of coding",
   expArgs: "There will be no arguments needed",
   async execute(client, message, Discord) {
     let images = [
