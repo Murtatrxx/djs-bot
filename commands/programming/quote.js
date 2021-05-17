@@ -9,7 +9,7 @@ const font = (c, qte) => {
   const ctx = c.getContext("2d")
 
   let txt = qte.en.match(/(.|\s){1,25}/g).join("\n"),
-  fontSize = 45, measure1, height, font = 50
+  fontSize = 45, measure1, measure2, height, font = 50
 
   do {
 
@@ -20,12 +20,22 @@ const font = (c, qte) => {
 
   do {
     ctx.font = `${font -= 5}px sans-serif`
+    measure2 = ctx.measureText(qte.author)
   }
-  while (ctx.measureText(qte.author).width > 400)
+  while (measure2.width > 400)
 
-  height = 500 + fontSize;
+  height = 500 + fontSize - (measure2.height / 2);
 
-  return { fnt: `${fontSize}px sans-serif`, txt, author: { height, fnt: `${font}px sans-serif`} }
+  return {
+    txt:{
+      fnt: `${fontSize}px sans-serif`,
+      text: txt
+    },
+    author: {
+      height,
+      fnt: `${font}px sans-serif`
+    }
+  }
 }
 
 module.exports = {
@@ -48,15 +58,14 @@ module.exports = {
     ctx.strokeRect(0, 0, canvas.width, canvas.height);
 
     let {
-      fnt,
       txt,
       author
     } = font(canvas, qte)
 
     ctx.fillStyle = "#111111"
 
-    ctx.font = fnt
-    ctx.fillText(txt, canvas.width / 4, canvas.height / 4)
+    ctx.font = txt.fnt
+    ctx.fillText(txt.text, canvas.width / 4, canvas.height / 4)
         
     ctx.font = author.fnt
     ctx.fillText(qte.author, 400, author.height)
