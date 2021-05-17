@@ -2,6 +2,7 @@
 const quote = require("../../utils/quotes.json");
 const { MessageEmbed } = require('discord.js');
 const Canvas = require('canvas');
+const errors = require("../../utils/error")
 
 
 const font = (c, qte) => {
@@ -22,6 +23,7 @@ const font = (c, qte) => {
 
   height = 410 + (fontSize / 2);
 
+  errors.send(txt)
   return { fnt: `${fontSize}px sans-serif`, txt, author: { height, fnt: `${font}px sans-serif`} }
 }
 
