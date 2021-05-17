@@ -9,19 +9,19 @@ const font = (c, qte) => {
   const ctx = c.getContext("2d")
 
   let txt = qte.en.match(/(.|\s){1,25}/g).join("\n"),
-  fontSize = 45, measure, height, font = 50
+  fontSize = 45, measure1, height, font = 50
 
   do {
 
     ctx.font = `${fontSize -= 5}px sans-serif`
-    measure = ctx.measureText(txt)
+    measure1 = ctx.measureText(txt)
 
-  } while(measure.width > c.width - 200 || measure.height > c.height - 200)
+  } while(measure1.width > c.width - 200 || measure1.height > c.height - 200)
 
   do {
     ctx.font = `${font -= 5}px sans-serif`
   }
-  while (ctx.measureText(qte.author).width > 180)
+  while (ctx.measureText(qte.author).width > 400)
 
   height = 500 + fontSize;
 
