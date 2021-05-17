@@ -61,7 +61,6 @@ module.exports = {
 
     let embed = new MessageEmbed()
       .setColor("RANDOM")
-      .setTimestamp()
       .attachFiles([{attachment: canvas.toBuffer(), name: "quote.jpg"}])
       .setImage("attachment://quote.jpg")
     message.ireply("", { embed: embed });
