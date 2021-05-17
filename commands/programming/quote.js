@@ -8,32 +8,17 @@ const errors = require("../../utils/error")
 const font = (c, qte) => {
   const ctx = c.getContext("2d")
 
-  let txt = qte.en.match(/ ?(.|\s){1,30}( | \s)/g).join("\n"),
+  let txt = qte.en.match(/ ?(.|\s){1,30}( | \s)/g),
   fontSize = 45, measure1, measure2, height, font = 50
 
-  do {
 
-    ctx.font = `${fontSize -= 5}px sans-serif`
-    measure1 = ctx.measureText(txt)
-
-  } while(measure1.width > c.width - 200 || measure1.height > c.height - 200)
-
-  do {
-    ctx.font = `${font -= 5}px sans-serif`
-    measure2 = ctx.measureText(qte.author)
-  }
-  while (measure2.width > 400)
-
-  height = 500 - (measure2.height / 2);
-  errors.send(JSON.stringify({measure1, measure2}))
 
 
   return {
     txt:{
       fnt: `${fontSize}px sans-serif`,
-      text: txt,
-      height: 400 - (measure1.height / 2),
-      width: 400 - (measure1.width / 2)
+      text: txt.join("\n"),
+      height: 400 - (50 * txt.length),
     },
     author: {
       height,
@@ -69,7 +54,7 @@ module.exports = {
     ctx.fillStyle = "#111111"
 
     ctx.font = txt.fnt
-    ctx.fillText(txt.text, txt.width, txt.height)
+    ctx.fillText(txt.text, 200, txt.height)
         
     ctx.font = author.fnt
     ctx.fillText(qte.author, 400, author.height)
