@@ -9,10 +9,7 @@ const font = (c, qte) => {
   const ctx = c.getContext("2d")
 
   let txt = qte.en.match(/ ?(.|\s){1,30}( | \s)/g),
-  fontSize = 45, measure1, measure2, height, font = 50
-
-
-
+  fontSize = 45, measure1, measure2, height = 450, font = 50
 
   return {
     txt:{
@@ -21,7 +18,7 @@ const font = (c, qte) => {
       height: 400 - (25 * txt.length),
     },
     author: {
-      height,
+      height: 450 + (25 * txt.length),
       fnt: `${font}px sans-serif`
     }
   }
@@ -54,7 +51,7 @@ module.exports = {
     ctx.fillStyle = "#111111"
 
     ctx.font = txt.fnt
-    ctx.fillText(txt.text, 250, txt.height)
+    ctx.fillText(txt.text, 150, txt.height)
         
     ctx.font = author.fnt
     ctx.fillText(qte.author, 400, author.height)
