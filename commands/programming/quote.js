@@ -8,7 +8,7 @@ const errors = require("../../utils/error")
 const font = (c, qte) => {
   const ctx = c.getContext("2d")
 
-  let txt = qte.en.match(/(.|\s){1, 25}/g)?.join("\n"),
+  let txt = qte.en.match(/(.|\s){1,25}/g).join("\n"),
   fontSize = 35, measure, height, font = 50
 
   do {
@@ -23,7 +23,6 @@ const font = (c, qte) => {
 
   height = 410 + (fontSize / 2);
 
-  errors.send(qte.en)
   return { fnt: `${fontSize}px sans-serif`, txt, author: { height, fnt: `${font}px sans-serif`} }
 }
 
