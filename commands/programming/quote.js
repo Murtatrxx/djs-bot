@@ -18,7 +18,7 @@ const font = (c, qte) => {
     txt:{
       fnt: `${fontSize}px sans-serif`,
       text: txt.join("\n"),
-      height: 400 - (50 * txt.length),
+      height: 400 - (25 * txt.length),
     },
     author: {
       height,
@@ -54,7 +54,7 @@ module.exports = {
     ctx.fillStyle = "#111111"
 
     ctx.font = txt.fnt
-    ctx.fillText(txt.text, 200, txt.height)
+    ctx.fillText(txt.text, 250, txt.height)
         
     ctx.font = author.fnt
     ctx.fillText(qte.author, 400, author.height)
