@@ -32,6 +32,8 @@ module.exports = {
   async execute(client, message, args) {
 
     let qte = quote[Math.floor(Math.random() * quote.length)]
+
+    while(qte.en?.length > 300) qte = quote[Math.floor(Math.random() * quote.length)]
     
     const canvas = Canvas.createCanvas(800, 800);
     const ctx = canvas.getContext('2d');
