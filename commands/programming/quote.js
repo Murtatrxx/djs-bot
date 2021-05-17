@@ -21,7 +21,7 @@ const font = (c, qte) => {
   do font -= 5;
   while (ctx.measureText(qte.author).width > 180)
 
-  height = 500 + (fontSize / 2);
+  height = 500 + fontSize;
 
   return { fnt: `${fontSize}px sans-serif`, txt, author: { height, fnt: `${font}px sans-serif`} }
 }
