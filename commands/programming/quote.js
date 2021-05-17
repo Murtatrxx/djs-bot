@@ -21,7 +21,7 @@ const font = (c, qte) => {
   do font -= 5;
   while (ctx.measureText(qte.author).width > 180)
 
-  height = 410 + (fontSize / 2);
+  height = 500 + (fontSize / 2);
 
   return { fnt: `${fontSize}px sans-serif`, txt, author: { height, fnt: `${font}px sans-serif`} }
 }
@@ -57,7 +57,7 @@ module.exports = {
     ctx.fillText(txt, canvas.width / 4, canvas.height / 4)
         
     ctx.font = author.fnt
-    ctx.fillText(qte.author, 600, author.height)
+    ctx.fillText(qte.author, 400, author.height)
 
 
     let embed = new MessageEmbed()
