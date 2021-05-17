@@ -24,7 +24,7 @@ const font = (c, qte) => {
   }
   while (measure2.width > 400)
 
-  height = 500 + fontSize - (measure2.height / 2);
+  height = 500 - (measure2.height / 2);
 
   return {
     txt:{
