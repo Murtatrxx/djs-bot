@@ -22,7 +22,7 @@ const font = (c, qte) => {
 
   height = 410 + (fontSize / 2);
 
-  return { fnt: `${fontSize}px sans-serif`, txt: txt, author: { name: "- " + qte.author, height, fnt: `${font}px sans-serif`} }
+  return { fnt: `${fontSize}px sans-serif`, txt, author: { height, fnt: `${font}px sans-serif`} }
 }
 
 module.exports = {
@@ -56,7 +56,7 @@ module.exports = {
     ctx.fillText(txt, canvas.width / 2, canvas.height / 2)
         
     ctx.font = author.fnt
-    ctx.fillText(author.name, 600, author.height)
+    ctx.fillText(qte.author, 600, author.height)
 
 
     let embed = new MessageEmbed()
