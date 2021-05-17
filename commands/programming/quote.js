@@ -54,7 +54,7 @@ module.exports = {
     ctx.fillStyle = "#111111"
 
     ctx.font = fnt
-    ctx.fillText(txt, canvas.width / 2, canvas.height / 2)
+    ctx.fillText(txt, canvas.width / 4, canvas.height / 4)
         
     ctx.font = author.fnt
     ctx.fillText(qte.author, 600, author.height)
