@@ -9,14 +9,14 @@ const font = (c, qte) => {
   const ctx = c.getContext("2d")
 
   let txt = qte.en.match(/(.|\s){1,25}/g).join("\n"),
-  fontSize = 35, measure, height, font = 50
+  fontSize = 45, measure, height, font = 50
 
   do {
 
     measure = ctx.measureText(txt)
     fontSize -= 5
 
-  } while(measure.width > c.width - 300 || measure.height > c.height - 300)
+  } while(measure.width > c.width - 400 || measure.height > c.height - 400)
 
   do font -= 5;
   while (ctx.measureText(qte.author).width > 180)
