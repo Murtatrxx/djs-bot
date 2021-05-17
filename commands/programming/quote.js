@@ -8,7 +8,7 @@ const errors = require("../../utils/error")
 const font = (c, qte) => {
   const ctx = c.getContext("2d")
 
-  let txt = qte.en.match(/ ?(.|\s){1,25}( | \s)/g).join("\n"),
+  let txt = qte.en.match(/ ?(.|\s){1,30}( | \s)/g).join("\n"),
   fontSize = 45, measure1, measure2, height, font = 50
 
   do {
@@ -29,7 +29,9 @@ const font = (c, qte) => {
   return {
     txt:{
       fnt: `${fontSize}px sans-serif`,
-      text: txt
+      text: txt,
+      height: 400 - (measure1.height / 2),
+      width: 400 - (measure1.width / 2)
     },
     author: {
       height,
@@ -65,7 +67,7 @@ module.exports = {
     ctx.fillStyle = "#111111"
 
     ctx.font = txt.fnt
-    ctx.fillText(txt.text, canvas.width / 4, canvas.height / 4)
+    ctx.fillText(txt.text, txt.width, txt.height)
         
     ctx.font = author.fnt
     ctx.fillText(qte.author, 400, author.height)
