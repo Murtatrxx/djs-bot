@@ -8,7 +8,7 @@ const errors = require("../../utils/error")
 const font = (c, qte) => {
   const ctx = c.getContext("2d")
 
-  let txt = qte.en.match(/(.|\s){1,25}/g).join("\n"),
+  let txt = qte.en.match(/ ?(.|\s){1,25}( | \s)/g).join("\n"),
   fontSize = 45, measure1, measure2, height, font = 50
 
   do {
