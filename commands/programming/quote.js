@@ -13,12 +13,14 @@ const font = (c, qte) => {
 
   do {
 
+    ctx.font = `${fontSize -= 5}px sans-serif`
     measure = ctx.measureText(txt)
-    fontSize -= 5
 
   } while(measure.width > c.width - 400 || measure.height > c.height - 400)
 
-  do font -= 5;
+  do {
+    ctx.font = `${font -= 5}px sans-serif`
+  }
   while (ctx.measureText(qte.author).width > 180)
 
   height = 500 + fontSize;
