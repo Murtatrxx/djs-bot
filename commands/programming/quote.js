@@ -16,7 +16,7 @@ const font = (c, qte) => {
     ctx.font = `${fontSize -= 5}px sans-serif`
     measure = ctx.measureText(txt)
 
-  } while(measure.width > c.width - 400 || measure.height > c.height - 400)
+  } while(measure.width > c.width - 200 || measure.height > c.height - 200)
 
   do {
     ctx.font = `${font -= 5}px sans-serif`
