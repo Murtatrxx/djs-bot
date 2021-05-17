@@ -23,7 +23,7 @@ const font = (c, qte) => {
 
   height = 410 + (fontSize / 2);
 
-  errors.send(txt)
+  errors.send(qte.en)
   return { fnt: `${fontSize}px sans-serif`, txt, author: { height, fnt: `${font}px sans-serif`} }
 }
 
