@@ -54,7 +54,7 @@ module.exports = {
     ctx.fillText(txt.text, 50, txt.height)
         
     ctx.font = author.fnt
-    ctx.fillText(qte.author, 400, author.height)
+    ctx.fillText("- "+qte.author, 400, author.height)
 
 
     let embed = new MessageEmbed()
