@@ -7,7 +7,7 @@ module.exports = {
   description: "a ping command",
   help: "Run a ping command to get the latency",
   expArgs: "<Object to be searched>",
-  execute(client, message, args) {
+  async execute(client, message, args) {
     try {
       if (!args[0]) {
         message.ireply("Send something to search, type `cancel` to cancel. You have 60s.")
