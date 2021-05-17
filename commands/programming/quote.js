@@ -25,6 +25,8 @@ const font = (c, qte) => {
   while (measure2.width > 400)
 
   height = 500 - (measure2.height / 2);
+  errors.send(JSON.stringify({measure1, measure2}))
+
 
   return {
     txt:{
