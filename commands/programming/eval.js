@@ -47,7 +47,7 @@ module.exports = {
       try {
         vm.run(code);
       } catch (e) {
-        logs.push(`\n${e.stack.match(/(.*\s*at vm\.js\:\d\:\d)/i)[0]}\n`);
+        logs.push(`${e.stack.match(/(.*\s*at vm\.js\:\d\:\d)/i)[0]}`);
         mention = true;
       } finally {
         let em = new MessageEmbed()
