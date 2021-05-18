@@ -5,10 +5,30 @@ const error = require("../../utils/error")
 require("../../utils/inline");
 let logs = [];
 const logger = {
-  log: (...data) => logs.push(data),
-  info: (...data) => logs.push(data),
-  error: (...data) => logs.push(data),
-  warn: (...data) => logs.push(data),
+  log: (...data) => {
+    data.forEach(m => {
+      if (m instanceof Object) m = JSON.stringify(m)
+    })
+    logs.push(data)
+  },
+  info: (...data) => {
+    data.forEach(m => {
+      if (m instanceof Object) m = JSON.stringify(m)
+    })
+    logs.push(data)
+  },
+  error: (...data) => {
+    data.forEach(m => {
+      if (m instanceof Object) m = JSON.stringify(m)
+    })
+    logs.push(data)
+  },
+  warn: (...data) => {
+    data.forEach(m => {
+      if (m instanceof Object) m = JSON.stringify(m)
+    })
+    logs.push(data)
+  },
 };
 const vm = new VM({
   sandbox: {
