@@ -11,7 +11,8 @@ const base = 'https://nodejs.org';
 
 module.exports = {
   name: 'node',
-
+  description: "Search Node Docs",
+  expArgs: "<query>",
   async execute(client, message, args) {
     error.send('test001')
 
