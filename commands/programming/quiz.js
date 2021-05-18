@@ -82,7 +82,7 @@ module.exports = {
               .setAuthor(message.member.displayName, message.author.displayAvatarURL())
               .setTimestamp()
               .setTitle("🎉🎉 Great attempt " + message.member.displayName + " 🎉🎉")
-              .addField('📊 Results', `✅ Correct: ${score} \n❌ Incorrect: ${ qn+1 - score} \n 😀 Evaluation: ${score <= 2 ? "Bad" : score <= 4 : "Not Bad" : score <= 6 : "Good" : score <= 10 : "Very Good"}`)
+              .addField('📊 Results', `✅ Correct: ${score} \n❌ Incorrect: ${ qn+1 - score} \n 😀 Evaluation: ${score <= 2 ? "Bad" : (score <= 4 ? "Not Bad" : (score <= 6 ? "Good" : (score <= 10 ? "Very Good" : "")))}`)
             msg.edit("", { embed: embed }).catch(e => error.send("Error:" + e.stack))
           };
           
