@@ -9,7 +9,7 @@ module.exports = {
     async execute(client, message, args) {
         await mongo().then(async mongoose => {
             try {
-                const guildId = message.guild.guildId
+                const guildId = message.guild.id
                 const NewPrefix = args[0]
 
                 await serverSettingsSchema.findOneAndUpdate({
