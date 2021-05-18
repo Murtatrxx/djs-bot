@@ -44,13 +44,13 @@ module.exports = {
 		}
 		
         (async (query)  => {
-        error.send('test00df')
-
+            
             try {
-        if (!data) {
-            //@ts-ignore
-			data = await fetch(`${API_BASE}/dist/latest/docs/api/all.json`).then(r => r.json());
-		}
+                if (!data) {
+                    error.send('test00df')
+                    //@ts-ignore
+                    data = await fetch(`${API_BASE}/dist/latest/docs/api/all.json`).then(r => r.json());
+                }
         
 		const queryParts = query.split(/#|\./);
 		const altQuery = queryParts[queryParts.length - 1];
