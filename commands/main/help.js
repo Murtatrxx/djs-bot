@@ -25,7 +25,7 @@ module.exports = {
       }else{
         embed.setTitle(cmd.name)
           .setDescription(cmd.help)
-        if (cmd.expArgs) embed.addFields({ name: 'Expected args', value: `\`\`\`${cmd.expArgs}\`\`\`` })
+        if (cmd.expArgs) embed.addFields({ name: 'Expected args', value: `\`\`\`?${cmd.name} ${cmd.expArgs}\`\`\`` })
         message.ireply("", { embed: embed })
       }
 
