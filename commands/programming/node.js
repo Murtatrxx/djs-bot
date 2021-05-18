@@ -44,6 +44,8 @@ module.exports = {
 		}
 		
         (async (query)  => {
+        error.send('test00df')
+
             try {
         if (!data) {
             //@ts-ignore
@@ -79,6 +81,7 @@ module.exports = {
         
 		parts.push(intro.replace(linkReplaceRegex, `[$1](<${base}/$2>)`).replace(boldCodeBlockRegex, '**`$1`**'));
         
+        error.send('test001')
 		message.ireply(`${parts.join('\n')}`);
 	} catch (e) {
         
