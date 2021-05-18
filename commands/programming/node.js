@@ -9,7 +9,7 @@ let data = null;
 module.exports = {
     name: 'node',
     
-    async run(client, message, args) {
+    async execute(client, message, args) {
 
         const findRec = (o, name, type, module) => {
             name = name.toLowerCase();
