@@ -7,7 +7,11 @@ module.exports = async (client, Discord) => {
   await mongo().then(mongoose => {
     try {
       console.log(`Connected to MongoDB`)
-      serverSettingsSchema.find({})
+      serverSettingsSchema.find({}).then(m => {
+        m.forEach(g => {
+          client.cache.set(g._id, g)
+        })
+      })
     } catch (e){
       console.log(e)
     }
