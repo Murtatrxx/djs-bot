@@ -7,7 +7,7 @@ module.exports = {
     description: "Set the server Prefix",
     help: "Change the commandprefix of the bot for the server",
     async execute(client, message, args) {
-        await mongo().then(mongoose => {
+        await mongo().then(async mongoose => {
             try {
                 const guildId = message.guild.guildId
                 const NewPrefix = args[0]
