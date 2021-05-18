@@ -5,7 +5,9 @@ const error = require('../../utils/error')
 
 const base = 'https://nodejs.org';
 
-let data = null;
+await (async() => {
+let data = await fetch(`${base}/dist/latest/docs/api/all.json`).then(r => r.json())
+})()
 
 module.exports = {
     name: 'node',
@@ -48,7 +50,7 @@ module.exports = {
             try {
                 if (!data) {
                     //@ts-ignore
-                    data = await fetch(`${API_BASE}/dist/latest/docs/api/all.json`).then(r => r.json());
+                    data = await fetch(`${base}/dist/latest/docs/api/all.json`).then(r => r.json());
                     error.send('test00df')
                 }
         
