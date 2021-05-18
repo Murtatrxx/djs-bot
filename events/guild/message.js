@@ -25,7 +25,6 @@ module.exports.loadPrefix = async (client) => {
         guildPrefixes[guild[1].id] = result.prefix
       }
     } finally {
-      mongoose.connection.close()
     }
   })
 }

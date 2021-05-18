@@ -25,7 +25,6 @@ module.exports = {
 
                 messagefile.updateCache(guildId, NewPrefix)
             } finally {
-                mongoose.connection.close()
             }
         })
     }
