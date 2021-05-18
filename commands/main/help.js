@@ -15,18 +15,18 @@ module.exports = {
       .setColor("GREEN")
       .setTimestamp()
       .setDescription(client.commands.map(c => `\`${prefix}${c.name}\` - ${c.description}`).join('\n'))
-      if (!args[0]) return message.channel.send(embed).catch(e => error.send("Error:" + e.stack))
+      if (!args[0]) return message.ireply("", { embed: embed }).catch(e => error.send("Error:" + e.stack))
       let cmd = client.commands.get(args[0].toLowerCase())
       if (!cmd) {
         embed.setColor("RED")
           .setDescription("Requested command was not found")
           .setTitle("404 Not Found")
-        return message.ireply("", { embed: embed })
+        return message.ireply("", { embed: embed, mention: true })
       }else{
         embed.setTitle(cmd.name)
           .setDescription(cmd.help)
         if (cmd.expArgs) embed.addFields({ name: 'Expected args', value: `\`\`\`${cmd.expArgs}\`\`\`` })
-        message.ireply("", { embed: embed, mention: true })
+        message.ireply("", { embed: embed })
       }
 
 
