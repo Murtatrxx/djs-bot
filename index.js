@@ -3,9 +3,10 @@ const error = require("./utils/error");
 const express = require("express");
 const Discord = require("discord.js");
 const SHClient = require('shandler')
-const client = new Discord.Client({ partials: ["MESSAGE", "CHANNEL", "REACTION"]} );
+const client = new Discord.Client({ partials: ["MESSAGE", "CHANNEL", "REACTION"] });
 const hndlr = new SHClient(client, { wrapper: true })
 const app = express();
+const loadprefix = require("./events/guild/message")
 
 //----------[CONSTANTS]----------\\
 
@@ -21,22 +22,24 @@ app.listen(4000, () => {
 });
 
 //errors
-process.on("unhandledRejection", (e) => error.send("UnhandledRejection: "+e.stack ?? e))
-process.on("uncaughtException", (e, o) => error.send("UnhandledRejection: "+(e.stack ?? e )+"\n"+o))
+process.on("unhandledRejection", (e) => error.send("UnhandledRejection: " + e.stack ?? e))
+process.on("uncaughtException", (e, o) => error.send("UnhandledRejection: " + (e.stack ?? e) + "\n" + o))
 
 //----------[HANDLERS]----------\\
 
 client.commands = new Discord.Collection();
 client.events = new Discord.Collection();
 client.scmds = new Discord.Collection();
+client.cache = new Discord.Collection();
 
 const handlerfiles = ["command_handler", "event_handler"];
 handlerfiles.forEach((handler) => {
   require(`./handlers/${handler}`)(client, hndlr);
 });
 
-client.once("ready" , async() => {
+client.once("ready", async () => {
   client.user.setActivity(`WOK`, { type: "COMPETING" });
+  loadprefix.loadPrefix(client)
 });
 
 client.login(process.env.DISCORD_TOKEN)
