@@ -23,9 +23,9 @@ module.exports = {
                 })
 
                 message.channel.send(`${message.author} changed the prefix to ${NewPrefix}`)
+                client.cache.get(guildId).prefix = NewPrefix
 
-                messagefile.updateCache(guildId, NewPrefix)
-            } finally {
+               } finally {
             }
         })
     }
