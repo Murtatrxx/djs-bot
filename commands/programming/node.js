@@ -1,6 +1,7 @@
 // @ts-check
 const { MessageEmbed } = require('discord.js')
 const fetch = require('node-fetch')
+const error = require('../../utils/error')
 
 const base = 'https://nodejs.org';
 
@@ -10,8 +11,10 @@ module.exports = {
     name: 'node',
     
     async execute(client, message, args) {
+        error.send('test001')
 
         const findRec = (o, name, type, module) => {
+            error.send('test002')
             name = name.toLowerCase();
             if (!module) module = o?.type === 'module' ? o?.name.toLowerCase() : undefined;
             if (o?.name?.toLowerCase() === name.toLowerCase() && o?.type === type) {
