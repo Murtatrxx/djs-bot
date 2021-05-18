@@ -31,7 +31,7 @@ module.exports = {
           repository = {},
           homepage,
           license,
-          description,
+          description = "",
           "dist-tags" : dtags = {},
           _id,
           time
