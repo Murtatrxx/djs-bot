@@ -1,4 +1,5 @@
 const fs = require("fs");
+const mongo = require("../mongo");
 
 module.exports = (client) => {
   const loaddirs = (dirs) => {
@@ -14,7 +15,7 @@ module.exports = (client) => {
     }
   };
 
-  ["main" , "programming"].forEach((e) => loaddirs(e));
+  ["main", "programming"].forEach((e) => loaddirs(e));
 
   () => {
     const command_files = fs
