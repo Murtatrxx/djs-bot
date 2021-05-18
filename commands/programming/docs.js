@@ -15,7 +15,7 @@ module.exports = {
         if (!m || m?.first()?.content.toLowerCase() === "cancel") return;
         args = m.first().content.toLowerCase().split(/\s+/)
       }
-      let source = args.find(m => /^(--src|-s)\w*$/ig.test(m.trim().toLowerCase()))?.replace(/^(--src|-s)=(\w*)$/, "$2") ?? "stable";
+      let source = args.find(m => /^(--src|-s)=\w*$/ig.test(m.trim().toLowerCase()))?.replace(/^(--src|-s)=(\w*)$/, "$2") ?? "stable";
       let poss = ["master", "stable", "collection", "commando", "rpc", "akairo", "akairo-master"]
       if (!poss.includes(source.toLowerCase())) return message.ireply("The source doesn't match the available ones:\n`" + poss.join("` `") + "`");
       fetch(`https://djsdocs.sorta.moe/v2/embed?src=${source}&q=${args[0]}`)
