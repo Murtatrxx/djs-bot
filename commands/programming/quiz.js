@@ -80,15 +80,14 @@ module.exports = {
             embed.fields.splice(0, embed.fields.length)
             embed.setColor("GREEN")
               .setAuthor(message.member.displayName, message.author.displayAvatarURL())
-              .setFooter("")
               .setTimestamp()
+              .setDescription("")
               .setTitle("🎉🎉 Great attempt " + message.member.displayName + " 🎉🎉")
-              .setDescription(``)
-              .addFields({ name: 'Quote', value: qte.en + "  -  " + qte.author })
+              .addField('📊 Results', `✅ Correct: ${score - 1 == -1 ? "0" : score - 1} \n❌ Incorrect: ${(qn+1 - score) - 1} \n 😀 Evaluation: ${score <= 2 ? "Bad" : (score <= 4 ? "Not Bad" : (score <= 6 ? "Good" : (score <= 10 ? "Very Good" : "")))}`)
             msg.edit("", { embed: embed }).catch(e => error.send("Error:" + e.stack))
           };
-
-          //For skiping the question
+          
+         //For skiping the question
           const skip = (msg, extra = {}) => {
             msg.reactions.removeAll().catch(e => error.send("Error:" + e.stack));
             qn++;

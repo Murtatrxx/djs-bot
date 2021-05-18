@@ -4,7 +4,7 @@ const prefix = '?'
 
 module.exports = {
   name: "help",
-  description: "Sends this message",
+  description: "<command-name>",
   help: "Sends this help command",
   expArgs: "<command>",
   async execute(client, message, args) {
