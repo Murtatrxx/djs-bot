@@ -10,5 +10,5 @@ module.exports = (client, message) => {
   const command = client.commands.get(cmd);
 
   if (command) return command.execute(client, message, args);
-  if (/<@!?>/.test(message.content)) message.ireply(`My prefix is: \`${client.cache.get(message.guild.id)?.prefix ?? "?"}\``)
+  if (/<@!?838864249958301706>/.test(message.content)) message.ireply(`My prefix is: \`${client.cache.get(message.guild.id)?.prefix ?? "?"}\``)
 };
