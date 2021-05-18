@@ -5,7 +5,7 @@ const mongo = require("../../mongo")
 const serverSettingsSchema = require("../../Schema/serversettings")
 module.exports = (client, message) => {
 
-  const prefix = guildPrefixes[message.guild.id] || GPrefix
+  const prefix = client.cache.get(message.guild.id)?.prefix || GPrefix
   if (!message.content.startsWith(prefix) || message.author.bot) return;
   if (message.channel.type === "dm") return;
 
@@ -31,5 +31,6 @@ module.exports.loadPrefix = async (client) => {
 
 module.exports.updateCache = (guildId, newPrefix) => {
   guildPrefixes[guildId] = newPrefix
+  client.cache.get(guildId).prefix = newPrefix
 }
 
