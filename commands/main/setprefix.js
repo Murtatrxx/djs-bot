@@ -1,7 +1,7 @@
 const mongo = require("../../mongo.js")
 const { execute } = require("./ping.js")
 const serverSettingsSchema = require("../../Schema/serversettings")
-const message = require("../../events/guild/message")
+const messagefile = require("../../events/guild/message")
 module.exports = {
     name: "setprefix",
     description: "Set the server Prefix",
@@ -23,7 +23,7 @@ module.exports = {
 
                 message.channel.send(`${message.author} changed the prefix to ${NewPrefix}`)
 
-                message.updateCache(guildId, NewPrefix)
+                messagefile.updateCache(guildId, NewPrefix)
             } finally {
                 mongoose.connection.close()
             }
