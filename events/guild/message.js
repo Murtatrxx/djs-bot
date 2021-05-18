@@ -5,7 +5,7 @@ const mongo = require("../../mongo")
 const serverSettingsSchema = require("../../Schema/serversettings")
 module.exports = (client, message) => {
 
-  const prefix = guildPrefixes[message.guild.id] || GPrefix
+  const prefix = guildPrefixes[message.guild.id]
   if (!message.content.startsWith(prefix) || message.author.bot) return;
   if (message.channel.type === "dm") return;
 
