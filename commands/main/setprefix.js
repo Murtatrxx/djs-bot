@@ -12,7 +12,7 @@ module.exports = {
                 const guildId = message.guild.guildId
                 const NewPrefix = args[0]
 
-                await commandPrefixSchema.findOneAndUpdate({
+                await serverSettingsSchema.findOneAndUpdate({
                     _id: guildId
                 }, {
                     _id: guildId,
