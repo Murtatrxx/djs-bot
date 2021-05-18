@@ -1,7 +1,7 @@
 const mongo = require("../../mongo.js")
 const { execute } = require("./ping.js")
 const serverSettingsSchema = require("../../Schema/serversettings")
-const messagefile = require("../../events/guild/message")
+
 module.exports = {
     name: "setprefix",
     description: "Set the server Prefix",
