@@ -1,7 +1,6 @@
 const error = require("../../utils/error.js");
 const { MessageEmbed } = require('discord.js');
-const messagefile = require("../../events/guild/message")
-const prefix = messagefile.loadPrefix
+
 
 module.exports = {
   name: "help",
@@ -9,6 +8,8 @@ module.exports = {
   help: "Sends this help command",
   expArgs: "<command>",
   async execute(client, message, args) {
+    const result = await serverSettingsSchema.findOne({ _id: message.guild.id });
+    const prefix = result.prefix
     try {
       let embed = new MessageEmbed()
         .setTitle(`Help command`)
