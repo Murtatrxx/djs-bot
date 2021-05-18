@@ -7,7 +7,7 @@ module.exports = {
     description: "Set the server Prefix",
     help: "Change the commandprefix of the bot for the server",
     async execute(client, message, args) {
-        if (!message.member.hasPermission('ADMINISTRATOR')) return
+        if (!message.member.hasPermission('ADMINISTRATOR')) return message.reply("You're not authorized to use this command\nYou need Admin perms.")
         await mongo().then(async mongoose => {
             try {
                 const guildId = message.guild.id
