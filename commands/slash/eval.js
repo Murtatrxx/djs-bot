@@ -63,7 +63,7 @@ module.exports = {
             .setAuthor(message.member.displayName, message.author.displayAvatarURL(), message.author.displayAvatarURL())
             .addFields({ name: 'Source', value: `\`\`\`js\n ${code}\`\`\`` }, { name: 'Result', value: "```js\n" + process.version.substr(0, 5) + "\n" + logs.join('\n') + "```" })
             .setTimestamp()
-          interaction.reply("", { embed: em, }).catch(e => error.send("Error:" + e.stack));
+          interaction.reply("", { embed: em }).catch(e => error.send("Error:" + e.stack));
           logs.splice(0, logs.length);
         }
       } catch (e) {

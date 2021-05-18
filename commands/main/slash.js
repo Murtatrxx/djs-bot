@@ -4,28 +4,27 @@ const serverSettingsSchema = require("../../Schema/serversettings")
 require('../../utils/inline')
 
 module.exports = {
-    name: "setprefix",
-    description: "Set the server Prefix",
+    name: "slash",
+    description: "Toggles the slash to on/off",
     help: "Change the commandprefix of the bot for the server",
     async execute(client, message, args) {
         if (!message.member.hasPermission('ADMINISTRATOR')) return message.reply("You're not authorized to use this command\nYou need Admin perms.")
-        if (!args[0]) return message.ireply("you need to send something to set as the prefix", { mention: true })
         await mongo().then(async mongoose => {
             try {
                 const guildId = message.guild.id
-                const NewPrefix = args[0]
+                let slash = client.cache.get(message.guild.id)?.slash
 
                 await serverSettingsSchema.findOneAndUpdate({
                     _id: guildId
                 }, {
                     _id: guildId,
-                    prefix: NewPrefix
+                    slash: slash
                 }, {
                     upsert: true
                 })
 
-                message.ireply(`${message.author} changed the prefix to ${NewPrefix}`)
-                client.cache.get(guildId).prefix = NewPrefix
+                message.ireply(`${message.author} turned slash command ${(slash ? "on" : "off")}`)
+                client.cache.get(guildId).slash = slash
 
                } finally {
             }

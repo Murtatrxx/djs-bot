@@ -1,11 +1,6 @@
-const GPrefix = "?";
-const util = require("../../utils/CMDmismatch");
-const guildPrefixes = {}
-const mongo = require("../../mongo")
-const serverSettingsSchema = require("../../Schema/serversettings")
 module.exports = (client, message) => {
 
-  const prefix = client.cache.get(message.guild.id)?.prefix || GPrefix
+  const prefix = client.cache.get(message.guild.id)?.prefix || "?"
   if (!message.content.startsWith(prefix) || message.author.bot) return;
   if (message.channel.type === "dm") return;
 
@@ -14,23 +9,6 @@ module.exports = (client, message) => {
 
   const command = client.commands.get(cmd);
 
-  if (command) command.execute(client, message, args);
+  if (command) return command.execute(client, message, args);
+  if (/<@!?>/.test(message.content)) message.ireply(`My prefix is: \`${client.cache.get(message.guild.id)?.prefix ?? "?"}\``)
 };
-
-module.exports.loadPrefix = async (client) => {
-  await mongo().then(async (mongoose) => {
-    try {
-      for (const guild of client.guilds.cache) {
-        const result = await serverSettingsSchema.findOne({ _id: guild[1].id });
-        guildPrefixes[guild[1].id] = result.prefix
-      }
-    } finally {
-    }
-  })
-}
-
-module.exports.updateCache = (guildId, newPrefix) => {
-  guildPrefixes[guildId] = newPrefix
-  client.cache.get(guildId).prefix = newPrefix
-}
-

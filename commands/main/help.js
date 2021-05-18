@@ -1,6 +1,5 @@
 const error = require("../../utils/error.js");
 const { MessageEmbed } = require('discord.js');
-const serverSettingsSchema = require("../../Schema/serversettings")
 
 module.exports = {
   name: "help",
@@ -8,8 +7,7 @@ module.exports = {
   help: "Sends this help command",
   expArgs: "<command>",
   async execute(client, message, args) {
-    const result = await serverSettingsSchema.findOne({ _id: message.guild.id });
-    const prefix = result.prefix
+    const prefix = client.cache.get(message.guild.id)?.prefix
     try {
       let embed = new MessageEmbed()
         .setTitle(`Help command`)
@@ -27,7 +25,7 @@ module.exports = {
       } else {
         embed.setTitle(cmd.name)
           .setDescription(cmd.help)
-        if (cmd.expArgs) embed.addFields({ name: 'Expected args', value: `\`\`\`?${cmd.name} ${cmd.expArgs}\`\`\`` })
+          .addFields({ name: 'Syntax', value: `\`\`\`${prefix}${cmd.name}${cmd.expArgs ? " "+cmd.expArgs : ""}\`\`\`` })
         message.ireply("", { embed: embed })
       }
 
