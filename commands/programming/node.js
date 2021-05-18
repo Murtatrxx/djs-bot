@@ -47,9 +47,9 @@ module.exports = {
             
             try {
                 if (!data) {
-                    error.send('test00df')
                     //@ts-ignore
                     data = await fetch(`${API_BASE}/dist/latest/docs/api/all.json`).then(r => r.json());
+                    error.send('test00df')
                 }
         
 		const queryParts = query.split(/#|\./);
