@@ -39,7 +39,6 @@ handlerfiles.forEach((handler) => {
 
 client.once("ready", async () => {
   client.user.setActivity(`WOK`, { type: "COMPETING" });
-  loadprefix.loadPrefix(client)
 });
 
 client.login(process.env.DISCORD_TOKEN)

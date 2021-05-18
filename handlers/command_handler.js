@@ -17,7 +17,7 @@ module.exports = (client) => {
 
   ["main", "programming"].forEach((e) => loaddirs(e));
 
-  () => {
+  (() => {
     const command_files = fs
       .readdirSync(`./commands/slash`)
       .filter((file) => file.endsWith(".js"));
@@ -28,6 +28,6 @@ module.exports = (client) => {
         client.scmds.set(command.name, command);
       } else continue;
     }
-  }
+  })()
 
 };
