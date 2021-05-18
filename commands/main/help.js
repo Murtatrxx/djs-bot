@@ -1,6 +1,6 @@
 const error = require("../../utils/error.js");
 const { MessageEmbed } = require('discord.js');
-
+const serverSettingsSchema = require("../../Schema/serversettings")
 
 module.exports = {
   name: "help",
