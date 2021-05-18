@@ -30,6 +30,7 @@ process.on("uncaughtException", (e, o) => error.send("UnhandledRejection: " + (e
 client.commands = new Discord.Collection();
 client.events = new Discord.Collection();
 client.scmds = new Discord.Collection();
+client.cache = new Discord.Collection();
 
 const handlerfiles = ["command_handler", "event_handler"];
 handlerfiles.forEach((handler) => {
