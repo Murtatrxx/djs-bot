@@ -3,7 +3,7 @@ const { execute } = require("./ping.js")
 const serverSettingsSchema = require("../../Schema/serversettings")
 const message = require("../../events/guild/message")
 module.exports = {
-    name: setprefix,
+    name: "setprefix",
     description: "Set the server Prefix",
     help: "Change the commandprefix of the bot for the server",
     async execute(client, message, args) {
