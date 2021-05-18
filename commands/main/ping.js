@@ -5,7 +5,7 @@ module.exports = {
   name: "ping",
   description: "a ping command",
   help: "Run a ping command to get the latency",
-  expArgs: "There will be no arguments needed",
+  expArgs: "",
   execute(client, message, args) {
     try {
       message.channel.send("Pong!").then((m) => {

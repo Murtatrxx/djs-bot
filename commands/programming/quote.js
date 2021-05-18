@@ -28,7 +28,7 @@ module.exports = {
   name: "quote",
   description: "See a quote of pro coders",
   help: "This command will send you a random quote",
-  expArgs: "There will be no arguments needed",
+  expArgs: "",
   async execute(client, message, args) {
 
     let qte = quote[Math.floor(Math.random() * quote.length)]

@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-module.exports = (client, Discord) => {
+module.exports = (client, handler) => {
   const loaddirs = (dirs) => {
     const event_files = fs
       .readdirSync(`./events/${dirs}`)
@@ -15,4 +15,8 @@ module.exports = (client, Discord) => {
 
   const eventdirs = ["client", "guild"];
   eventdirs.forEach((e) => loaddirs(e));
+
+  handler.on('interaction', async interaction => {
+    client.scmds.get(interaction.data.name)
+  })
 };

@@ -6,7 +6,7 @@ module.exports = {
   name: "npm",
   description: "a ping command",
   help: "Run a ping command to get the latency",
-  expArgs: "<Object to be searched>",
+  expArgs: "<query>",
   async execute(client, message, args) {
     try {
       if (!args[0]) {

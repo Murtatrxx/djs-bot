@@ -2,7 +2,9 @@
 const error = require("./utils/error");
 const express = require("express");
 const Discord = require("discord.js");
+const SHClient = require('shandler')
 const client = new Discord.Client({ partials: ["MESSAGE", "CHANNEL", "REACTION"]} );
+const hndlr = new SHClient(client, { wrapper: true })
 const app = express();
 
 //----------[CONSTANTS]----------\\
@@ -26,10 +28,11 @@ process.on("uncaughtException", (e, o) => error.send("UnhandledRejection: "+(e.s
 
 client.commands = new Discord.Collection();
 client.events = new Discord.Collection();
+client.scmds = new Discord.Collection();
 
 const handlerfiles = ["command_handler", "event_handler"];
 handlerfiles.forEach((handler) => {
-  require(`./handlers/${handler}`)(client, Discord);
+  require(`./handlers/${handler}`)(client, hndlr);
 });
 
 client.once("ready" , async() => {

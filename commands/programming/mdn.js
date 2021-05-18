@@ -14,7 +14,7 @@ module.exports = {
     name: "mdn",
     description: "Search MDN docs",
     help: "Search the MDN documents for the object you have filled in as Argument",
-    expArgs: "<object to be searched>",
+    expArgs: "<query>",
     async execute(client, message, args) {
         try {
             if (!args[0]) {

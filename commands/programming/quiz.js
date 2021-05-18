@@ -12,7 +12,7 @@ module.exports = {
   name: "quiz",
   description: "Start a coding quiz",
   help: "This command will start a coding quiz",
-  expArgs: "There will be no arguments needed",
+  expArgs: "",
   async execute(client, message, args) {
     try {
 

@@ -4,7 +4,7 @@ module.exports = {
   name: "credits",
   description: "Send you developers and info of this bot",
   help: "Sends this command",
-  expArgs: "There will be no arguments needed",
+  expArgs: "",
   async execute(client, message, args) {
       let embed = new MessageEmbed()
         .setTitle("Developers of This Bot")

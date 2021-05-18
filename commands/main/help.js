@@ -6,7 +6,7 @@ module.exports = {
   name: "help",
   description: "Sends this message",
   help: "Sends this help command",
-  expArgs: "",
+  expArgs: "<command>",
   async execute(client, message, args) {
     try {
       let embed = new MessageEmbed()

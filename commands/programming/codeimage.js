@@ -4,7 +4,7 @@ module.exports = {
   name: "codeimage",
   description: "Send you a code themed image",
   help: "See random image of coding",
-  expArgs: "There will be no arguments needed",
+  expArgs: "",
   async execute(client, message, Discord) {
     let images = [
       `https://cdn.discordapp.com/attachments/768767631804071946/843494184048132096/9k.png`,
