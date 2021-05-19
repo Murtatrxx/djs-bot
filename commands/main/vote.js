@@ -10,11 +10,10 @@ module.exports = {
   async execute(client, message, args) {
     
     const team = "JavaScript Master"
+    const msg = await message.ireply("Voting, please wait...", { mention: true });
     fetch(`https://wornoffkeys.com/api/competition/voting?userId=${message.author.id}&teamId=${team}`, { method: 'POST' })
       .then(res => res.json())
-      .then(async body => {
-        
-        const msg = await message.ireply("Voting, please wait...", { mention: true });
+      .then(body => {
         if (body?.data?.success) {
           msg.edit('Thank you for voting..!\n'+data.message);
           log.send(`There is a vote from ${message.author.tag}(${message.author.id})\nGuild: ${message.guild?.name}(${message.guild?.id})`);
