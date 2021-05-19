@@ -51,7 +51,7 @@ module.exports = {
     async run(client, interaction){
       try {
         let mention = false;
-        let code = message.content.slice(5).trim();
+        let code = interaction.data.options.find(m => m.name === 'code').value.trim();
         try {
           vm.run(code);
         } catch (e) {
