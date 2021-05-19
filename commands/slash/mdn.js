@@ -19,7 +19,7 @@ module.exports = {
             name: 'query',
             required: true,
             description: 'Your query',
-            type: 4
+            type: 3
         }
     ],
     async run(client, interaction){
