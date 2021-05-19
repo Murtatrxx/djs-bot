@@ -25,7 +25,7 @@ module.exports = {
         mongo().then(async mongoose => {
             try {
                 const guildId = message.guild.id
-                let slash = client.cache.get(message.guild.id)?.slash
+                let slash = !(client.cache.get(message.guild.id)?.slash)
 
                 await serverSettingsSchema.findOneAndUpdate({
                     _id: guildId
