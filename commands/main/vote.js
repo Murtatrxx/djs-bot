@@ -6,12 +6,12 @@ module.exports = {
   description: "a vote command",
   help: "Run this command to vote for this bot",
   expArgs: "",
-  execute(client, message, args) {
+  async execute(client, message, args) {
     
     const team = "JavaScript Master"
     fetch(`https://wornoffkeys.com/api/competition/voting?userId=${message.author.id}&teamId=${team}`, { method: 'POST' })
       .then(res => res.json())
-      .then(body => {
+      .then(async body => {
         
         const msg = await message.reply("Voting, please wait...");
         if (body?.data?.success) {
