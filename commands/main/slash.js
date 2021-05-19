@@ -9,7 +9,7 @@ module.exports = {
     help: "Change the commandprefix of the bot for the server",
     async execute(client, message, args) {
         if (!message.member.hasPermission('ADMINISTRATOR')) return message.reply("You're not authorized to use this command\nYou need Admin perms.")
-        let a = [], cmds = await client.api.application(client.user.id).guilds(message.guild.id).commands.get()
+        let a = [], cmds = await client.api.applications(client.user.id).guilds(message.guild.id).commands.get()
         if (!cmds?.length){
             client.scmds.each(c => a.push({
                 name: c.name,
