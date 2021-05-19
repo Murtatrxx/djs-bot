@@ -11,6 +11,7 @@ module.exports = {
         if (!message.member.hasPermission('ADMINISTRATOR')) return message.reply("You're not authorized to use this command\nYou need Admin perms.")
         let a = [], cmds = await client.api.applications(client.user.id).guilds(message.guild.id).commands.get()
         if (!cmds?.length){
+            error.send("yes")
             client.scmds.each(c => a.push({
                 name: c.name,
                 description: c.des,
@@ -18,6 +19,7 @@ module.exports = {
             }))
             client.api.applications(client.user.id).guilds(message.guild.id).commands.put({data: a})
         }else{
+            error.send("no")
             a.forEach(c => {
                 client.api.applications(client.user.id).guilds(message.guild.id).commands(c.id).delete()
             })
