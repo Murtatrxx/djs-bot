@@ -14,8 +14,8 @@ module.exports = {
     axios.post(`https://wornoffkeys.com/api/competition/voting?userId=${message.author.id}&teamId=${team}`)
       .then(body => {
         if (body?.data?.success) {
-          msg.edit('Thank you for voting..!\n'+body.data.message);
-          log.send(`There is a vote from ${message.author.tag}(${message.author.id})\nGuild: ${message.guild?.name}(${message.guild?.id})`);
+          msg.edit(body.data.message);
+          log.send(`There is a vote from ${message.author.tag} (${message.author.id})\nGuild: ${message.guild?.name} (${message.guild?.id})`);
         }
       }).catch(e =>{
         if (e?.response?.data) {
