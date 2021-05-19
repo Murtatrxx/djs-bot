@@ -6,7 +6,6 @@ module.exports = {
   help: "Math!",
   expArgs: "<experission>",
   async execute(client, message, Discord) {
-    
     if (message.guild.id === '839102795327864852') return;
     let resp;
     try {
