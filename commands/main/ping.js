@@ -14,7 +14,7 @@ module.exports = {
           .setColor("PURPLE")
           .setTitle('Stats')
           .setURL('https://discord.com/api/oauth2/authorize?client_id=838864249958301706&permissions=8&scope=applications.commands%20bot')
-          .setDescription(`**Guilds:** ${client.guilds.cache.size}\n**:hourglass:** | Ping: ${ping}ms\n**:heartbeat:** | API: ${client.ws.ping}ms`);
+          .setDescription(`**Guilds:** ${client.guilds.cache.size}\n:hourglass:** Ping:** ${ping}ms\n:heartbeat: **API:** ${client.ws.ping}ms`);
         if (ping >= 1000) return m.edit("", { embed: errembed });
         m.edit("", { embed: ememem }).catch(e => error.send("Error:" + e.stack));
       }).catch(e => error.send("Error:" + e.stack));
