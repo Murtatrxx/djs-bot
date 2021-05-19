@@ -1,5 +1,5 @@
 const { MessageEmbed } = require('discord.js')
-const error = require('../../urils/error')
+const error = require('../../utils/error')
 
 module.exports = {
     name: 'npm',
