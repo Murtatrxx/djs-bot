@@ -18,7 +18,7 @@ module.exports = {
           log.send(`There is a vote from ${message.author.tag}(${message.author.id})\nGuild: ${message.guild?.name}(${message.guild?.id})`);
         }
       }).catch(e =>{
-        if (e.response.data) {
+        if (e?.response?.data) {
           const { message: text } = e.response.data;
           msg.edit(text);
         }
