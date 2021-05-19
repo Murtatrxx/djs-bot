@@ -27,7 +27,7 @@ module.exports = {
     
     
     const embed = new MessageEmbed()
-    .setColor(color)
+    .setColor("BLACK")
     .setTitle('Calculator')
     .addField('Question', `\`\`\`css\n${text}\`\`\``)
     .addField('Answer', `\`\`\`css\n${resp}\`\`\``)
