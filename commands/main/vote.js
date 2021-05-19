@@ -1,12 +1,13 @@
+const fetch = require('node-fetch')
+
 module.exports = {
   name: "vote",
   description: "a vote command",
-  help: "Run this command to vote the bot",
-  expArgs: "<rate(1-5)> <reason>",
+  help: "Run this command to vote for this bot",
+  expArgs: "",
   execute(client, message, args) {
-    if(!args[0]) return message.channel.send("Please vote the bot correctly")
-
-    message.channel.send("Thanks for voting, your answers will be sent to my developers.")
+    
+    message.channel.send("Thanks for voting,")
 
     let c = client.channels.cache.get("839102795327864855")
 
