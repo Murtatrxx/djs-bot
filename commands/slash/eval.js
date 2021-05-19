@@ -61,7 +61,7 @@ module.exports = {
           let em = new MessageEmbed()
             .setTitle('I\'ve executed your syntax')
             .setColor((mention ? "RED" : 'GREEN'))
-            .setAuthor(message.member.displayName, message.author.displayAvatarURL(), message.author.displayAvatarURL())
+            .setAuthor(interaction.member.displayName, interaction.member.user.displayAvatarURL(), interaction.member.user.displayAvatarURL())
             .addFields({ name: 'Source', value: `\`\`\`js\n ${code}\`\`\`` }, { name: 'Result', value: "```js\n" + process.version.substr(0, 5) + "\n" + logs.join('\n') + "```" })
             .setTimestamp()
           interaction.reply("", { embed: em }).catch(e => error.send("Error:" + e.stack));
