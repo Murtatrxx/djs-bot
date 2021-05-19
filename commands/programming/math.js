@@ -6,10 +6,14 @@ module.exports = {
   help: "Math!",
   expArgs: "<experission>",
   async execute(client, message, Discord) {
-    if (message.guild.id !== '839102795327864852') return;
     let resp;
+    let text = message.content.split(/ +/)
+    text.shift()
+    text.join(" ")
+    
+    
     try {
-      resp = math.evaluate(message.content)
+      resp = math.evaluate(text)
     } catch(e) {
       let a = "```"
       return message.channel.send(`I think you entered the math incorrectly :c ${a}${e}${a}`)
