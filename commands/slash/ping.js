@@ -5,7 +5,7 @@ module.exports = {
     des: 'Pong..!',
     async run(client, interaction){
         try {
-            interaction.reply("WS ping: "+client.ws.ping+"ms", { flags: 64 })
+            interaction.reply("WS ping: "+client.ws.ping+"ms", { flags: 64, type: 4 })
         } catch (e) {
             error.send("Errors:" + e.stack)
         }
