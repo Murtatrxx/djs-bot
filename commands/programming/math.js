@@ -1,4 +1,6 @@
 const math = require('mathjs')
+const { MessageEmbed } = require("discord.js");
+
 
 module.exports = {
   name: "math",
@@ -8,6 +10,7 @@ module.exports = {
   async execute(client, message, Discord) {
     let resp;
     let text = message.content.split(/ +/)
+    if(!text[1]) return message.channel.send("Please enter a experission")
     text.shift()
     text.join(" ")
     
