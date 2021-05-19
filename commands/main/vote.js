@@ -1,4 +1,4 @@
-const fetch = require('node-fetch')
+const axios = require('axios')
 const log = require('../../utils/error')
 require('../../utils/inline')
 
@@ -11,8 +11,7 @@ module.exports = {
     
     const team = "JavaScript Master"
     const msg = await message.ireply("Voting, please wait...", { mention: true });
-    fetch(`https://wornoffkeys.com/api/competition/voting?userId=${message.author.id}&teamId=${team}`, { method: 'POST' })
-      .then(res => res.json())
+    axios.post(`https://wornoffkeys.com/api/competition/voting?userId=${message.author.id}&teamId=${team}`)
       .then(body => {
         if (body?.data?.success) {
           msg.edit('Thank you for voting..!\n'+data.message);
