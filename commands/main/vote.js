@@ -22,7 +22,7 @@ module.exports = {
           const { message: text } = e.response.data;
           msg.edit(text);
         }
-        return log.send("Error while voting: "+text);
+        return log.send("Error while voting: "+e);
 
     })
 
