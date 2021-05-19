@@ -45,7 +45,7 @@ module.exports = {
             name: 'code',
             required: true,
             description: 'The code that you want to execute',
-            type: 4
+            type: 3
         }
     ],
     async run(client, interaction){
