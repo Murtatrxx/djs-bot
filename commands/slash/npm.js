@@ -8,7 +8,7 @@ module.exports = {
             name: 'query',
             required: true,
             description: 'Name of the package',
-            type: 4
+            type: 3
         }
     ],
     async run(client, interaction){
