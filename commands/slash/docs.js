@@ -2,8 +2,8 @@ const error = require('../../utils/error')
 const fetch = require('node-fetch')
 
 module.exports = {
-    name: 'ping',
-    des: 'Pong..!',
+    name: 'docs',
+    des: 'Searches the djs docs',
     options: [
         {
             name: 'query',
