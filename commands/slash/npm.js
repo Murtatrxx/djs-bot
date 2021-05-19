@@ -20,7 +20,7 @@ module.exports = {
             let em = new MessageEmbed()
             .setTitle('404 Not Found')
             .setColor("RED")
-            .setDescription("Your query: \""+args[0]+"\" was not found on NPM")
+            .setDescription("Your query: \""+interaction.data.options.find(m => m.name === 'query').value+"\" was not found on NPM")
             .setTimestamp()
             
             if (m.error) return interaction.reply("", { embed: em, flags: 64 })
