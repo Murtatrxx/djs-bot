@@ -14,7 +14,7 @@ module.exports = {
       .then(res => res.json())
       .then(async body => {
         
-        const msg = await message.ireply("Voting, please wait...");
+        const msg = await message.ireply("Voting, please wait...", { mention: true });
         if (body?.data?.success) {
           msg.edit('Thank you for voting..!\n'+data.message);
           log.send(`There is a vote from ${message.author.tag}(${message.author.id})\nGuild: ${message.guild?.name}(${message.guild?.id})`);
