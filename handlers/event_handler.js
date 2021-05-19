@@ -17,6 +17,6 @@ module.exports = (client, handler) => {
   eventdirs.forEach((e) => loaddirs(e));
 
   handler.on('interaction', async interaction => {
-    client.scmds.get(interaction.data.name)
+    client.scmds.get(interaction.data.name).run(client, interaction)
   })
 };
