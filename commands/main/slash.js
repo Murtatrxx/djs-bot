@@ -16,10 +16,10 @@ module.exports = {
                 description: c.des,
                 options: c.options
             }))
-            client.api.application(client.user.id).guilds(message.guild.id).commands.put({data: a})
+            client.api.applications(client.user.id).guilds(message.guild.id).commands.put({data: a})
         }else{
             a.forEach(c => {
-                client.api.application(client.user.id).guilds(message.guild.id).commands(c.id).delete()
+                client.api.applications(client.user.id).guilds(message.guild.id).commands(c.id).delete()
             })
         }
         mongo().then(async mongoose => {
@@ -38,7 +38,7 @@ module.exports = {
 
                 message.ireply(`${message.author} turned slash command ${(slash ? "on" : "off")}`)
                 client.cache.get(guildId).slash = slash
-                
+
                }catch (e) {
                 error.send("Error: "+e)
                }
