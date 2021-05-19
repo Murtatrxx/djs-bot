@@ -18,6 +18,7 @@ module.exports = {
         {
             name: 'query',
             required: true,
+            description: 'Your query',
             type: 4
         }
     ],
