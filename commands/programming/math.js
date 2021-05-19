@@ -9,7 +9,7 @@ module.exports = {
       let resp;
       
       try {
-        resp = math.evaluate(message.content)
+        resp = math.evaluate(message.content.split(/ +/).join(" "))
       } catch(e) {
         let a = "```"
         return message.channel.send(`I think you entered the math incorrectly :c ${a}${e}${a}`)
