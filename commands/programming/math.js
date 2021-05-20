@@ -7,12 +7,10 @@ module.exports = {
   description: "Runs the math command",
   help: "Math!",
   expArgs: "<experission>",
-  async execute(client, message, Discord) {
+  async execute(client, message, args) {
     let resp;
-    let text = message.content.split(/ +/)
-    if(!text[1]) return message.channel.send("Please enter a experission")
-    text.shift()
-    text.join(" ")
+    let text = args.join(" ")
+    if(!args[1]) return message.channel.send("Please enter a experission")
     
     
     try {
