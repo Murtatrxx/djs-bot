@@ -4,7 +4,7 @@ const fetch = require('node-fetch')
 
 module.exports = {
   name: "npm",
-  description: "a ping command",
+  description: "Search NPM packages",
   help: "Run a ping command to get the latency",
   expArgs: "<query>",
   async execute(client, message, args) {
