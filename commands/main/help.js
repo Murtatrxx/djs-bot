@@ -7,7 +7,7 @@ module.exports = {
   help: "Sends this help command",
   expArgs: "<command>",
   async execute(client, message, args) {
-    const prefix = client.cache.get(message.guild.id)?.prefix
+    const prefix = client.cache.get(message.guild.id)?.prefix ?? '?'
     try {
       let embed = new MessageEmbed()
         .setTitle(`Help command`)
